@@ -1,0 +1,1207 @@
+diff --git a/css/style.css b/css/style.css
+index fd70855..13eb952 100644
+--- a/css/style.css
++++ b/css/style.css
+@@ -1,3 +1,19 @@
++/**********************************/
++/****** Paleta e tipografia *******/
++/**********************************/
++/* Padronização de cores e tipos usados em todo o site. Manter qualquer
++   novo estilo dentro desta paleta para evitar cores fora do padrão. */
++:root {
++    --color-accent: #2176df;   /* azul de destaque (links, ícones, KPIs, botões) */
++    --color-heading: #222222;  /* títulos e texto de maior ênfase */
++    --color-body: #666666;     /* texto corrido */
++    --color-dark: #373737;     /* fundos escuros estruturais (sidebar, divisórias) */
++    --color-muted: #999999;    /* texto secundário / legendas */
++    --font-family: 'Open Sans', sans-serif;
++    --h2-size: 35px;           /* títulos de seção (desktop) */
++    --h3-size: 20px;           /* subtítulos de entidade: formação, experiência, cases, reviews */
++}
++
+ /**********************************/
+ /********** General CSS ***********/
+ /**********************************/
+@@ -7,6 +23,10 @@ body {
+     font-family: 'Open Sans', sans-serif;
+ }
+ 
++picture {
++    display: block;
++}
++
+ a {
+     color: #373737;
+     transition: all .3s;
+@@ -47,7 +67,7 @@ a:focus {
+     width: 100%;
+     padding: 15px;
+     float: left;
+-    background: #f2c83b;
++    background: #ffffff;
+ }
+ 
+ .wrapper .sidebar-header,
+@@ -76,7 +96,7 @@ a:focus {
+ }
+ 
+ .navbar-expand-md .navbar-nav .nav-link i {
+-    color: #f2c83b;
++    color: #2176df;
+     float: right;
+     padding-top: 5px;
+     transition: all .3s;
+@@ -260,6 +280,11 @@ a:focus {
+     .wrapper .content {
+         padding: 15px;
+     }
++
++    .content-header h2 {
++        font-size: 26px;
++        letter-spacing: 2px;
++    }
+ }
+ 
+ 
+@@ -675,23 +700,6 @@ a:focus {
+     margin-bottom: 5px;
+ }
+ 
+-.experiencia .exp-col h4 {
+-    font-size: 14px;
+-    font-weight: 400;
+-    font-style: italic;
+-    margin-bottom: 5px;
+-}
+-
+-.experiencia .exp-col h5 {
+-    font-size: 16px;
+-    font-weight: 600;
+-    margin-bottom: 10px;
+-}
+-
+-.experiencia .exp-col p {
+-    margin: 0;
+-}
+-
+ 
+ /**********************************/
+ /********** Portfolio CSS *********/
+@@ -737,107 +745,240 @@ a:focus {
+     overflow: hidden;
+ }
+ 
+-.portfolio .portfolio-item figure {
++
++/**********************************/
++/******* Case Cards CSS (code, no images) ****/
++/**********************************/
++.portfolio .portfolio-item.case-modern {
++    height: auto;
++    overflow: visible;
++    margin-bottom: 30px;
++}
++
++.case-card {
++    height: 100%;
++    display: flex;
++    flex-direction: column;
+     background: #ffffff;
+-    overflow: hidden;
+-    height: 220px;
+-    position: relative;
+-    border-radius: 0;
+-    margin: 0; 
++    border: 1px solid #e6e6e6;
++    border-radius: 6px;
++    padding: 25px;
++    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
++    transition: box-shadow .25s ease, transform .25s ease;
+ }
+ 
+-.portfolio .portfolio-item figure img {
+-    width: 100%; 
+-    height: 100%; 
+-    object-fit: cover; 
++.case-card:hover {
++    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
++    transform: translateY(-2px);
+ }
+ 
+-.portfolio .portfolio-item figure:hover img {
+-    opacity: 0.3;
+-    transition: 0.3s;
++.case-card-top {
++    display: flex;
++    align-items: flex-start;
++    gap: 14px;
++    margin-bottom: 14px;
+ }
+ 
+-.portfolio .portfolio-item figure .link-preview,
+-.portfolio .portfolio-item figure .link-details,
+-.portfolio .portfolio-item figure .portfolio-title {
+-    position: absolute;
+-    display: inline-block;
+-    opacity: 0;
+-    line-height: 1;
+-    text-align: center;
+-    width: 45px;
+-    height: 35px;
++.case-logo {
++    flex: 0 0 auto;
++    width: 84px;
++    height: 46px;
++    display: flex;
++    align-items: center;
++    justify-content: flex-start;
++}
++
++.case-logo img {
++    max-width: 100%;
++    max-height: 100%;
++    object-fit: contain;
++}
++
++.case-badge {
++    flex: 0 0 auto;
++    width: 42px;
++    height: 42px;
++    border-radius: 50%;
+     background: #2176df;
+-    transition: 0.2s linear;
++    color: #ffffff;
++    font-size: 14px;
++    font-weight: 700;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    letter-spacing: 0;
+ }
+ 
+-.portfolio .portfolio-item figure .link-preview i,
+-.portfolio .portfolio-item figure .link-details i {
++.case-client {
++    font-size: 18px;
++    font-weight: 700;
+     color: #222222;
+-    padding-top: 10px;
+-    font-size: 16px;
++    margin: 0;
+ }
+ 
+-.portfolio .portfolio-item figure .link-preview:hover,
+-.portfolio .portfolio-item figure .link-details:hover {
+-    background: #222222;
++.case-client .case-sub {
++    display: inline-block;
++    font-size: 13px;
++    font-weight: 400;
++    color: #999999;
++    margin-left: 4px;
+ }
+ 
+-.portfolio .portfolio-item figure .link-preview:hover i,
+-.portfolio .portfolio-item figure .link-details:hover i {
++.case-meta {
++    font-size: 12.5px;
++    color: #999999;
++    margin: 3px 0 0;
++}
++
++.case-desc {
++    font-size: 14px;
++    color: #666666;
++    line-height: 1.6;
++    margin: 0 0 18px;
++}
++
++.case-kpis {
++    display: flex;
++    flex-wrap: wrap;
++    gap: 18px 22px;
++    margin-bottom: 16px;
++}
++
++.case-kpi {
++    display: flex;
++    flex-direction: column;
++    min-width: 70px;
++}
++
++.case-kpi .kpi-num {
++    font-size: 20px;
++    font-weight: 800;
+     color: #2176df;
++    line-height: 1.15;
+ }
+ 
+-.portfolio .portfolio-item figure .link-preview {
+-    left: 50%;
+-    top: calc(25% - 18px);
++.case-kpi .kpi-label {
++    font-size: 11px;
++    color: #999999;
++    margin-top: 2px;
+ }
+ 
+-.portfolio .portfolio-item figure .link-details {
+-    right: 50%;
+-    top: calc(25% - 18px);
++.case-tags {
++    display: flex;
++    flex-wrap: wrap;
++    gap: 8px;
++    margin-bottom: 18px;
+ }
+ 
+-.portfolio .portfolio-item figure .portfolio-title {
+-    margin: 0;
+-    width: 100%;
+-    height: 50%;
+-    left: 0;
+-    right: 0;
+-    top: 100%;
+-    padding: 30px 10px;
+-    color: #222222;
+-    font-size: 16px;
++.case-tag {
++    font-size: 11px;
+     font-weight: 600;
+-    background: rgba(255, 111, 97, .5);
+-    border-radius: 0;
++    color: #2176df;
++    background: #eaf2fd;
++    padding: 4px 10px;
++    border-radius: 20px;
+ }
+ 
+-.portfolio .portfolio-item figure .portfolio-title:hover {
+-    text-decoration: none;
++.case-more-btn {
++    margin-top: auto;
++    align-self: flex-start;
++    background: none;
++    border: none;
++    padding: 0;
++    font-size: 13px;
++    font-weight: 700;
++    color: #2176df;
++    cursor: pointer;
++}
++
++.case-more-btn i {
++    margin-left: 4px;
++    transition: transform .2s ease;
++}
++
++.case-more-btn:hover i {
++    transform: translateX(3px);
++}
++
++.case-note {
++    font-size: 13px;
++    color: #999999;
++    text-align: center;
++    margin: -6px 0 0;
++}
++
++/* Case detail modal */
++.case-modal .modal-content {
++    border-radius: 8px;
++    border: none;
+ }
+ 
+-.portfolio .portfolio-item figure .portfolio-title span {
++.case-modal .modal-header {
++    border-bottom: 1px solid #eeeeee;
++    align-items: flex-start;
++}
++
++.case-modal .modal-title {
++    font-size: 22px;
++    font-weight: 700;
++    color: #222222;
++}
++
++.case-modal .modal-title .case-sub {
+     display: block;
+-    margin-top: 10px;
+-    font-family: 'Open Sans', sans-serif;
+     font-size: 13px;
+-    font-weight: 300;
++    font-weight: 400;
++    color: #999999;
+ }
+ 
+-.portfolio .portfolio-item figure:hover .link-preview {
+-    opacity: 1;
+-    left: calc(50% - 61px);
++.case-modal .modal-body h4 {
++    font-size: 13px;
++    text-transform: uppercase;
++    letter-spacing: .05em;
++    color: #2176df;
++    font-weight: 700;
++    margin: 22px 0 8px;
+ }
+ 
+-.portfolio .portfolio-item figure:hover .link-details {
+-    opacity: 1;
+-    right: calc(50% - 61px);
++.case-modal .modal-body h4:first-of-type {
++    margin-top: 16px;
+ }
+ 
+-.portfolio .portfolio-item figure:hover .portfolio-title {
+-    opacity: 1;
+-    top: 50%;
++.case-modal .modal-body p {
++    font-size: 14.5px;
++    color: #666666;
++    line-height: 1.65;
++    margin: 0;
++}
++
++.case-kpis-modal {
++    margin-top: 4px;
++}
++
++.case-kpis-modal .case-kpi {
++    min-width: 150px;
++}
++
++.case-kpis-modal .kpi-label {
++    max-width: 170px;
++}
++
++@media (max-width: 767px) {
++    .case-card {
++        padding: 20px;
++    }
++
++    .case-kpis {
++        gap: 14px 20px;
++    }
++
++    .case-kpi {
++        min-width: 60px;
++    }
++
++    .case-modal .modal-dialog {
++        margin: 10px;
++    }
+ }
+ 
+ 
+@@ -874,7 +1015,7 @@ a:focus {
+ }
+ 
+ .review .review-name h3 {
+-    font-size: 18px;
++    font-size: 20px;
+     font-weight: 700;
+     letter-spacing: 2px;
+     margin-bottom: 5px;
+@@ -909,7 +1050,7 @@ a:focus {
+     z-index: 1;
+     opacity: 0;
+     transition: .5s;
+-    background: rgba(255, 111, 97, .7);
++    background: rgba(33, 118, 223, .7);
+ }
+ 
+ .review-slider .slick-prev {
+@@ -978,6 +1119,73 @@ a:focus {
+ }
+ 
+ 
++/**********************************/
++/************ faq CSS *************/
++/**********************************/
++.faq {
++    position: relative;
++    padding: 60px 30px 30px 30px;
++    background: #ffffff;
++    border-bottom: 30px solid #373737;
++}
++
++.faq-list {
++    position: relative;
++    width: 100%;
++}
++
++.faq-item {
++    border-bottom: 1px solid #e6e6e6;
++}
++
++.faq-item:first-child {
++    border-top: 1px solid #e6e6e6;
++}
++
++.faq-question {
++    display: flex;
++    align-items: center;
++    justify-content: space-between;
++    width: 100%;
++    padding: 18px 5px;
++    border: none;
++    background: none;
++    color: #222222;
++    font-family: 'Open Sans', sans-serif;
++    font-size: 16px;
++    font-weight: 600;
++    text-align: left;
++    cursor: pointer;
++    transition: color .3s;
++}
++
++.faq-question:hover,
++.faq-question:focus {
++    color: #2176df;
++    outline: none;
++}
++
++.faq-question i {
++    flex: 0 0 auto;
++    margin-left: 15px;
++    color: #2176df;
++    font-size: 14px;
++    transition: transform .3s;
++}
++
++.faq-question[aria-expanded="true"] i {
++    transform: rotate(180deg);
++}
++
++.faq-answer {
++    margin: 0;
++    padding: 0 25px 20px 5px;
++    color: #666666;
++    font-size: 14px;
++    line-height: 1.8;
++}
++
++
+ /**********************************/
+ /*********** contato CSS ***********/
+ /**********************************/
+@@ -1035,7 +1243,7 @@ a:focus {
+ }
+ 
+ .contato .social a:hover {
+-    color: #f2c83b;
++    color: #2176df;
+     background: #222222;
+ }
+ 
+diff --git a/index.html b/index.html
+index fa14568..f482fb4 100644
+--- a/index.html
++++ b/index.html
+@@ -1,46 +1,38 @@
+ <!DOCTYPE html>
+ 
+-<html lang="en">
++<html lang="pt-BR">
+     <head>
+-<!-- Google Tag Manager -->
+-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+-})(window,document,'script','dataLayer','GTM-5H2NS7RF');</script>
+-<!-- End Google Tag Manager -->
+-
+-	    <meta name="google-site-verification" content="tfksNWPV2QQummBtzPYt_UDMtM3yWtbckH20SoQGvZc" />
+-
+-	    <!-- Google tag (gtag.js) -->
+-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGDSYCGFPT"></script>
+-<script>
+-  window.dataLayer = window.dataLayer || [];
+-  function gtag(){dataLayer.push(arguments);}
+-  gtag('js', new Date());
+-
+-  gtag('config', 'G-EGDSYCGFPT');
+-</script>
+-	    
+-	    <!-- Google tag (gtag.js) -->
+-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11279174747"></script>
+-<script>
+-  window.dataLayer = window.dataLayer || [];
+-  function gtag(){dataLayer.push(arguments);}
+-  gtag('js', new Date());
+-
+-  gtag('config', 'AW-11279174747');
+-</script>
+-	    
+         <meta charset="utf-8">
+-        <title>CV Ana D'avilla - Esp. em Marketing Digital</title>
++        <title>Ana D'avilla | Especialista em Tráfego Pago, PPC e CRM para Marcas e Agências</title>
+         <meta content="width=device-width, initial-scale=1.0" name="viewport">
+-        <meta content="Ana Davilla" name="keywords">
+-        <meta content="Ana Davilla" name="description">
++        <meta name="description" content="Especialista em mídias pagas (Google Ads e Meta Ads), CRM e funil de vendas, com mais de 10 anos de experiência em marcas como Ford, Toyota e Mitsubishi. Disponível para projetos e parcerias com agências.">
++        <meta name="keywords" content="tráfego pago, gestão de Google Ads, gestão de Meta Ads, PPC, CRM, marketing digital, especialista em mídia paga, Goiânia">
++        <meta name="robots" content="index, follow">
++        <link rel="canonical" href="https://anadomkt.com.br/">
++
++        <!-- Open Graph -->
++        <meta property="og:type" content="website">
++        <meta property="og:url" content="https://anadomkt.com.br/">
++        <meta property="og:title" content="Ana D'avilla | Especialista em Tráfego Pago, PPC e CRM para Marcas e Agências">
++        <meta property="og:description" content="Especialista em mídias pagas (Google Ads e Meta Ads), CRM e funil de vendas, com mais de 10 anos de experiência em marcas como Ford, Toyota e Mitsubishi. Disponível para projetos e parcerias com agências.">
++        <meta property="og:image" content="https://anadomkt.com.br/img/sobremim.jpg">
++        <meta property="og:locale" content="pt_BR">
++
++        <!-- Twitter Card -->
++        <meta name="twitter:card" content="summary_large_image">
++        <meta name="twitter:title" content="Ana D'avilla | Especialista em Tráfego Pago, PPC e CRM para Marcas e Agências">
++        <meta name="twitter:description" content="Especialista em mídias pagas (Google Ads e Meta Ads), CRM e funil de vendas, com mais de 10 anos de experiência em marcas como Ford, Toyota e Mitsubishi.">
++        <meta name="twitter:image" content="https://anadomkt.com.br/img/sobremim.jpg">
++
++        <meta name="google-site-verification" content="tfksNWPV2QQummBtzPYt_UDMtM3yWtbckH20SoQGvZc" />
+ 
+         <!-- Favicon -->
+         <link href="img/favicon.ico" rel="icon">
+ 
++        <!-- Preconnect (velocidade) -->
++        <link rel="preconnect" href="https://fonts.googleapis.com">
++        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
++
+         <!-- Google Fonts -->
+         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+ 
+@@ -49,10 +41,111 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+         <link href="lib/slick/slick.css" rel="stylesheet">
+         <link href="lib/slick/slick-theme.css" rel="stylesheet">
+-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+ 
+         <!-- Template Stylesheet -->
+         <link href="css/style.css" rel="stylesheet">
++
++        <!-- Dados estruturados (schema.org) -->
++        <script type="application/ld+json">
++        {
++          "@context": "https://schema.org",
++          "@type": "Person",
++          "name": "Ana C. D'avilla",
++          "alternateName": "Ana D'avilla",
++          "jobTitle": "Especialista em Marketing Digital, Mídias Pagas e CRM",
++          "url": "https://anadomkt.com.br/",
++          "image": "https://anadomkt.com.br/img/sobremim.jpg",
++          "email": "mailto:anadavillamarketing@gmail.com",
++          "telephone": "+55-62-99414-1488",
++          "address": {
++            "@type": "PostalAddress",
++            "addressLocality": "Goiânia",
++            "addressRegion": "GO",
++            "addressCountry": "BR"
++          },
++          "sameAs": [
++            "https://www.linkedin.com/in/ana-davilla/",
++            "https://www.behance.net/anadcaps"
++          ],
++          "knowsAbout": ["Google Ads", "Meta Ads", "CRM", "Funil de Vendas", "Inbound Marketing", "SEO", "GEO"]
++        }
++        </script>
++        <script type="application/ld+json">
++        {
++          "@context": "https://schema.org",
++          "@type": "FAQPage",
++          "mainEntity": [
++            {
++              "@type": "Question",
++              "name": "Ana atende agências de publicidade, além de marcas diretamente?",
++              "acceptedAnswer": {
++                "@type": "Answer",
++                "text": "Sim. Ao longo da carreira, Ana atuou dentro de agências como Netmídia Propaganda, Agência 1123, Agência Linka, Komuh, Savannah Comunicação, ABM e Olivas Digital, e hoje também apoia agências como parceira externa em campanhas de mídia paga."
++              }
++            },
++            {
++              "@type": "Question",
++              "name": "Quais ferramentas e plataformas Ana domina?",
++              "acceptedAnswer": {
++                "@type": "Answer",
++                "text": "Google Ads, Meta Ads (Facebook e Instagram), CRM e automação (HubSpot, RD Station), funil de vendas e mensuração via Google Analytics e Data Studio."
++              }
++            },
++            {
++              "@type": "Question",
++              "name": "Ana atende clientes fora de Goiânia?",
++              "acceptedAnswer": {
++                "@type": "Answer",
++                "text": "Sim. Os cases incluem clientes de São Paulo, Tocantins, Curitiba e e-commerces com atuação em todo o Brasil — o trabalho é feito remotamente."
++              }
++            },
++            {
++              "@type": "Question",
++              "name": "Quantos anos de experiência Ana tem em marketing digital?",
++              "acceptedAnswer": {
++                "@type": "Answer",
++                "text": "Mais de 10 anos de experiência, com passagens por agências e atuação direta em marcas como Ford, Toyota, Mitsubishi e Biostévi Pharma."
++              }
++            },
++            {
++              "@type": "Question",
++              "name": "Como faço para falar com a Ana sobre um projeto?",
++              "acceptedAnswer": {
++                "@type": "Answer",
++                "text": "Pelo WhatsApp ou e-mail, disponíveis na seção de Contato desta página."
++              }
++            }
++          ]
++        }
++        </script>
++
++        <!-- Google Tag Manager -->
++        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
++        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
++        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
++        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
++        })(window,document,'script','dataLayer','GTM-5H2NS7RF');</script>
++        <!-- End Google Tag Manager -->
++
++        <!-- Google tag (gtag.js) -->
++        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EGDSYCGFPT"></script>
++        <script>
++          window.dataLayer = window.dataLayer || [];
++          function gtag(){dataLayer.push(arguments);}
++          gtag('js', new Date());
++
++          gtag('config', 'G-EGDSYCGFPT');
++        </script>
++
++        <!-- Google tag (gtag.js) -->
++        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11279174747"></script>
++        <script>
++          window.dataLayer = window.dataLayer || [];
++          function gtag(){dataLayer.push(arguments);}
++          gtag('js', new Date());
++
++          gtag('config', 'AW-11279174747');
++        </script>
+     </head>
+ 
+     <body data-spy="scroll" data-target=".navbar" data-offset="51">
+@@ -83,7 +176,10 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+         <div class="wrapper">
+             <div class="sidebar">
+                 <div class="sidebar-header">
+-                    <img src="img/quemsou.png" alt="Image">
++                    <picture>
++                        <source srcset="img/quemsou.webp" type="image/webp">
++                        <img src="img/quemsou.jpg" alt="Foto de perfil de Ana C. D'avilla" width="400" height="300" loading="lazy">
++                    </picture>
+                 </div>
+                 <div class="sidebar-content">
+                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+@@ -112,6 +208,9 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="#portfolio">Cases<i class="fa fa-file-archive"></i></a>
+                                 </li>
++                                <li class="nav-item">
++                                    <a class="nav-link" href="#faq">Perguntas Frequentes<i class="fa fa-circle-question"></i></a>
++                                </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="#contato">Contato<i class="fa fa-envelope"></i></a>
+                                 </li>
+@@ -139,7 +238,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                 <!-- Large Button Start -->
+                 <div class="large-btn">
+                     <div class="content-inner">
+-                        <a class="btn" href=https://raw.githubusercontent.com/anadomarketing/main/site/CV%20-%20Ana%20D'avilla%20-%20PPC.pdf target="_blank"><i class="fa fa-download"></i>Baixar CV em PDF</a>
++                        <a class="btn" href="https://raw.githubusercontent.com/anadomarketing/main/site/CV%20-%20Ana%20D'avilla%20-%20PPC.pdf" target="_blank"><i class="fa fa-download"></i>Baixar CV em PDF</a>
+                         <a class="btn" href="https://wa.me/5562994141488?text=Ol%C3%A1+Ana%2C+quero+mais+informa%C3%A7%C3%B5es+sobre+seus+servi%C3%A7os" target="_blank"><i class="fa fa-hands-helping"></i>Entrar em contato</a>
+                     </div>
+                 </div>
+@@ -153,7 +252,10 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                         </div>
+                         <div class="row align-items-center">
+                             <div class="col-md-6 col-lg-5">
+-                                <img src="img/sobremim.png" alt="Image">
++                                <picture>
++                                    <source srcset="img/sobremim.webp" type="image/webp">
++                                    <img src="img/sobremim.jpg" alt="Foto de Ana C. D'avilla, especialista em marketing digital" width="400" height="400" loading="lazy">
++                                </picture>
+                             </div>
+                             <div class="col-md-6 col-lg-7">
+                                 <p>
+@@ -406,69 +508,307 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                             </div>
+                         </div>
+                         <div class="row portfolio-container">
+-                            <div class="col-lg-4 col-md-6 portfolio-item googleads metaads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-balihai-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-balihai.jpg" data-lightbox="portfolio" data-title="Bali Hai" class="link-preview" title="Bali Hai"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-bali.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Bali Hai <span>Google e Meta Ads</span></a>
+-                                    </figure>
++                            <!-- Case: Bali Shoes (Bali Hai) -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads metaads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-logo"><img src="img/logo-balishoes.png" alt="Logo Bali Shoes" width="249" height="64" loading="lazy"></div>
++                                        <div>
++                                            <h3 class="case-client">Bali Shoes <span class="case-sub">Bali Hai</span></h3>
++                                            <p class="case-meta">E-commerce de streetwear &middot; Jan/23 a Mai/23</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">Bali Shoes é a loja online da Bali Hai, uma das maiores lojas de streetwear de Curitiba, com marcas como Nike, Adidas e Vans, atendendo todo o território nacional.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">+140%</span><span class="kpi-label">Receita</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+118%</span><span class="kpi-label">Conversões</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">-38%</span><span class="kpi-label">CPC</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">10,27</span><span class="kpi-label">ROI</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                        <span class="case-tag">Meta Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalBali">Ver case completo <i class="fa fa-arrow-right"></i></button>
++                                </div>
++                            </div>
++
++                            <!-- Case: Editora Quadrante -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads metaads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-logo"><img src="img/logo-quadrante.png" alt="Logo Editora Quadrante" width="248" height="65" loading="lazy"></div>
++                                        <div>
++                                            <h3 class="case-client">Editora Quadrante</h3>
++                                            <p class="case-meta">Editora &middot; e-commerce nacional &middot; Set/22 a Mai/23</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">A Quadrante Editora iniciou suas atividades em 1964, em São Paulo, com foco em obras de formação humana integral. Seu e-commerce atende todo o Brasil.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">+20%</span><span class="kpi-label">Vendas totais</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+56%</span><span class="kpi-label">Vendas Black Friday</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+189%</span><span class="kpi-label">Cliques (Meta)</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">9,32</span><span class="kpi-label">ROI</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                        <span class="case-tag">Meta Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalQuadrante">Ver case completo <i class="fa fa-arrow-right"></i></button>
+                                 </div>
+                             </div>
+ 
+-                            <div class="col-lg-4 col-md-6 portfolio-item googleads metaads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-quadrante-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-quadrante.jpg" class="link-preview" data-lightbox="portfolio" data-title="Quadrante" title="Preview"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-quadrante.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Editora Quadrante <span>Google e Meta Ads</span></a>
+-                                    </figure>
++                            <!-- Case: Abradif - FORD -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads metaads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-logo"><img src="img/logo-ford.png" alt="Logo Ford" width="192" height="87" loading="lazy"></div>
++                                        <div>
++                                            <h3 class="case-client">Abradif &middot; FORD</h3>
++                                            <p class="case-meta">Rede de concessionárias &middot; Jan/21 a Dez/22</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">A Associação Brasileira dos Distribuidores Ford (Abradif) atua em defesa dos interesses da rede de concessionárias Ford, presentes nas principais regiões do Brasil.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">14.099</span><span class="kpi-label">Leads</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">-40%</span><span class="kpi-label">CPL</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">R$47</span><span class="kpi-label">CPL final</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">27,5 mi</span><span class="kpi-label">Impressões</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                        <span class="case-tag">Meta Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalFord">Ver case completo <i class="fa fa-arrow-right"></i></button>
+                                 </div>
+                             </div>
+ 
+-                            <div class="col-lg-4 col-md-6 portfolio-item googleads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-magicramp-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-magicramp.jpg" class="link-preview" data-lightbox="portfolio" data-title="Magicramp" title="Preview"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-magicramp.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Magicramp <span>Google Ads</span></a>
+-                                    </figure>
++                            <!-- Case: Biostévi Pharma -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads metaads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-logo"><img src="img/logo-biostevi.png" alt="Logo Biostévi Pharma" width="231" height="93" loading="lazy"></div>
++                                        <div>
++                                            <h3 class="case-client">Biostévi Pharma</h3>
++                                            <p class="case-meta">Farmácia de manipulação &middot; Dez/22 a Abr/23</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">A Biostévi Pharma tem mais de 40 anos de tradição em manipulação de fórmulas magistrais, com e-commerce que atende todo o Brasil.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">+354%</span><span class="kpi-label">Receita geral</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">13,69</span><span class="kpi-label">ROAS</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+81,6%</span><span class="kpi-label">Vendas</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+12%</span><span class="kpi-label">Novos usuários</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                        <span class="case-tag">Meta Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalBiostevi">Ver case completo <i class="fa fa-arrow-right"></i></button>
+                                 </div>
+                             </div>
+ 
+-                            <div class="col-lg-4 col-md-6 portfolio-item metaads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-dramarcela-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-dramarcela.jpg" class="link-preview" data-lightbox="portfolio" data-title="Marcela Buchaim" title="Preview"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-dramarcela.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Dra Marcela Buchaim <span>Meta Ads</span></a>
+-                                    </figure>
++                            <!-- Case: Sigbol - Cursos de Moda -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-badge">SB</div>
++                                        <div>
++                                            <h3 class="case-client">Sigbol <span class="case-sub">Cursos de Moda</span></h3>
++                                            <p class="case-meta">Educação &middot; Moda &middot; Mai/25 a Out/25</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">A Sigbol é uma escola de moda fundada em 1969 em São Paulo, referência no segmento, com mais de 100 opções de cursos.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">+1.250</span><span class="kpi-label">Matrículas</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">R$55</span><span class="kpi-label">CPA</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">+46%</span><span class="kpi-label">Crescimento no leilão</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">60%+</span><span class="kpi-label">Tempo em 1ª posição</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalSigbol">Ver case completo <i class="fa fa-arrow-right"></i></button>
+                                 </div>
+                             </div>
+ 
+-                            <div class="col-lg-4 col-md-6 portfolio-item googleads metaads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-ford-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-ford.jpg" class="link-preview" data-lightbox="portfolio" data-title="Abradif - Ford" title="Preview"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-ford.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Abradif - FORD <span>Meta e Google Ads/span></a>
+-                                    </figure>
++                            <!-- Case: Mitsubishi - TO -->
++                            <div class="col-lg-6 portfolio-item case-modern googleads metaads">
++                                <div class="case-card">
++                                    <div class="case-card-top">
++                                        <div class="case-badge">MT</div>
++                                        <div>
++                                            <h3 class="case-client">Mitsubishi <span class="case-sub">TO</span></h3>
++                                            <p class="case-meta">Concessionária &middot; campanha mensal recorrente</p>
++                                        </div>
++                                    </div>
++                                    <p class="case-desc">Concessionária Mitsubishi no Tocantins, com campanhas mensais recorrentes focadas em melhorar a qualidade do lead e reduzir o custo por lead.</p>
++                                    <div class="case-kpis">
++                                        <div class="case-kpi"><span class="kpi-num">R$31</span><span class="kpi-label">CPL (-14%)</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">2.150</span><span class="kpi-label">Contatos</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">~18%</span><span class="kpi-label">Taxa de qualificação</span></div>
++                                        <div class="case-kpi"><span class="kpi-num">R$26.520</span><span class="kpi-label">Investimento/mês</span></div>
++                                    </div>
++                                    <div class="case-tags">
++                                        <span class="case-tag">Google Ads</span>
++                                        <span class="case-tag">Meta Ads</span>
++                                    </div>
++                                    <button type="button" class="case-more-btn" data-toggle="modal" data-target="#caseModalMitsubishi">Ver case completo <i class="fa fa-arrow-right"></i></button>
+                                 </div>
+                             </div>
++                        </div>
+ 
+-                            <div class="col-lg-4 col-md-6 portfolio-item googleads metaads">
+-                                <div class="portfolio-wrap">
+-                                    <figure>
+-                                        <img src="img/case-biostevi-capa.jpg" class="img-fluid" alt="">
+-                                        <a href="img/case-biostevi.jpg" class="link-preview" data-lightbox="portfolio" data-title="Biostévi" title="Preview"><i class="fa fa-eye"></i></a>
+-                                        <a href="https://raw.githubusercontent.com/anadomarketing/main/a146e2b7c9385114881ab3dbba9e0cf6fec4c754/img/dashboard-biostevi.pdf" target="_blank" class="link-details" title="Projeto Completo"><i class="fa fa-download"></i></a>
+-                                        <a class="portfolio-title" href="#">Biostévi Pharma <span>Meta e Google Ads</span></a>
+-                                    </figure>
++                        <!-- Case Modals -->
++                        <div class="modal fade case-modal" id="caseModalBali" tabindex="-1" role="dialog" aria-labelledby="caseModalBaliLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalBaliLabel">Bali Shoes <span class="case-sub">Bali Hai</span></h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">E-commerce de streetwear &middot; Google Ads e Meta Ads &middot; Jan/23 a Mai/23</p>
++                                        <h4>Desafio</h4>
++                                        <p>Aumentar o volume de vendas do e-commerce a partir das campanhas de mídia paga, ampliando alcance e conversões sem perder eficiência de custo.</p>
++                                        <h4>Estratégia</h4>
++                                        <p>No Meta Ads, criação de novos públicos (interesses, lookalike e remarketing) aplicados em campanhas de conversão e engajamento, o que já gerou aumento de cerca de 30% no volume de tráfego e cliques. No Google Ads, otimização das campanhas Performance Max, separadas por marca e com públicos criados a partir dos interesses de cada uma, além de uma nova variação de anúncio na campanha de search.</p>
++                                        <h4>Resultados (Janeiro/23 → Maio/23)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">+140%</span><span class="kpi-label">Receita (R$41.612 → R$100.123/mês)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+118%</span><span class="kpi-label">Conversões (166 → 362)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">-38%</span><span class="kpi-label">CPC (R$0,44 → R$0,27)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">10,27</span><span class="kpi-label">ROI</span></div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++
++                        <div class="modal fade case-modal" id="caseModalQuadrante" tabindex="-1" role="dialog" aria-labelledby="caseModalQuadranteLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalQuadranteLabel">Editora Quadrante</h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">Editora &middot; Google Ads e Meta Ads &middot; Set/22 a Mai/23</p>
++                                        <h4>Desafio</h4>
++                                        <p>Aumentar as vendas do e-commerce de uma editora tradicional (fundada em 1964), incluindo os períodos de maior concorrência, como a Black Friday.</p>
++                                        <h4>Estratégia</h4>
++                                        <p>Reorganização das campanhas e públicos: no Meta Ads, novos públicos baseados em listas de compradores, lookalike e interesses, aplicados por conjunto de anúncios; no Google, novos públicos baseados em concorrentes aplicados às campanhas Performance Max. A campanha de search ganhou novas variações de conjuntos de anúncios (autoconhecimento, filosofia), tema já trabalhado pela Quadrante mas não explorado em mídia, o que também aumentou o tráfego para os Clubes de Leitura da marca. As campanhas recorrentes foram transformadas em perpétuas, facilitando o acompanhamento do desempenho.</p>
++                                        <h4>Resultados (Setembro/22 → Maio/23)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">+20%</span><span class="kpi-label">Vendas totais no período</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+56%</span><span class="kpi-label">Volume de vendas na Black Friday 2022 vs. período anterior</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+189%</span><span class="kpi-label">Cliques no Meta Ads</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+37%</span><span class="kpi-label">Receita no Meta Ads</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">9,32</span><span class="kpi-label">ROI (Meta Ads)</span></div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++
++                        <div class="modal fade case-modal" id="caseModalFord" tabindex="-1" role="dialog" aria-labelledby="caseModalFordLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalFordLabel">Abradif &middot; FORD</h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">Rede de concessionárias &middot; Meta Ads e Google Ads &middot; Jan/21 a Dez/22</p>
++                                        <h4>Desafio</h4>
++                                        <p>Gerar leads qualificados para uma rede de concessionárias Ford distribuída em sete regionais do Brasil, com custo por lead elevado (CPL inicial acima de R$70).</p>
++                                        <h4>Estratégia</h4>
++                                        <p>Anúncios elaborados individualmente para cada regional (Norte, Nordeste, Sul e Centro-oeste), com públicos personalizados por região. Testes A/B de criativos e copies reduziram o CPL em 40%. No Google, estratégia de vídeo (YouTube) e Display com públicos de canais dos segmentos automotivo, business e varejo, qualificando melhor a entrega. Em ambos os canais, o objetivo era a captação de leads: no Meta, via formulários personalizados; no Google, via landing pages.</p>
++                                        <h4>Resultados (Janeiro/21 → Dezembro/22)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">14.099</span><span class="kpi-label">Leads gerados</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">-40%</span><span class="kpi-label">Redução no CPL</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">R$47</span><span class="kpi-label">CPL final (CPM R$20,33)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">27,5 mi</span><span class="kpi-label">Impressões (122 mil cliques)</span></div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++
++                        <div class="modal fade case-modal" id="caseModalBiostevi" tabindex="-1" role="dialog" aria-labelledby="caseModalBiosteviLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalBiosteviLabel">Biostévi Pharma</h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">Farmácia de manipulação &middot; Google Ads e Meta Ads &middot; Dez/22 a Abr/23</p>
++                                        <h4>Desafio</h4>
++                                        <p>O cliente já investia alto em mídia, mas pecava na organização das campanhas Google (mais de 50 campanhas e 100 anúncios distribuídos sem prioridade) e apresentava CPM crescente no Meta Ads.</p>
++                                        <h4>Estratégia</h4>
++                                        <p>Trabalho em formato de consultoria, com checklist de qualidade das campanhas e divisão por prioridade de investimento. Nas campanhas Performance Max, divisão por categoria de produto priorizando as de melhor CPA; nas campanhas de Display, novos testes A/B e criativos; adição de listas de exclusão, segmentação e públicos, e uso de extensões que não eram aproveitadas. No Facebook, o CPM (que rondava R$20-30 por anúncio com verba nacional) foi reduzido para R$13 ao afunilar a segmentação por estado/capital mantendo a mesma verba, focando nas regiões de maior saída.</p>
++                                        <h4>Resultados (Dezembro/22 → Abril/23)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">+354%</span><span class="kpi-label">Receita geral (R$4.164.439)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">13,69</span><span class="kpi-label">ROAS (+424%)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+81,6%</span><span class="kpi-label">Vendas (29.341)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+12%</span><span class="kpi-label">Novos usuários (1,21 mi)</span></div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++
++                        <div class="modal fade case-modal" id="caseModalSigbol" tabindex="-1" role="dialog" aria-labelledby="caseModalSigbolLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalSigbolLabel">Sigbol <span class="case-sub">Cursos de Moda</span></h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">Escola de moda &middot; Google Ads &middot; Mai/25 a Out/25 (comparado a Nov/24–Abr/25)</p>
++                                        <h4>Sobre o cliente</h4>
++                                        <p>A Sigbol é uma escola de moda fundada em 1969 em São Paulo e que hoje é referência no segmento, com mais de 100 opções de cursos.</p>
++                                        <h4>Resultado</h4>
++                                        <p>Durante um semestre atendendo a conta, aumento de mais de 1.250 matrículas, mantendo um custo por conversão saudável para o nicho, além de ampliar a exposição da marca: crescimento de 46% no leilão e mais de 60% do tempo em 1ª posição no período, mesmo diante de grandes concorrentes.</p>
++                                        <h4>Resultados (Maio/25 a Outubro/25, comparado a Novembro/24–Abril/25)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">120 mil</span><span class="kpi-label">Cliques (+85,1 mil)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">3,42 mil</span><span class="kpi-label">Conversões (+1,25 mil)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">R$55</span><span class="kpi-label">CPA</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">R$1,57</span><span class="kpi-label">CPC (redução de R$1,59)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">R$37</span><span class="kpi-label">CPM (redução de R$239)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">+46%</span><span class="kpi-label">Crescimento no leilão</span></div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++                        </div>
++
++                        <div class="modal fade case-modal" id="caseModalMitsubishi" tabindex="-1" role="dialog" aria-labelledby="caseModalMitsubishiLabel" aria-hidden="true">
++                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
++                                <div class="modal-content">
++                                    <div class="modal-header">
++                                        <h3 class="modal-title" id="caseModalMitsubishiLabel">Mitsubishi <span class="case-sub">TO</span></h3>
++                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
++                                    </div>
++                                    <div class="modal-body">
++                                        <p class="case-meta">Concessionária &middot; Meta Ads e Google Ads &middot; campanha mensal recorrente (dados de 1 mês)</p>
++                                        <h4>Desafio</h4>
++                                        <p>Concessionária Mitsubishi no Tocantins, com campanhas mensais recorrentes com o objetivo de melhorar a qualidade do lead e reduzir o custo por lead.</p>
++                                        <h4>Resultados (1 mês de campanha)</h4>
++                                        <div class="case-kpis case-kpis-modal">
++                                            <div class="case-kpi"><span class="kpi-num">R$26.520</span><span class="kpi-label">Investimento</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">1.844.980</span><span class="kpi-label">Impressões</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">16.946</span><span class="kpi-label">Cliques</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">2.150</span><span class="kpi-label">Contatos (leads, telefonemas e rota)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">553</span><span class="kpi-label">Cadastros em formulário (+16,42%)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">R$31</span><span class="kpi-label">CPL (-14%)</span></div>
++                                            <div class="case-kpi"><span class="kpi-num">~18%</span><span class="kpi-label">Taxa de qualificação (8pp acima da média de mercado)</span></div>
++                                        </div>
++                                    </div>
+                                 </div>
+                             </div>
+                         </div>
+@@ -491,7 +831,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                                         </p>
+                                     </div>
+                                     <div class="review-img">
+-                                        <img src="img/review-1.jpg" alt="Image">
++                                        <img src="img/review-1.jpg" alt="Foto de Carlos Eduardo" width="100" height="100" loading="lazy">
+                                         <div class="review-name">
+                                             <h3>Carlos Eduardo</h3>
+                                             <p>Gerente de Negócios - Studio Que</p>
+@@ -507,7 +847,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                                         </p>
+                                     </div>
+                                     <div class="review-img">
+-                                        <img src="img/review-2.jpg" alt="Image">
++                                        <img src="img/review-2.jpg" alt="Foto de Stefania de Paula" width="100" height="100" loading="lazy">
+                                         <div class="review-name">
+                                             <h3>Stefania de Paula</h3>
+                                             <p>Gestora - Puery's By Baby</p>
+@@ -523,7 +863,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                                         </p>
+                                     </div>
+                                     <div class="review-img">
+-                                        <img src="img/review-3.jpg" alt="Image">
++                                        <img src="img/review-3.jpg" alt="Foto de Paulo Miranda" width="100" height="100" loading="lazy">
+                                         <div class="review-name">
+                                             <h3>Paulo Miranda</h3>
+                                             <p>Consultor de Marketing - Editora Quadrante</p>
+@@ -540,7 +880,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
+                                         </p>
+                                     </div>
+                                     <div class="review-img">
+-                                        <img src="img/review-4.jpg" alt="Image">
++                                        <img src="img/review-4.jpg" alt="Foto de Bráulio Freire" width="100" height="100" loading="lazy">
+                                         <div class="review-name">
+                                             <h3>Bráulio Freire</h3>
+                                             <p>Gestor - Ampla Comunicação</p>
+@@ -557,7 +897,7 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
+                                         </p>
+                                     </div>
+                                     <div class="review-img">
+-                                        <img src="img/review-6.jpg" alt="Image">
++                                        <img src="img/review-6.jpg" alt="Foto de José de Almeida Alves Neto" width="100" height="100" loading="lazy">
+                                         <div class="review-name">
+                                             <h3>José de Almeida Alves Neto</h3>
+                                             <p>Sócio e Diretor Criativo da New Comunicação</p>
+@@ -569,7 +909,64 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
+                     </div>
+                 </div>
+                 <!-- Review End -->
+-                
++
++                <!-- faq Start -->
++                <div class="faq" id="faq">
++                    <div class="content-inner">
++                        <div class="content-header">
++                            <h2>Perguntas Frequentes</h2>
++                        </div>
++                        <div class="faq-list">
++                            <div class="faq-item">
++                                <button class="faq-question" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
++                                    Ana atende agências de publicidade, além de marcas diretamente?
++                                    <i class="fa fa-chevron-down"></i>
++                                </button>
++                                <div class="collapse" id="faq1">
++                                    <p class="faq-answer">Sim. Ao longo da carreira, Ana atuou dentro de agências como Netmídia Propaganda, Agência 1123, Agência Linka, Komuh, Savannah Comunicação, ABM e Olivas Digital, e hoje também apoia agências como parceira externa em campanhas de mídia paga.</p>
++                                </div>
++                            </div>
++                            <div class="faq-item">
++                                <button class="faq-question" type="button" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
++                                    Quais ferramentas e plataformas Ana domina?
++                                    <i class="fa fa-chevron-down"></i>
++                                </button>
++                                <div class="collapse" id="faq2">
++                                    <p class="faq-answer">Google Ads, Meta Ads (Facebook e Instagram), CRM e automação (HubSpot, RD Station), funil de vendas e mensuração via Google Analytics e Data Studio.</p>
++                                </div>
++                            </div>
++                            <div class="faq-item">
++                                <button class="faq-question" type="button" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
++                                    Ana atende clientes fora de Goiânia?
++                                    <i class="fa fa-chevron-down"></i>
++                                </button>
++                                <div class="collapse" id="faq3">
++                                    <p class="faq-answer">Sim. Os cases incluem clientes de São Paulo, Tocantins, Curitiba e e-commerces com atuação em todo o Brasil — o trabalho é feito remotamente.</p>
++                                </div>
++                            </div>
++                            <div class="faq-item">
++                                <button class="faq-question" type="button" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
++                                    Quantos anos de experiência Ana tem em marketing digital?
++                                    <i class="fa fa-chevron-down"></i>
++                                </button>
++                                <div class="collapse" id="faq4">
++                                    <p class="faq-answer">Mais de 10 anos de experiência, com passagens por agências e atuação direta em marcas como Ford, Toyota, Mitsubishi e Biostévi Pharma.</p>
++                                </div>
++                            </div>
++                            <div class="faq-item">
++                                <button class="faq-question" type="button" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
++                                    Como faço para falar com a Ana sobre um projeto?
++                                    <i class="fa fa-chevron-down"></i>
++                                </button>
++                                <div class="collapse" id="faq5">
++                                    <p class="faq-answer">Pelo WhatsApp ou e-mail, disponíveis na seção de Contato desta página.</p>
++                                </div>
++                            </div>
++                        </div>
++                    </div>
++                </div>
++                <!-- faq End -->
++
+                 <!-- contato Start -->
+                 <div class="contato" id="contato">
+                     <div class="content-inner">
+@@ -626,8 +1023,7 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
+         <script src="lib/typed/typed.min.js"></script>
+         <script src="lib/waypoints/waypoints.min.js"></script>
+         <script src="lib/isotope/isotope.pkgd.min.js"></script>
+-        <script src="lib/lightbox/js/lightbox.min.js"></script>
+-        
++
+         <!-- Template Javascript -->
+         <script src="js/main.js"></script>
+     </body>
