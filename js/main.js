@@ -39,19 +39,19 @@
     }, {offset: '80%'});
     
     
-    // Porfolio isotope and filter
-    var portfolioIsotope = $('.portfolio-container').isotope({
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-    });
-
+    // Filtro dos Cases (mostra/esconde por CSS — sem Isotope, mais previsível
+    // com cards de altura variável como os de texto usados hoje)
     $('#portfolio-flters li').on('click', function () {
         $("#portfolio-flters li").removeClass('filter-active');
         $(this).addClass('filter-active');
 
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
+        var filter = $(this).data('filter');
+        $('.portfolio-item').each(function () {
+            var show = (filter === '*') || $(this).is(filter);
+            $(this).toggle(show);
+        });
     });
-    
+
     
     // Review slider
     $('.review-slider').slick({
