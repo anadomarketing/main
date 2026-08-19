@@ -37,22 +37,8 @@
             $(this).css("width", $(this).attr("aria-valuenow") + '%');
         });
     }, {offset: '80%'});
-    
-    
-    // Filtro dos Cases (mostra/esconde por CSS — sem Isotope, mais previsível
-    // com cards de altura variável como os de texto usados hoje)
-    $('#portfolio-flters li').on('click', function () {
-        $("#portfolio-flters li").removeClass('filter-active');
-        $(this).addClass('filter-active');
 
-        var filter = $(this).data('filter');
-        $('.portfolio-item').each(function () {
-            var show = (filter === '*') || $(this).is(filter);
-            $(this).toggle(show);
-        });
-    });
 
-    
     // Review slider
     $('.review-slider').slick({
         autoplay: true,

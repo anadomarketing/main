@@ -711,34 +711,6 @@ a:focus {
     border-bottom: 30px solid #373737;
 }
 
-.portfolio #portfolio-flters {
-    padding: 0;
-    margin: -15px 0 30px 0;
-    list-style: none;
-    font-size: 0;
-}
-
-.portfolio #portfolio-flters li {
-    cursor: pointer;
-    margin: 15px -1px 0 0;
-    display: inline-block;
-    height: 35px;
-    padding: 10px;
-    color: #666666;
-    font-size: 13px;
-    line-height: 15px;
-    text-transform: uppercase;
-    border: 1px solid #2176df;
-    background: #ffffff;
-    transition: all 0.3s ease-in-out;
-}
-
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
-    background: #2176df;
-    color: #ffffff;
-}
-
 .portfolio .portfolio-item {
     position: relative;
     height: 250px;
