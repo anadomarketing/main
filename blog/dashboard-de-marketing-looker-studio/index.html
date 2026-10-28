@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard de marketing no Looker Studio: o essencial | Ana D&#x27;avilla</title>
+<meta name="description" content="Quais métricas colocar em um dashboard de marketing, como organizar o Looker Studio e os erros que deixam o relatório bonito e inútil.">
+<meta name="author" content="Ana C. D'avilla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1116">
+<link rel="canonical" href="https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238242fa'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ana D'avilla">
+<meta property="og:title" content="Dashboard de marketing no Looker Studio: o essencial | Ana D&#x27;avilla">
+<meta property="og:description" content="Quais métricas colocar em um dashboard de marketing, como organizar o Looker Studio e os erros que deixam o relatório bonito e inútil.">
+<meta property="og:url" content="https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/">
+<meta property="og:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-11-12">
+<meta property="article:modified_time" content="2026-11-12">
+<meta property="article:section" content="BI e dados">
+<meta property="article:author" content="https://www.linkedin.com/in/ana-davilla/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dashboard de marketing no Looker Studio: o essencial | Ana D&#x27;avilla">
+<meta name="twitter:description" content="Quais métricas colocar em um dashboard de marketing, como organizar o Looker Studio e os erros que deixam o relatório bonito e inútil.">
+<meta name="twitter:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/blog.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "@id": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/#post",
+   "headline": "Dashboard de marketing que o cliente entende: o que colocar no Looker Studio",
+   "description": "Quais métricas colocar em um dashboard de marketing, como organizar o Looker Studio e os erros que deixam o relatório bonito e inútil.",
+   "url": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/",
+   "mainEntityOfPage": {
+    "@id": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/#webpage"
+   },
+   "image": {
+    "@type": "ImageObject",
+    "url": "https://anadomkt.com.br/img/quemsou.webp",
+    "width": 1200,
+    "height": 630
+   },
+   "datePublished": "2026-11-12",
+   "dateModified": "2026-11-12",
+   "author": {
+    "@type": "Person",
+    "name": "Ana C. D'avilla",
+    "url": "https://anadomkt.com.br/",
+    "jobTitle": "Gestora de Marketing de Performance",
+    "sameAs": [
+     "https://www.linkedin.com/in/ana-davilla/"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ana C. D'avilla",
+    "url": "https://anadomkt.com.br/",
+    "jobTitle": "Gestora de Marketing de Performance",
+    "sameAs": [
+     "https://www.linkedin.com/in/ana-davilla/"
+    ]
+   },
+   "articleSection": "BI e dados",
+   "keywords": "dashboard de marketing, Looker Studio, BI, métricas de marketing, GA4, relatório de campanhas",
+   "wordCount": 398,
+   "inLanguage": "pt-BR",
+   "isPartOf": {
+    "@id": "https://anadomkt.com.br/blog/#blog"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/#webpage",
+   "url": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/",
+   "name": "Dashboard de marketing no Looker Studio: o essencial",
+   "inLanguage": "pt-BR",
+   "breadcrumb": {
+    "@id": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/#bc"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/#bc",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Início",
+     "item": "https://anadomkt.com.br/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://anadomkt.com.br/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Dashboard de marketing que o cliente entende: o que colocar no Looker Studio",
+     "item": "https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a class="btn btn-primary" data-wa="topo" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20blog%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+<section class="bhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/blog/">Blog</a><span>BI e dados</span></nav>
+    <h1 style="max-width:26ch">Dashboard de marketing que o cliente entende: o que colocar no Looker Studio</h1>
+    <div class="pmeta-line"><span>Por <strong>Ana C. D&#39;avilla</strong></span><span>Publicado em <time datetime="2026-11-12">12 de novembro de 2026</time></span><span>Atualizado em <time datetime="2026-11-12">12 de novembro de 2026</time></span><span>2 min de leitura</span></div>
+  </div>
+</section>
+<section style="padding:44px 0 72px">
+  <div class="wrap alayout">
+    <aside><nav class="toc" aria-labelledby="toc-t"><h2 id="toc-t">Neste artigo</h2><ol><li><a href="#perguntas">Comece pelas perguntas</a></li><li><a href="#estrutura">A estrutura que uso</a></li><li><a href="#fontes">De onde vêm os dados</a></li><li><a href="#boas-praticas">Boas práticas</a></li><li><a href="#erros">Erros que tornam o painel inútil</a></li><li><a href="#leitura">O relatório é conversa, não arquivo</a></li></ol></nav></aside>
+    <article>
+      <div class="acover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <div class="sumbox"><h2>Resumo rápido</h2><ul><li>Um bom dashboard responde poucas perguntas, e responde rápido.</li><li>Organize pelo funil: investimento, leads, leads qualificados e vendas.</li><li>Use comparação com o período anterior e uma meta visível.</li><li>Menos gráficos, nomes claros e uma fonte de dados confiável.</li></ul></div>
+      <div class="prose">
+<p>Já abri muito dashboard cheio de gráficos coloridos que ninguém usava. Quando o relatório não ajuda a decidir, ele é decoração. O Looker Studio é flexível o bastante para fazer as duas coisas, então vale começar pelas perguntas, e não pelos gráficos.</p>
+
+<h2 id="perguntas">Comece pelas perguntas</h2>
+<p>Peça ao cliente (ou ao gestor) para listar o que ele quer saber toda semana. Em geral são poucas:</p>
+<ul>
+<li>Quanto investimos e quanto voltou?</li>
+<li>Quantos leads chegaram e de qual canal?</li>
+<li>Quantos eram bons e quantos viraram venda?</li>
+<li>Estamos acima ou abaixo da meta?</li>
+</ul>
+
+<h2 id="estrutura">A estrutura que uso</h2>
+<ol>
+<li><strong>Resumo no topo:</strong> 4 a 6 indicadores com comparação com o período anterior (investimento, leads, leads qualificados, vendas, custo por lead e custo por venda).</li>
+<li><strong>Funil:</strong> a sequência de leads até a venda, com a taxa de cada passagem.</li>
+<li><strong>Canais:</strong> o que cada plataforma entregou, lado a lado.</li>
+<li><strong>Campanhas:</strong> uma tabela para quem precisa entrar no detalhe.</li>
+<li><strong>Tendência:</strong> um gráfico de linha por semana, para ver se estamos melhorando.</li>
+</ol>
+
+<h2 id="fontes">De onde vêm os dados</h2>
+<p>Mídia paga (Google Ads, Meta, LinkedIn), análise do site (GA4) e CRM (leads, etapas e vendas). O mais difícil costuma ser ligar as três pontas: sem um identificador em comum (como UTMs nos anúncios e um campo de origem no CRM), a conta não fecha. Esse trabalho de rastreamento vem antes do dashboard.</p>
+
+<h2 id="boas-praticas">Boas práticas</h2>
+<ul>
+<li><strong>Nomes claros:</strong> "Leads qualificados" no lugar de "conversões_sql_v2".</li>
+<li><strong>Metas visíveis:</strong> um indicador sem meta não diz se está bom ou ruim.</li>
+<li><strong>Filtro de data único:</strong> evite que cada gráfico use um período diferente.</li>
+<li><strong>Poucas cores e consistentes:</strong> a mesma cor para a mesma métrica.</li>
+<li><strong>Atualização automática:</strong> relatório manual é relatório atrasado.</li>
+</ul>
+
+<h2 id="erros">Erros que tornam o painel inútil</h2>
+<ul>
+<li>Mostrar cliques e impressões como se fossem resultado.</li>
+<li>Misturar dados de fontes que não batem, sem avisar.</li>
+<li>Gráficos demais na mesma tela.</li>
+<li>Não explicar o que fazer com o número.</li>
+</ul>
+
+<h2 id="leitura">O relatório é conversa, não arquivo</h2>
+<p>Gosto de acompanhar o dashboard com 3 linhas de leitura: o que melhorou, o que piorou e qual será o próximo ajuste. É isso que o cliente lembra e usa. Para entender o que alimenta esses números, veja o artigo sobre <a href="/blog/funil-de-vendas-mql-sql-marketing-e-comercial/">funil e MQL/SQL</a>.</p>
+      </div>
+      <div class="aend">
+        <div class="abox"><h2>Ana C. D&#39;avilla</h2><p>Gestora de marketing de performance em Goiânia, especialista em mídia paga desde 2017, certificada em Google e LinkedIn Ads. Escrevo sobre mídia, CRM, funil, dados, IA e automação.</p><div><a class="btn btn-ghost on-light" href="https://www.linkedin.com/in/ana-davilla/" target="_blank" rel="noopener">Ver no LinkedIn</a></div></div>
+        <div><h2 style="font-size:1.4rem;margin-bottom:14px">Continue lendo</h2><div class="rel"><div class="pcard"><div class="pbody"><span class="ptag">Mídia de performance</span><h3><a href="/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/">CPL baixo não é resultado: como medir a qualidade do lead</a></h3></div></div><div class="pcard"><div class="pbody"><span class="ptag">Funil de vendas</span><h3><a href="/blog/funil-de-vendas-mql-sql-marketing-e-comercial/">Funil de vendas na prática: MQL, SQL e o alinhamento entre marketing e comercial</a></h3></div></div><div class="pcard"><div class="pbody"><span class="ptag">Inteligência artificial</span><h3><a href="/blog/ia-na-midia-paga-onde-uso-e-onde-nao-confio/">IA na mídia paga: onde eu uso e onde ainda não confio</a></h3></div></div></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2 class="sec-title">Quer aplicar isso no seu negócio?</h2>
+    <p class="sec-lead">Me conte o seu cenário. Respondo com os primeiros passos que eu daria.</p>
+    <div class="cta-row"><a class="btn btn-primary" data-wa="blog" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20li%20o%20artigo%20sobre%20dashboard%20no%20Looker%20Studio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/#cases">Ver cases</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ana C. D'avilla · Goiânia, GO · Atendimento remoto em todo o Brasil</span>
+    <span><a href="/">Início</a> · <a href="/blog/">Blog</a> · <a href="https://www.linkedin.com/in/ana-davilla/" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+<div class="fab"><a class="btn btn-primary" data-wa="fab" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20li%20o%20artigo%20sobre%20dashboard%20no%20Looker%20Studio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Uso cookies de medição (Google Tag Manager) para entender como o site é usado. Você pode recusar sem perder nenhum conteúdo.</p>
+  <div class="row"><button class="btn btn-ghost" data-consent="no" type="button">Recusar</button><button class="btn btn-primary" data-consent="yes" type="button">Aceitar</button></div>
+</div>
+<script src="/js/blog.js" defer></script>
+</body>
+</html>

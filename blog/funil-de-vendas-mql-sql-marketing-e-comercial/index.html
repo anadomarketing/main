@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Funil de vendas: MQL e SQL na prática | Ana D&#x27;avilla</title>
+<meta name="description" content="O que são MQL e SQL, como definir a regra de passagem e como marketing e comercial passam a falar a mesma língua e fechar mais vendas.">
+<meta name="author" content="Ana C. D'avilla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1116">
+<link rel="canonical" href="https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238242fa'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ana D'avilla">
+<meta property="og:title" content="Funil de vendas: MQL e SQL na prática | Ana D&#x27;avilla">
+<meta property="og:description" content="O que são MQL e SQL, como definir a regra de passagem e como marketing e comercial passam a falar a mesma língua e fechar mais vendas.">
+<meta property="og:url" content="https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/">
+<meta property="og:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="article:published_time" content="2026-11-10">
+<meta property="article:modified_time" content="2026-11-10">
+<meta property="article:section" content="Funil de vendas">
+<meta property="article:author" content="https://www.linkedin.com/in/ana-davilla/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Funil de vendas: MQL e SQL na prática | Ana D&#x27;avilla">
+<meta name="twitter:description" content="O que são MQL e SQL, como definir a regra de passagem e como marketing e comercial passam a falar a mesma língua e fechar mais vendas.">
+<meta name="twitter:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/blog.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "@id": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/#post",
+   "headline": "Funil de vendas na prática: MQL, SQL e o alinhamento entre marketing e comercial",
+   "description": "O que são MQL e SQL, como definir a regra de passagem e como marketing e comercial passam a falar a mesma língua e fechar mais vendas.",
+   "url": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/",
+   "mainEntityOfPage": {
+    "@id": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/#webpage"
+   },
+   "image": {
+    "@type": "ImageObject",
+    "url": "https://anadomkt.com.br/img/quemsou.webp",
+    "width": 1200,
+    "height": 630
+   },
+   "datePublished": "2026-11-10",
+   "dateModified": "2026-11-10",
+   "author": {
+    "@type": "Person",
+    "name": "Ana C. D'avilla",
+    "url": "https://anadomkt.com.br/",
+    "jobTitle": "Gestora de Marketing de Performance",
+    "sameAs": [
+     "https://www.linkedin.com/in/ana-davilla/"
+    ]
+   },
+   "publisher": {
+    "@type": "Person",
+    "name": "Ana C. D'avilla",
+    "url": "https://anadomkt.com.br/",
+    "jobTitle": "Gestora de Marketing de Performance",
+    "sameAs": [
+     "https://www.linkedin.com/in/ana-davilla/"
+    ]
+   },
+   "articleSection": "Funil de vendas",
+   "keywords": "funil de vendas, MQL, SQL, alinhamento marketing e vendas, CRM, qualificação de leads",
+   "wordCount": 438,
+   "inLanguage": "pt-BR",
+   "isPartOf": {
+    "@id": "https://anadomkt.com.br/blog/#blog"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/#webpage",
+   "url": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/",
+   "name": "Funil de vendas: MQL e SQL na prática",
+   "inLanguage": "pt-BR",
+   "breadcrumb": {
+    "@id": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/#bc"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/#bc",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Início",
+     "item": "https://anadomkt.com.br/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://anadomkt.com.br/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Funil de vendas na prática: MQL, SQL e o alinhamento entre marketing e comercial",
+     "item": "https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a class="btn btn-primary" data-wa="topo" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20blog%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+<section class="bhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/blog/">Blog</a><span>Funil de vendas</span></nav>
+    <h1 style="max-width:26ch">Funil de vendas na prática: MQL, SQL e o alinhamento entre marketing e comercial</h1>
+    <div class="pmeta-line"><span>Por <strong>Ana C. D&#39;avilla</strong></span><span>Publicado em <time datetime="2026-11-10">10 de novembro de 2026</time></span><span>Atualizado em <time datetime="2026-11-10">10 de novembro de 2026</time></span><span>3 min de leitura</span></div>
+  </div>
+</section>
+<section style="padding:44px 0 72px">
+  <div class="wrap alayout">
+    <aside><nav class="toc" aria-labelledby="toc-t"><h2 id="toc-t">Neste artigo</h2><ol><li><a href="#etapas">As etapas, sem complicar</a></li><li><a href="#regra">A regra de passagem</a></li><li><a href="#medir">Meça a conversão entre etapas</a></li><li><a href="#alinhar">Como alinhar marketing e comercial</a></li><li><a href="#erros">O que evito</a></li></ol></nav></aside>
+    <article>
+      <div class="acover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg></div>
+      <div class="sumbox"><h2>Resumo rápido</h2><ul><li>MQL é o lead com perfil e interesse para ser nutrido. SQL é o que está pronto para uma conversa de vendas.</li><li>A regra de passagem de MQL para SQL precisa ser escrita e combinada com o comercial.</li><li>Meça cada etapa do funil para achar onde as vendas se perdem.</li><li>Reunião curta e recorrente entre marketing e comercial vale mais que relatório longo.</li></ul></div>
+      <div class="prose">
+<p>Funil de vendas parece conceito de livro até o dia em que o marketing diz "entregamos 200 leads" e o comercial diz "fechamos 3". Aí fica claro que o problema não é só tráfego. É que os dois lados nunca combinaram o que é um lead bom, nem o que acontece com ele depois.</p>
+
+<h2 id="etapas">As etapas, sem complicar</h2>
+<ol>
+<li><strong>Lead:</strong> alguém que deixou um contato.</li>
+<li><strong>MQL (lead qualificado para marketing):</strong> tem o perfil certo e demonstrou interesse. Ainda precisa ser nutrido.</li>
+<li><strong>SQL (lead qualificado para vendas):</strong> está pronto para uma conversa comercial.</li>
+<li><strong>Oportunidade:</strong> há proposta em andamento.</li>
+<li><strong>Venda:</strong> negócio fechado.</li>
+</ol>
+<p>Os nomes variam de empresa para empresa. O que importa é que todos usem as mesmas palavras para as mesmas coisas.</p>
+
+<h2 id="regra">A regra de passagem</h2>
+<p>É o ponto mais importante e o mais negligenciado. Escreva, em uma página, os critérios para um lead virar MQL e depois SQL. Exemplos de critérios: perfil (porte, segmento, região), comportamento (pediu contato, abriu proposta, visitou preços) e urgência.</p>
+<p>Essa regra vive no CRM, com campos e automações. Quando o lead atinge o critério, ele muda de etapa sozinho e o vendedor recebe a tarefa.</p>
+
+<h2 id="medir">Meça a conversão entre etapas</h2>
+<p>Em vez de olhar só "leads" e "vendas", olhe a taxa de cada passagem: lead para MQL, MQL para SQL, SQL para oportunidade, oportunidade para venda. O gargalo aparece onde a taxa é mais baixa:</p>
+<ul>
+<li>Pouco lead virando MQL: o problema está no público, na oferta ou na página.</li>
+<li>MQL não vira SQL: a nutrição não está aquecendo, ou os critérios estão exigentes demais.</li>
+<li>SQL não vira venda: pode ser abordagem, preço, prazo ou velocidade de resposta.</li>
+</ul>
+
+<h2 id="alinhar">Como alinhar marketing e comercial</h2>
+<ul>
+<li><strong>Reunião curta e recorrente:</strong> 30 minutos por semana ou quinzena para olhar os leads recentes juntos.</li>
+<li><strong>Motivo de perda:</strong> o vendedor registra por que o lead não avançou. Esse dado vale ouro para ajustar campanhas.</li>
+<li><strong>Tempo de resposta:</strong> combine um prazo máximo para o primeiro contato e acompanhe.</li>
+<li><strong>Retorno para a mídia:</strong> leads qualificados e vendas voltam para as plataformas de anúncio, como comento em <a href="/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/">CPL baixo não é resultado</a>.</li>
+</ul>
+
+<h2 id="erros">O que evito</h2>
+<p>Funil com etapas demais, que ninguém preenche. Critérios subjetivos como "lead quente". E medir o marketing só por leads, quando o negócio vive de vendas.</p>
+      </div>
+      <div class="aend">
+        <div class="abox"><h2>Ana C. D&#39;avilla</h2><p>Gestora de marketing de performance em Goiânia, especialista em mídia paga desde 2017, certificada em Google e LinkedIn Ads. Escrevo sobre mídia, CRM, funil, dados, IA e automação.</p><div><a class="btn btn-ghost on-light" href="https://www.linkedin.com/in/ana-davilla/" target="_blank" rel="noopener">Ver no LinkedIn</a></div></div>
+        <div><h2 style="font-size:1.4rem;margin-bottom:14px">Continue lendo</h2><div class="rel"><div class="pcard"><div class="pbody"><span class="ptag">CRM</span><h3><a href="/blog/crm-reguas-de-nutricao-que-o-comercial-usa/">CRM e nutrição de leads: como montar uma régua que o comercial usa</a></h3></div></div><div class="pcard"><div class="pbody"><span class="ptag">Mídia de performance</span><h3><a href="/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/">CPL baixo não é resultado: como medir a qualidade do lead</a></h3></div></div><div class="pcard"><div class="pbody"><span class="ptag">BI e dados</span><h3><a href="/blog/dashboard-de-marketing-looker-studio/">Dashboard de marketing que o cliente entende: o que colocar no Looker Studio</a></h3></div></div></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2 class="sec-title">Quer aplicar isso no seu negócio?</h2>
+    <p class="sec-lead">Me conte o seu cenário. Respondo com os primeiros passos que eu daria.</p>
+    <div class="cta-row"><a class="btn btn-primary" data-wa="blog" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20li%20o%20artigo%20sobre%20funil%20de%20vendas%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/#cases">Ver cases</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ana C. D'avilla · Goiânia, GO · Atendimento remoto em todo o Brasil</span>
+    <span><a href="/">Início</a> · <a href="/blog/">Blog</a> · <a href="https://www.linkedin.com/in/ana-davilla/" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+<div class="fab"><a class="btn btn-primary" data-wa="fab" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20li%20o%20artigo%20sobre%20funil%20de%20vendas%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Uso cookies de medição (Google Tag Manager) para entender como o site é usado. Você pode recusar sem perder nenhum conteúdo.</p>
+  <div class="row"><button class="btn btn-ghost" data-consent="no" type="button">Recusar</button><button class="btn btn-primary" data-consent="yes" type="button">Aceitar</button></div>
+</div>
+<script src="/js/blog.js" defer></script>
+</body>
+</html>
