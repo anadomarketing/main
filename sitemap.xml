@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://anadomkt.com.br/</loc>
-        <lastmod>2026-08-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
+  <url><loc>https://anadomkt.com.br/</loc><lastmod>2026-10-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/</loc><lastmod>2026-11-19</lastmod><priority>0.7</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/</loc><lastmod>2026-11-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/crm-reguas-de-nutricao-que-o-comercial-usa/</loc><lastmod>2026-11-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/funil-de-vendas-mql-sql-marketing-e-comercial/</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/dashboard-de-marketing-looker-studio/</loc><lastmod>2026-11-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/ia-na-midia-paga-onde-uso-e-onde-nao-confio/</loc><lastmod>2026-11-17</lastmod><priority>0.6</priority></url>
+  <url><loc>https://anadomkt.com.br/blog/automacao-n8n-fluxos-que-economizam-horas/</loc><lastmod>2026-11-19</lastmod><priority>0.6</priority></url>
 </urlset>
