@@ -103,5 +103,7 @@ noscript .ns{background:#fff7e0;border:1px solid #f0d58a;border-radius:12px;padd
   .steps.three{grid-template-columns:repeat(3,1fr)}
   .steps.three li{flex-direction:column;border-left:0;border-top:3px solid var(--accent);border-radius:0 0 12px 12px}
   .tool{padding:72px 0 104px}
+  .kgrid{grid-template-columns:1fr 1fr;align-items:start}
+  .kpi[open]{grid-column:1/-1}
 }
 @media (prefers-reduced-motion:reduce){.filters button{transition:none}}
