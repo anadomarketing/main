@@ -57,13 +57,20 @@
     "price": "0",
     "priceCurrency": "BRL"
    },
-   "description": "Calculadora gratuita com 24 indicadores de marketing para gestores de tráfego, social media, vendas e trade marketing, com explicação didática de cada KPI.",
+   "description": "Calculadora gratuita com 46 indicadores de marketing para gestores de tráfego, social media, vendas e trade marketing, com explicação didática de cada KPI.",
    "featureList": [
     "Taxa de engajamento (ENG)",
+    "Taxa de alcance (ALC)",
+    "Crescimento de seguidores (CRESC)",
+    "Share of voice (SOV)",
+    "Taxa de resposta (RESP)",
     "Custo por mil impressões (CPM)",
+    "Custo por visualização (CPV)",
     "Frequência (FREQ)",
     "Taxa de cliques (CTR)",
+    "Taxa de visualização (VTR)",
     "Custo por clique (CPC)",
+    "Custo por instalação (CPI)",
     "Taxa de rejeição (REJ)",
     "Taxa de conversão (CONV)",
     "Custo por lead (CPL)",
@@ -71,18 +78,33 @@
     "Retorno sobre investimento em anúncios (ROAS)",
     "Retorno sobre investimento (ROI)",
     "Custo de aquisição de clientes (CAC)",
+    "Payback do CAC (PAYBACK)",
     "Valor do tempo de vida do cliente (LTV)",
     "Relação LTV por CAC (LTV:CAC)",
+    "Ticket médio (TM)",
+    "Taxa de recompra (REC)",
+    "Taxa de cancelamento (CHURN)",
+    "Receita recorrente mensal (MRR)",
+    "Taxa de fechamento (FECH)",
     "Disponibilidade na gôndola (OSA)",
     "Ruptura de estoque (RUPT)",
+    "Nível de serviço (FILL)",
+    "Giro e cobertura de estoque (GIRO)",
     "Market share (MS)",
     "Share de gôndola (SoS)",
     "Distribuição numérica (DIST)",
+    "Distribuição ponderada (DIST.P)",
     "Execução de material de PDV (MPDV)",
+    "Compliance de planograma (PLAN)",
+    "Perfect Store Score (PSS)",
     "Cumprimento de visitas (VISIT)",
     "Sell-out (SELL)",
+    "Sell-through (S.THRU)",
+    "Índice de preço (IP)",
     "Elasticidade-preço da demanda (ELAST)",
-    "Lift promocional (LIFT)"
+    "Lift promocional (LIFT)",
+    "ROI de promoção (ROI.P)",
+    "Canibalização (CANIB)"
    ],
    "author": {
     "@type": "Person",
@@ -199,7 +221,7 @@
       <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><span>Calculadora de KPIs</span></nav>
       <h1>Calculadora de <em>KPIs de marketing</em></h1>
       <p class="lead">Escolha o seu perfil (gestor de tráfego, social media, vendas ou trade marketing), digite os números da campanha e veja o resultado na hora, com a explicação de cada indicador em linguagem simples.</p>
-      <p class="pmeta-line"><span><strong>24</strong> indicadores</span><span>Gratuita e sem cadastro</span><span>Cálculo no seu navegador</span><span>Por <strong>Ana D'avilla</strong></span></p>
+      <p class="pmeta-line"><span><strong>46</strong> indicadores</span><span>Gratuita e sem cadastro</span><span>Cálculo no seu navegador</span><span>Por <strong>Ana D'avilla</strong></span></p>
     </div>
   </section>
 
@@ -221,14 +243,14 @@
       <h2 class="sec-title" id="t-tool">Quais indicadores você precisa?</h2>
       <noscript><p class="ns">Para calcular, ative o JavaScript no navegador. As explicações de cada indicador continuam disponíveis ao abrir cada item.</p></noscript>
       <div class="toolbar"><div class="filters" role="group" aria-label="Filtrar indicadores por perfil">
-        <button type="button" data-filter="todos" data-desc="Todos os indicadores, do alcance ao valor do cliente." aria-pressed="true">Todos (24)</button>
-        <button type="button" data-filter="trafego" data-desc="Eficiência da mídia paga: custo, cliques, conversão e retorno." aria-pressed="false">Gestor de tráfego (10)</button>
-        <button type="button" data-filter="social" data-desc="Alcance, atenção e engajamento do conteúdo e dos anúncios." aria-pressed="false">Social media (7)</button>
-        <button type="button" data-filter="vendas" data-desc="Quanto custa conquistar um cliente, quanto ele vale e se a conta fecha." aria-pressed="false">Vendas (10)</button>
-        <button type="button" data-filter="trade" data-desc="Execução no ponto de venda: presença, gôndola, ruptura, promoção e venda ao consumidor." aria-pressed="false">Trade marketing (10)</button>
+        <button type="button" data-filter="todos" data-desc="Todos os indicadores, do alcance ao valor do cliente." aria-pressed="true">Todos (46)</button>
+        <button type="button" data-filter="trafego" data-desc="Eficiência da mídia paga: custo, cliques, conversão e retorno." aria-pressed="false">Gestor de tráfego (13)</button>
+        <button type="button" data-filter="social" data-desc="Alcance, atenção e engajamento do conteúdo e dos anúncios." aria-pressed="false">Social media (13)</button>
+        <button type="button" data-filter="vendas" data-desc="Quanto custa conquistar um cliente, quanto ele vale e se a conta fecha." aria-pressed="false">Vendas (17)</button>
+        <button type="button" data-filter="trade" data-desc="Execução no ponto de venda: presença, gôndola, ruptura, promoção e venda ao consumidor." aria-pressed="false">Trade marketing (19)</button>
       </div>
       <p id="fdesc" aria-live="polite">Todos os indicadores, do alcance ao valor do cliente.</p>
-      <div class="fbar"><p id="fcount" aria-live="polite">Mostrando 24 de 24 indicadores</p><button type="button" class="linkbtn" id="toggleAll" aria-pressed="false">Expandir todos</button></div></div>
+      <div class="fbar"><p id="fcount" aria-live="polite">Mostrando 46 de 46 indicadores</p><button type="button" class="linkbtn" id="toggleAll" aria-pressed="false">Expandir todos</button></div></div>
 
       <div class="kgrid">
 
@@ -257,6 +279,96 @@
         </div>
       </details>
 
+      <details class="kpi" id="alcance" data-cat="social">
+        <summary><span class="kabbr" aria-hidden="true">ALC</span><h3 id="h-alcance">Taxa de alcance<small>O conteúdo sai da sua base de seguidores?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Social media</li><li class="en">Reach rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Compara quantas pessoas únicas viram o seu conteúdo com o tamanho da sua base de seguidores. Mostra se o conteúdo está saindo do círculo de quem já te segue.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Taxa de alcance = pessoas alcançadas ÷ seguidores × 100</p>
+          </div>
+          <form class="calc" data-kpi="alcance" data-ex='{"reach":4200,"followers":12000}' novalidate aria-label="Calculadora de Taxa de alcance">
+            <div class="row2"><div class="fld"><label for="alcance-reach">Pessoas alcançadas</label><div class="inp"><input id="alcance-reach" name="reach" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="alcance-followers">Seguidores</label><div class="inp"><input id="alcance-followers" name="followers" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ALC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> abaixo de 100%, só parte da base viu o conteúdo. Acima de 100%, o conteúdo chegou a gente que não te segue, o que é bom sinal de descoberta.</p>
+            <p><strong>Dica:</strong> compare formatos (Reels, carrossel, stories). O que alcança mais gente nem sempre é o que mais engaja.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 4.200 pessoas alcançadas para 12.000 seguidores → <strong>35,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cresc" data-cat="social">
+        <summary><span class="kabbr" aria-hidden="true">CRESC</span><h3 id="h-cresc">Crescimento de seguidores<small>Sua base de seguidores está crescendo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Social media</li><li class="en">Follower growth rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra o quanto a sua base de seguidores cresceu (ou caiu) em um período.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Crescimento = (seguidores no fim − seguidores no início) ÷ seguidores no início × 100</p>
+          </div>
+          <form class="calc" data-kpi="cresc" data-ex='{"start":10000,"end":11800,"months":3}' novalidate aria-label="Calculadora de Crescimento de seguidores">
+            <div class="row2"><div class="fld"><label for="cresc-start">Seguidores no início</label><div class="inp"><input id="cresc-start" name="start" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cresc-end">Seguidores no fim</label><div class="inp"><input id="cresc-end" name="end" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="cresc-months">Meses do período (opcional)</label><div class="inp"><input id="cresc-months" name="months" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cresc-months-h"></div><span class="hint" id="cresc-months-h">Para calcular o crescimento médio por mês.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CRESC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> perfis pequenos crescem em porcentagem mais rápido que perfis grandes, então compare com o seu próprio histórico.</p>
+            <p><strong>Cuidado:</strong> seguidor novo só vale se for público certo. Olhe também engajamento e alcance para saber se o crescimento é de qualidade.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> de 10.000 para 11.800 seguidores em 3 meses → <strong>18,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="sov" data-cat="social">
+        <summary><span class="kabbr" aria-hidden="true">SOV</span><h3 id="h-sov">Share of voice<small>Quanto a marca é falada no setor?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Social media</li><li class="en">Participação nas conversas do setor</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra qual parcela das menções ao seu setor é da sua marca. Indica o quanto a sua marca é falada em comparação com os concorrentes.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Share of voice = menções da marca ÷ menções de todas as marcas do setor × 100</p>
+          </div>
+          <form class="calc" data-kpi="sov" data-ex='{"brand":1800,"total":9000,"ms":15}' novalidate aria-label="Calculadora de Share of voice">
+            <div class="row2"><div class="fld"><label for="sov-brand">Menções da sua marca</label><div class="inp"><input id="sov-brand" name="brand" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="sov-total">Menções de todo o setor</label><div class="inp"><input id="sov-total" name="total" type="text" inputmode="decimal" autocomplete="off" aria-describedby="sov-total-h"></div><span class="hint" id="sov-total-h">Soma da sua marca e dos concorrentes.</span></div></div>
+            <div class="fld"><label for="sov-ms">Market share (opcional)</label><div class="inp has-suf"><input id="sov-ms" name="ms" type="text" inputmode="decimal" autocomplete="off" aria-describedby="sov-ms-h"><span class="suf" aria-hidden="true">%</span></div><span class="hint" id="sov-ms-h">Para comparar a voz da marca com a venda.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · SOV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> uma regra prática do marketing é que, quando o share of voice fica acima do market share, a marca tende a ganhar participação.</p>
+            <p><strong>Dica:</strong> use a mesma ferramenta de monitoramento e a mesma lista de concorrentes para comparar períodos.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 1.800 menções da marca em 9.000 do setor, com market share de 15% → <strong>20,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="resp" data-cat="social">
+        <summary><span class="kabbr" aria-hidden="true">RESP</span><h3 id="h-resp">Taxa de resposta<small>Você está respondendo o público?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Social media</li><li class="en">Response rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quantas das mensagens e comentários recebidos foram respondidos. Mede o cuidado com o atendimento nas redes sociais.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Taxa de resposta = mensagens respondidas ÷ mensagens recebidas × 100</p>
+          </div>
+          <form class="calc" data-kpi="resp" data-ex='{"answered":188,"received":200}' novalidate aria-label="Calculadora de Taxa de resposta">
+            <div class="row2"><div class="fld"><label for="resp-answered">Mensagens respondidas</label><div class="inp"><input id="resp-answered" name="answered" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="resp-received">Mensagens recebidas</label><div class="inp"><input id="resp-received" name="received" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · RESP</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto mais perto de 100%, melhor. Mensagem sem resposta costuma ser venda perdida e reclamação pública.</p>
+            <p><strong>Dica:</strong> acompanhe também o tempo médio de resposta. Responder rápido pesa tanto quanto responder.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 188 respondidas de 200 recebidas → <strong>94,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="cpm" data-cat="trafego social">
         <summary><span class="kabbr" aria-hidden="true">CPM</span><h3 id="h-cpm">Custo por mil impressões<small>Quanto custa aparecer mil vezes?</small></h3></summary>
         <div class="kbody">
@@ -275,6 +387,28 @@
             <p><strong>Como ler:</strong> o CPM sobe quando o público é muito disputado, quando os anúncios saturam ou em datas de alta concorrência, como a Black Friday. Se ele subir e o CTR cair junto, é hora de renovar criativos ou ampliar o público.</p>
             <p><strong>Cuidado:</strong> CPM baixo não é resultado por si só. Ele só diz que a entrega foi barata, não que foi para as pessoas certas.</p>
             <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 18.000 impressões → <strong>R$ 27,78</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpv" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">CPV</span><h3 id="h-cpv">Custo por visualização<small>Quanto custa cada visualização do vídeo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Cost per view</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> É quanto você paga, em média, por cada visualização do seu vídeo. Serve para comparar o custo de campanhas de vídeo e de reconhecimento de marca.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPV = valor investido ÷ visualizações</p>
+          </div>
+          <form class="calc" data-kpi="cpv" data-ex='{"spend":800,"views":16000}' novalidate aria-label="Calculadora de Custo por visualização">
+            <div class="row2"><div class="fld"><label for="cpv-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpv-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpv-views">Visualizações do vídeo</label><div class="inp"><input id="cpv-views" name="views" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto menor, mais barato é fazer o vídeo ser visto. Mas o que conta como "visualização" muda conforme a plataforma (a partir de 3, 6 ou 15 segundos), então compare sempre com o mesmo critério.</p>
+            <p><strong>Cuidado:</strong> visualização barata não é resultado por si só. Cruze com a taxa de visualização e com o que acontece depois do vídeo (cliques e conversões).</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 800 investidos para 16.000 visualizações → <strong>R$ 0,050</strong></p>
           </div>
         </div>
       </details>
@@ -323,6 +457,28 @@
         </div>
       </details>
 
+      <details class="kpi" id="vtr" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">VTR</span><h3 id="h-vtr">Taxa de visualização<small>O vídeo prende a atenção?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">View-through rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra qual parte das vezes em que o vídeo apareceu virou uma visualização. Indica se o começo do vídeo prende a atenção.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>VTR = visualizações ÷ impressões × 100</p>
+          </div>
+          <form class="calc" data-kpi="vtr" data-ex='{"views":16000,"imp":64000}' novalidate aria-label="Calculadora de Taxa de visualização">
+            <div class="row2"><div class="fld"><label for="vtr-views">Visualizações do vídeo</label><div class="inp"><input id="vtr-views" name="views" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="vtr-imp">Impressões do vídeo</label><div class="inp"><input id="vtr-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · VTR</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> VTR baixo costuma indicar que os primeiros segundos não prendem, ou que o público está mal segmentado. Teste novos ganchos e públicos.</p>
+            <p><strong>Dica:</strong> compare vídeos do mesmo formato e duração, e use sempre o mesmo critério de visualização.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 16.000 visualizações em 64.000 impressões → <strong>25,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="cpc" data-cat="trafego social">
         <summary><span class="kabbr" aria-hidden="true">CPC</span><h3 id="h-cpc">Custo por clique<small>Quanto custa cada clique?</small></h3></summary>
         <div class="kbody">
@@ -341,6 +497,28 @@
             <p><strong>Como ler:</strong> o CPC depende do leilão, da concorrência e da qualidade do anúncio. Anúncios mais relevantes e com CTR maior costumam pagar menos por clique.</p>
             <p><strong>Cuidado:</strong> um CPC baixo com taxa de conversão baixa sai caro no fim. Olhe o CPC junto com o CPL ou o CPA.</p>
             <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 320 cliques → <strong>R$ 1,56</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpi" data-cat="trafego">
+        <summary><span class="kabbr" aria-hidden="true">CPI</span><h3 id="h-cpi">Custo por instalação<small>Quanto custa cada instalação do app?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li class="en">Cost per install</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto custa cada instalação do seu aplicativo vinda de campanhas pagas.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPI = valor investido ÷ instalações</p>
+          </div>
+          <form class="calc" data-kpi="cpi" data-ex='{"spend":3000,"installs":600}' novalidate aria-label="Calculadora de Custo por instalação">
+            <div class="row2"><div class="fld"><label for="cpi-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpi-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpi-installs">Instalações</label><div class="inp"><input id="cpi-installs" name="installs" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPI</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CPI varia por sistema (Android costuma ser mais barato que iOS), país e categoria do app.</p>
+            <p><strong>Cuidado:</strong> instalação não é cliente. Acompanhe também o custo por usuário ativo ou por compra dentro do app.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 3.000 investidos para 600 instalações → <strong>R$ 5,00</strong></p>
           </div>
         </div>
       </details>
@@ -503,6 +681,29 @@
         </div>
       </details>
 
+      <details class="kpi" id="payback" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">PAYBACK</span><h3 id="h-payback">Payback do CAC<small>Em quantos meses o CAC se paga?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">CAC payback period</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra em quantos meses o cliente devolve o que você gastou para conquistá-lo.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Payback = CAC ÷ (receita mensal por cliente × margem)</p>
+          </div>
+          <form class="calc" data-kpi="payback" data-ex='{"cac":900,"arpu":200,"margin":60}' novalidate aria-label="Calculadora de Payback do CAC">
+            <div class="row2"><div class="fld"><label for="payback-cac">CAC (custo para conquistar um cliente)</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="payback-cac" name="cac" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="payback-arpu">Receita mensal por cliente</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="payback-arpu" name="arpu" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="payback-margin">Margem bruta (opcional)</label><div class="inp has-suf"><input id="payback-margin" name="margin" type="text" inputmode="decimal" autocomplete="off" aria-describedby="payback-margin-h"><span class="suf" aria-hidden="true">%</span></div><span class="hint" id="payback-margin-h">Sem margem, o cálculo usa a receita inteira.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · PAYBACK</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto menor o prazo, mais rápido o dinheiro volta ao caixa para financiar novas aquisições. Em negócios recorrentes, até 12 meses costuma ser uma referência comum.</p>
+            <p><strong>Dica:</strong> use junto com o LTV:CAC. O LTV mostra se a conta fecha, e o payback mostra quando.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> CAC de R$ 900, receita de R$ 200 por mês e margem de 60% → <strong>7,5 meses</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="ltv" data-cat="vendas">
         <summary><span class="kabbr" aria-hidden="true">LTV</span><h3 id="h-ltv">Valor do tempo de vida do cliente<small>Quanto um cliente vale ao longo do tempo?</small></h3></summary>
         <div class="kbody">
@@ -548,6 +749,118 @@
         </div>
       </details>
 
+      <details class="kpi" id="ticket" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">TM</span><h3 id="h-ticket">Ticket médio<small>Quanto cada pedido rende?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Average order value</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto, em média, cada pedido ou venda rende. É a base para estimar receita e definir quanto vale investir para conquistar um cliente.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Ticket médio = receita ÷ número de pedidos</p>
+          </div>
+          <form class="calc" data-kpi="ticket" data-ex='{"revenue":48000,"orders":320}' novalidate aria-label="Calculadora de Ticket médio">
+            <div class="row2"><div class="fld"><label for="ticket-revenue">Receita do período</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ticket-revenue" name="revenue" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="ticket-orders">Número de pedidos</label><div class="inp"><input id="ticket-orders" name="orders" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · TM</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> subir o ticket médio aumenta a receita sem precisar de mais clientes. Combos, kits, frete grátis acima de um valor e upsell costumam ajudar.</p>
+            <p><strong>Cuidado:</strong> promoções agressivas derrubam o ticket. Acompanhe junto com a margem.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 48.000 de receita em 320 pedidos → <strong>R$ 150,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="recompra" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">REC</span><h3 id="h-recompra">Taxa de recompra<small>Quantos clientes voltam a comprar?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Repeat purchase rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quantos dos seus clientes compraram mais de uma vez. É um sinal direto de satisfação e de quanto o cliente vale ao longo do tempo.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Taxa de recompra = clientes que compraram 2 vezes ou mais ÷ total de clientes × 100</p>
+          </div>
+          <form class="calc" data-kpi="recompra" data-ex='{"repeat":90,"total":300}' novalidate aria-label="Calculadora de Taxa de recompra">
+            <div class="row2"><div class="fld"><label for="recompra-repeat">Clientes que recompraram</label><div class="inp"><input id="recompra-repeat" name="repeat" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="recompra-total">Total de clientes</label><div class="inp"><input id="recompra-total" name="total" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · REC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> recomprar costuma custar bem menos que conquistar um cliente novo. Taxa baixa pede olhar para pós-venda, CRM e ofertas de retorno.</p>
+            <p><strong>Dica:</strong> use o mesmo período de análise e entenda o ciclo natural de compra do seu produto.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 90 clientes recompraram, de 300 no total → <strong>30,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="churn" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">CHURN</span><h3 id="h-churn">Taxa de cancelamento<small>Quantos clientes você está perdendo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Churn rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra a parte dos clientes que deixou de comprar ou cancelou a assinatura no período.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Churn = clientes perdidos no período ÷ clientes no início do período × 100</p>
+          </div>
+          <form class="calc" data-kpi="churn" data-ex='{"lost":12,"start":240}' novalidate aria-label="Calculadora de Taxa de cancelamento">
+            <div class="row2"><div class="fld"><label for="churn-lost">Clientes perdidos</label><div class="inp"><input id="churn-lost" name="lost" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="churn-start">Clientes no início do período</label><div class="inp"><input id="churn-start" name="start" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CHURN</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto menor, melhor. Um churn mensal de 5% parece pequeno, mas significa trocar mais da metade da base em um ano.</p>
+            <p><strong>Dica:</strong> entenda por que o cliente saiu. Reduzir churn costuma render mais que adquirir novos clientes.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 12 clientes perdidos de 240 no início do mês → <strong>5,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="mrr" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">MRR</span><h3 id="h-mrr">Receita recorrente mensal<small>Quanto entra todo mês de forma recorrente?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Monthly recurring revenue</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> É a receita previsível que entra todo mês com assinaturas, contratos ou mensalidades. Mostra o tamanho da sua base recorrente.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>MRR = clientes ativos × receita média mensal por cliente</p>
+          </div>
+          <form class="calc" data-kpi="mrr" data-ex='{"customers":120,"arpu":450,"churn":4}' novalidate aria-label="Calculadora de Receita recorrente mensal">
+            <div class="row2"><div class="fld"><label for="mrr-customers">Clientes ativos</label><div class="inp"><input id="mrr-customers" name="customers" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="mrr-arpu">Receita mensal por cliente</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="mrr-arpu" name="arpu" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="mrr-churn">Churn mensal (opcional)</label><div class="inp has-suf"><input id="mrr-churn" name="churn" type="text" inputmode="decimal" autocomplete="off" aria-describedby="mrr-churn-h"><span class="suf" aria-hidden="true">%</span></div><span class="hint" id="mrr-churn-h">Para estimar a receita em risco.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · MRR</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o MRR mostra a base de receita. O que faz ele crescer é novos clientes e upgrades, e o que o reduz é cancelamentos e downgrades.</p>
+            <p><strong>Dica:</strong> some só receitas recorrentes. Vendas pontuais ficam de fora.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 120 clientes pagando R$ 450 por mês, com churn de 4% → <strong>R$ 54.000,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="fechamento" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">FECH</span><h3 id="h-fechamento">Taxa de fechamento<small>Quantas oportunidades viram venda?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Win rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quantas das oportunidades comerciais viraram venda. Mede a eficiência da equipe comercial e a qualidade dos leads recebidos.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Taxa de fechamento = vendas fechadas ÷ oportunidades × 100</p>
+          </div>
+          <form class="calc" data-kpi="fechamento" data-ex='{"won":18,"opps":60,"leads":240}' novalidate aria-label="Calculadora de Taxa de fechamento">
+            <div class="row2"><div class="fld"><label for="fechamento-won">Vendas fechadas</label><div class="inp"><input id="fechamento-won" name="won" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="fechamento-opps">Oportunidades</label><div class="inp"><input id="fechamento-opps" name="opps" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="fechamento-leads">Total de leads (opcional)</label><div class="inp"><input id="fechamento-leads" name="leads" type="text" inputmode="decimal" autocomplete="off" aria-describedby="fechamento-leads-h"></div><span class="hint" id="fechamento-leads-h">Para ver também a conversão do lead até a venda.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · FECH</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> taxa baixa pode vir de lead desqualificado (problema de marketing), de proposta ou abordagem fracas (problema de vendas) ou de preço. Cruze com a origem dos leads.</p>
+            <p><strong>Dica:</strong> alinhe com o comercial o que conta como oportunidade, para a conta ser a mesma nos dois times.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 18 vendas de 60 oportunidades, vindas de 240 leads → <strong>30,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="osa" data-cat="trade">
         <summary><span class="kabbr" aria-hidden="true">OSA</span><h3 id="h-osa">Disponibilidade na gôndola<small>Os produtos estão na gôndola?</small></h3></summary>
         <div class="kbody">
@@ -589,6 +902,51 @@
             <p><strong>Como ler:</strong> quanto menor, melhor. Rupturas em itens de maior giro pesam mais que rupturas em itens de baixo giro, então vale olhar também quais produtos estão faltando.</p>
             <p><strong>Venda perdida:</strong> a estimativa multiplica itens em falta, venda média diária por item e dias de ruptura. É uma aproximação para dar dimensão ao problema, não um número contábil.</p>
             <p class="exemplo"><strong>Exemplo:</strong> 200 itens auditados, 14 em falta, venda média de R$ 25 por item ao dia e 3 dias de ruptura → <strong>7,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="fill" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">FILL</span><h3 id="h-fill">Nível de serviço<small>O pedido do varejo foi entregue completo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Fill rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto do que o varejo pediu foi realmente entregue. Pedido não atendido vira ruptura na gôndola.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Fill rate = quantidade entregue ÷ quantidade pedida × 100</p>
+          </div>
+          <form class="calc" data-kpi="fill" data-ex='{"ordered":5000,"delivered":4650}' novalidate aria-label="Calculadora de Nível de serviço">
+            <div class="row2"><div class="fld"><label for="fill-ordered">Quantidade pedida</label><div class="inp"><input id="fill-ordered" name="ordered" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="fill-delivered">Quantidade entregue</label><div class="inp"><input id="fill-delivered" name="delivered" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · FILL</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto mais perto de 100%, melhor. Muitas redes aplicam multas ou reduzem o espaço de quem entrega abaixo da meta combinada.</p>
+            <p><strong>Dica:</strong> fill rate baixo costuma explicar ruptura alta. Resolver a cadeia de abastecimento antes de investir em mídia.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 5.000 unidades pedidas, 4.650 entregues → <strong>93,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="giro" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">GIRO</span><h3 id="h-giro">Giro e cobertura de estoque<small>O estoque está girando?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Stock turnover</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> O giro mostra quantas vezes o estoque foi vendido e renovado no período. A cobertura mostra quantos dias de venda o estoque atual aguenta.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Giro = vendas no período ÷ estoque médio. Cobertura = estoque ÷ venda diária</p>
+          </div>
+          <form class="calc" data-kpi="giro" data-ex='{"sales":1800,"stock":600,"days":30}' novalidate aria-label="Calculadora de Giro e cobertura de estoque">
+            <div class="row2"><div class="fld"><label for="giro-sales">Vendas no período (unidades)</label><div class="inp"><input id="giro-sales" name="sales" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="giro-stock">Estoque médio (unidades)</label><div class="inp"><input id="giro-stock" name="stock" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="giro-days">Dias do período (opcional)</label><div class="inp"><input id="giro-days" name="days" type="text" inputmode="decimal" autocomplete="off" aria-describedby="giro-days-h"></div><span class="hint" id="giro-days-h">Se vazio, usa 30 dias.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · GIRO</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> giro alto significa estoque saindo rápido e capital parado por menos tempo. Giro baixo significa produto parado e risco de vencer ou de ficar encalhado.</p>
+            <p><strong>Dica:</strong> cobertura muito curta indica risco de ruptura, e muito longa indica excesso. O ideal depende do prazo de reposição.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 1.800 unidades vendidas em 30 dias com estoque médio de 600 → <strong>3,00x</strong></p>
           </div>
         </div>
       </details>
@@ -661,6 +1019,28 @@
         </div>
       </details>
 
+      <details class="kpi" id="distw" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">DIST.P</span><h3 id="h-distw">Distribuição ponderada<small>A marca está nas lojas que mais vendem?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Weighted distribution</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra a presença da marca considerando o peso de cada loja. Um ponto de venda grande conta mais que um pequeno.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Distribuição ponderada = venda da categoria nos PDVs com a marca ÷ venda total da categoria × 100</p>
+          </div>
+          <form class="calc" data-kpi="distw" data-ex='{"withb":720000,"total":900000}' novalidate aria-label="Calculadora de Distribuição ponderada">
+            <div class="row2"><div class="fld"><label for="distw-withb">Venda da categoria nos PDVs com a marca</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="distw-withb" name="withb" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="distw-total">Venda total da categoria no universo</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="distw-total" name="total" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · DIST.P</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> se a distribuição ponderada for maior que a numérica, a marca está nas lojas que mais vendem. Se for menor, está faltando nas lojas grandes.</p>
+            <p><strong>Dica:</strong> os dados de venda da categoria costumam vir de institutos de pesquisa ou do próprio varejo.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> PDVs com a marca vendem R$ 720 mil de uma categoria de R$ 900 mil → <strong>80,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="mpdv" data-cat="trade">
         <summary><span class="kabbr" aria-hidden="true">MPDV</span><h3 id="h-mpdv">Execução de material de PDV<small>O material chegou aos pontos de venda?</small></h3></summary>
         <div class="kbody">
@@ -680,6 +1060,50 @@
             <p><strong>Como ler:</strong> material produzido e não instalado é dinheiro parado. A taxa de execução mostra se o investimento chegou ao PDV, e o custo por PDV executado ajuda a comparar campanhas.</p>
             <p><strong>Dica:</strong> confirme a execução com foto do ponto de venda, não apenas com o relato da visita.</p>
             <p class="exemplo"><strong>Exemplo:</strong> 42 PDVs com material instalado de 60 planejados e R$ 9.000 investidos → <strong>70,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="plano" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">PLAN</span><h3 id="h-plano">Compliance de planograma<small>A gôndola está como combinado?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Planogram compliance</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra o quanto a gôndola está exposta como o combinado (posição, quantidade de frentes e preço). Mede a execução do que foi negociado.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Compliance = itens conforme o planograma ÷ itens do planograma × 100</p>
+          </div>
+          <form class="calc" data-kpi="plano" data-ex='{"ok":34,"total":40}' novalidate aria-label="Calculadora de Compliance de planograma">
+            <div class="row2"><div class="fld"><label for="plano-ok">Itens conforme o planograma</label><div class="inp"><input id="plano-ok" name="ok" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="plano-total">Itens do planograma</label><div class="inp"><input id="plano-total" name="total" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · PLAN</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto maior, melhor a execução. O que sai do planograma costuma ser espaço perdido para o concorrente.</p>
+            <p><strong>Dica:</strong> use foto como prova da execução, e não só o relato do promotor.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 34 de 40 itens conforme o combinado → <strong>85,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="pstore" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">PSS</span><h3 id="h-pstore">Perfect Store Score<small>Qual a nota de execução da loja?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Pontuação da loja perfeita</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> É uma nota única de execução no ponto de venda, somando critérios como disponibilidade, preço, espaço, material e promoção.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Score = pontos obtidos ÷ pontos possíveis × 100</p>
+          </div>
+          <form class="calc" data-kpi="pstore" data-ex='{"pts":78,"max":100}' novalidate aria-label="Calculadora de Perfect Store Score">
+            <div class="row2"><div class="fld"><label for="pstore-pts">Pontos obtidos na auditoria</label><div class="inp"><input id="pstore-pts" name="pts" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="pstore-max">Pontos possíveis</label><div class="inp"><input id="pstore-max" name="max" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · PSS</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> a nota resume a execução da loja, e o valor está em ver quais critérios perderam pontos para priorizar a correção.</p>
+            <p><strong>Dica:</strong> cada empresa define seus critérios e pesos. Mantenha os mesmos entre períodos para poder comparar.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 78 pontos de 100 possíveis na auditoria → <strong>78,0%</strong></p>
           </div>
         </div>
       </details>
@@ -730,6 +1154,50 @@
         </div>
       </details>
 
+      <details class="kpi" id="sellthru" data-cat="trade vendas">
+        <summary><span class="kabbr" aria-hidden="true">S.THRU</span><h3 id="h-sellthru">Sell-through<small>O que foi enviado ao varejo já foi vendido?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li>Vendas</li><li class="en">Giro do sell-in ao sell-out</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto do que foi enviado ao varejo já foi vendido ao consumidor final.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Sell-through = unidades vendidas ao consumidor ÷ unidades recebidas pelo varejo × 100</p>
+          </div>
+          <form class="calc" data-kpi="sellthru" data-ex='{"sold":3200,"received":4000}' novalidate aria-label="Calculadora de Sell-through">
+            <div class="row2"><div class="fld"><label for="sellthru-sold">Unidades vendidas (sell-out)</label><div class="inp"><input id="sellthru-sold" name="sold" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="sellthru-received">Unidades recebidas (sell-in)</label><div class="inp"><input id="sellthru-received" name="received" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · S.THRU</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> taxa alta mostra produto girando e abre espaço para novos pedidos. Taxa baixa indica estoque acumulado no varejo.</p>
+            <p><strong>Dica:</strong> use junto com o sell-out para decidir quando repor ou promover.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 3.200 vendidas ao consumidor, de 4.000 recebidas pelo varejo → <strong>80,0%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="preco" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">IP</span><h3 id="h-preco">Índice de preço<small>Seu preço está acima ou abaixo do concorrente?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Price index</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Compara o seu preço com o do concorrente na prateleira. Mostra o posicionamento de preço da marca.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Índice de preço = seu preço ÷ preço do concorrente × 100</p>
+          </div>
+          <form class="calc" data-kpi="preco" data-ex='{"mine":12.9,"comp":11.5}' novalidate aria-label="Calculadora de Índice de preço">
+            <div class="row2"><div class="fld"><label for="preco-mine">Seu preço</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="preco-mine" name="mine" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="preco-comp">Preço do concorrente</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="preco-comp" name="comp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · IP</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> 100 é preço igual. Acima de 100, posicionamento premium. Abaixo de 100, preço mais baixo que o concorrente.</p>
+            <p><strong>Dica:</strong> compare produtos equivalentes, com o mesmo tamanho e gramatura, e a mesma rede de lojas.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> seu produto a R$ 12,90 contra R$ 11,50 do concorrente → <strong>112,2</strong></p>
+          </div>
+        </div>
+      </details>
+
       <details class="kpi" id="elast" data-cat="trade">
         <summary><span class="kabbr" aria-hidden="true">ELAST</span><h3 id="h-elast">Elasticidade-preço da demanda<small>Quanto o preço muda a venda?</small></h3></summary>
         <div class="kbody">
@@ -775,6 +1243,51 @@
           </div>
         </div>
       </details>
+
+      <details class="kpi" id="roipromo" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">ROI.P</span><h3 id="h-roipromo">ROI de promoção<small>A promoção se pagou?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Promotion ROI</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra se o lucro gerado pela venda extra de uma promoção pagou o custo da ação.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>ROI = (unidades incrementais × margem por unidade − custo da promoção) ÷ custo da promoção × 100</p>
+          </div>
+          <form class="calc" data-kpi="roipromo" data-ex='{"units":450,"margin":8,"cost":2700}' novalidate aria-label="Calculadora de ROI de promoção">
+            <div class="row2"><div class="fld"><label for="roipromo-units">Unidades incrementais</label><div class="inp"><input id="roipromo-units" name="units" type="text" inputmode="decimal" autocomplete="off" aria-describedby="roipromo-units-h"></div><span class="hint" id="roipromo-units-h">Venda extra frente à base, sem a promoção.</span></div><div class="fld"><label for="roipromo-margin">Margem por unidade</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roipromo-margin" name="margin" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="roipromo-cost">Custo da promoção</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roipromo-cost" name="cost" type="text" inputmode="decimal" autocomplete="off"></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ROI.P</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> acima de 0%, a promoção se pagou. Abaixo, vendeu mais mas teve prejuízo. Ela só vale a pena se o lucro extra for maior que o custo.</p>
+            <p><strong>Cuidado:</strong> use a venda incremental real (descontando o que seria vendido de qualquer forma) e considere o desconto dado em toda a venda, que entra no custo.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 450 unidades a mais, margem de R$ 8 por unidade e custo de R$ 2.700 → <strong>33,3%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="canib" data-cat="trade">
+        <summary><span class="kabbr" aria-hidden="true">CANIB</span><h3 id="h-canib">Canibalização<small>A promoção tirou venda dos seus outros itens?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Trade marketing</li><li class="en">Cannibalization rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto da venda extra de um item em promoção veio de outros produtos da sua própria marca, em vez de consumo novo.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Canibalização = unidades perdidas em outros itens ÷ unidades incrementais do item promovido × 100</p>
+          </div>
+          <form class="calc" data-kpi="canib" data-ex='{"gross":1000,"lost":250}' novalidate aria-label="Calculadora de Canibalização">
+            <div class="row2"><div class="fld"><label for="canib-gross">Unidades incrementais do item promovido</label><div class="inp"><input id="canib-gross" name="gross" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="canib-lost">Unidades perdidas em outros itens da marca</label><div class="inp"><input id="canib-lost" name="lost" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CANIB</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto maior, menos da promoção é venda nova. Acima de 100%, a promoção tirou mais venda da própria marca do que trouxe.</p>
+            <p><strong>Dica:</strong> avalie a venda da linha inteira, e não só do item promovido, para medir o efeito líquido.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> a promoção vendeu 1.000 unidades a mais e outros itens da marca perderam 250 → <strong>25,0%</strong></p>
+          </div>
+        </div>
+      </details>
       </div>
     </div>
   </section>
@@ -799,7 +1312,7 @@
     <div class="wrap">
       <span class="eyebrow">Vamos conversar</span>
       <h2 class="sec-title">Quer ajuda para ler os seus números?</h2>
-      <p class="sec-lead">Me conte sobre a sua operação e eu analiso onde estão as oportunidades de custo, conversão e retorno.</p>
+      <p class="sec-lead">Me conte sobre a sua operação e a sua necessidade, e vamos trocar uma ideia.</p>
       <div class="cta-row"><a class="btn btn-primary" data-wa="calculadora" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20sua%20calculadora%20de%20KPIs%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/blog/">Ler o blog</a></div>
     </div>
   </section>
