@@ -1,7 +1,7 @@
 /* Calculadora de KPIs — usa os tokens de /css/style.css */
 .bhero{padding:112px 0 56px;background:radial-gradient(900px 400px at 85% 10%,rgba(130,66,250,.28),transparent 60%),var(--ink);color:#fff}
 .bhero{text-align:center}
-.bhero h1{font-size:clamp(2rem,6.5vw,3.6rem);font-weight:800;max-width:20ch;margin-inline:auto}
+.bhero h1{font-size:clamp(2rem,6.5vw,3.6rem);font-weight:800;margin-inline:auto}
 .bhero h1 em{font-style:normal;color:var(--accent-l)}
 .bhero .lead{font-size:1.15rem;color:#C5CBD6;max-width:60ch;margin:18px auto 0}
 .crumb{display:flex;flex-wrap:wrap;justify-content:center;font-size:.88rem;color:#98A0AE;margin-bottom:18px}
@@ -17,20 +17,39 @@
 .filters button:hover{border-color:var(--accent)}
 .filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
 #fdesc{margin:0 0 4px;color:var(--ink);font-weight:500}
-#fcount{margin:0 0 28px;color:var(--muted);font-size:.9rem}
+#fcount{color:var(--muted);font-size:.9rem}
 
-/* Cards */
-.kgrid{display:grid;gap:20px;align-items:start}
-.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:14px;scroll-margin-top:84px;min-width:0}
+/* Sanfona de indicadores */
+.fbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+#fcount{margin:0}
+.linkbtn{background:none;border:0;padding:8px 4px;min-height:44px;font:700 .95rem var(--body);color:var(--accent-d);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.kgrid{display:grid;gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);scroll-margin-top:84px;min-width:0;transition:border-color .15s}
 .kpi[hidden]{display:none}
-.khead{display:flex;gap:14px;align-items:center}
+.kpi:hover,.kpi[open]{border-color:var(--accent)}
+.kpi>summary{display:flex;align-items:center;gap:14px;padding:14px 20px;min-height:72px;cursor:pointer;list-style:none}
+.kpi>summary::-webkit-details-marker{display:none}
+.kpi>summary::after{content:"+";margin-left:auto;flex:none;font:800 1.6rem/1 var(--mono);color:var(--accent)}
+.kpi[open]>summary::after{content:"−"}
+.kpi[open]>summary{border-bottom:1px solid var(--line)}
 .kabbr{flex:none;min-width:56px;height:46px;padding:0 10px;border-radius:12px;background:var(--ink);color:var(--accent-l);display:grid;place-items:center;font:800 .95rem var(--mono)}
-.kpi h3{font-size:1.2rem;font-weight:800;line-height:1.2}
-.kpi h3 small{display:block;font-weight:500;font-size:.85rem;color:var(--muted);letter-spacing:0;margin-top:3px}
+.kpi h3{font-size:1.15rem;font-weight:800;line-height:1.2;margin:0}
+.kpi h3 small{display:block;font-weight:500;font-size:.88rem;color:var(--muted);letter-spacing:0;margin-top:3px;line-height:1.35}
+.kbody{display:grid;gap:22px;padding:20px;grid-template-areas:"intro" "calc" "read"}
+.kintro{grid-area:intro;display:grid;gap:14px;align-content:start;min-width:0}
+.kbody .calc{grid-area:calc;align-self:start;align-content:start}
+.kread{grid-area:read}
 .ktags{display:flex;flex-wrap:wrap;gap:6px}
 .ktags li{font-size:.74rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--paper);color:var(--support);border:1px solid var(--line)}
+.ktags li.en{background:transparent;color:var(--muted);font-weight:500}
 .kwhat{margin:0}
 .kformula{margin:0;background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;font:600 .92rem/1.45 var(--mono);color:var(--support)}
+.kread{display:grid;gap:10px}
+.kread h4{margin:4px 0 0;font:700 .8rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.kread p{margin:0;color:var(--muted);font-size:.97rem}
+.kread p strong{color:var(--ink)}
+.kread a{color:var(--accent-d)}
+.kread .exemplo{background:var(--paper);border-radius:10px;padding:10px 14px;color:var(--ink)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Formulário */
@@ -62,20 +81,11 @@
 .acts{display:flex;flex-wrap:wrap;gap:10px}
 .acts .btn{min-height:44px;padding:8px 18px;font-size:.9rem}
 
-/* Explicação */
-.kmore{border-top:1px solid var(--line);padding-top:4px}
-.kmore summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:8px;list-style:none}
-.kmore summary::-webkit-details-marker{display:none}
-.kmore summary::after{content:"+";margin-left:auto;font:800 1.3rem/1 var(--mono);color:var(--accent)}
-.kmore[open] summary::after{content:"−"}
-.kmore div{display:grid;gap:10px;padding-bottom:6px}
-.kmore p{margin:0;color:var(--muted);font-size:.97rem}
-.kmore p strong{color:var(--ink)}
-.kmore a{color:var(--accent-d)}
-.kmore .exemplo{background:var(--paper);border-radius:10px;padding:10px 14px;color:var(--ink)}
-
 /* Como usar + FAQ */
 .alt{background:#fff;border-block:1px solid var(--line)}
+.how{padding:56px 0}
+.how .sec-title{font-size:clamp(1.5rem,3.5vw,2.1rem)}
+.how .steps{margin-top:24px}
 .steps.three{grid-template-columns:1fr}
 .faq{display:grid;gap:10px;max-width:820px}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px}
@@ -88,7 +98,8 @@ noscript .ns{background:#fff7e0;border:1px solid #f0d58a;border-radius:12px;padd
 
 @media (min-width:520px){.row2{grid-template-columns:1fr 1fr}}
 @media (min-width:900px){
-  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .bhero h1{font-size:clamp(2.4rem,4.6vw,3.6rem);white-space:nowrap}
+  .kbody{grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;grid-template-areas:"intro calc" "read calc";gap:20px 32px;padding:24px}
   .steps.three{grid-template-columns:repeat(3,1fr)}
   .steps.three li{flex-direction:column;border-left:0;border-top:3px solid var(--accent);border-radius:0 0 12px 12px}
   .tool{padding:72px 0 104px}
