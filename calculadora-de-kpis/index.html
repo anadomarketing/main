@@ -177,272 +177,7 @@
     </div>
   </section>
 
-  <section class="tool" aria-labelledby="t-tool">
-    <div class="wrap">
-      <span class="eyebrow">Escolha seu perfil</span>
-      <h2 class="sec-title" id="t-tool">Quais indicadores você precisa?</h2>
-      <noscript><p class="ns">Para calcular, ative o JavaScript no navegador. As explicações de cada indicador continuam visíveis.</p></noscript>
-      <div class="filters" role="group" aria-label="Filtrar indicadores por perfil">
-        <button type="button" data-filter="todos" data-desc="Todos os indicadores, do alcance ao valor do cliente." aria-pressed="true">Todos (14)</button>
-        <button type="button" data-filter="trafego" data-desc="Eficiência da mídia paga: custo, cliques, conversão e retorno." aria-pressed="false">Gestor de tráfego (10)</button>
-        <button type="button" data-filter="social" data-desc="Alcance, atenção e engajamento do conteúdo e dos anúncios." aria-pressed="false">Social media (7)</button>
-        <button type="button" data-filter="vendas" data-desc="Quanto custa conquistar um cliente, quanto ele vale e se a conta fecha." aria-pressed="false">Vendas (8)</button>
-      </div>
-      <p id="fdesc" aria-live="polite">Todos os indicadores, do alcance ao valor do cliente.</p>
-      <p id="fcount" aria-live="polite">Mostrando 14 de 14 indicadores</p>
-
-      <div class="kgrid">
-
-      <article class="kpi" id="eng" data-cat="social" aria-labelledby="h-eng">
-        <div class="khead"><span class="kabbr" aria-hidden="true">ENG</span><h3 id="h-eng">Taxa de engajamento<small>ENG · Engagement rate</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Mostra quanto do seu público reagiu ao conteúdo: curtiu, comentou, compartilhou ou salvou. É o termômetro de quanto o conteúdo realmente interessa, e não só de quantas pessoas o viram.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>Engajamento = (curtidas + comentários + compartilhamentos + salvamentos) ÷ base × 100</p>
-        <form class="calc" data-kpi="eng" data-ex='{"likes":380,"comments":25,"shares":30,"saves":55,"base":6000,"basis":"alcance"}' novalidate aria-label="Calculadora de Taxa de engajamento">
-          <div class="row2"><div class="fld"><label for="eng-likes">Curtidas</label><div class="inp"><input id="eng-likes" name="likes" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="eng-comments">Comentários</label><div class="inp"><input id="eng-comments" name="comments" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="row2"><div class="fld"><label for="eng-shares">Compartilhamentos</label><div class="inp"><input id="eng-shares" name="shares" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="eng-saves">Salvamentos</label><div class="inp"><input id="eng-saves" name="saves" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="fld"><label for="eng-basis">Calcular sobre</label><div class="inp"><select id="eng-basis" name="basis"><option value="alcance">Alcance (recomendado)</option><option value="seguidores">Seguidores</option><option value="impressoes">Impressões</option></select></div></div>
-          <div class="fld"><label for="eng-base" data-baselabel>Alcance do período</label><div class="inp"><input id="eng-base" name="base" type="text" inputmode="decimal" autocomplete="off" aria-describedby="eng-base-h"></div><span class="hint" id="eng-base-h">Pessoas únicas alcançadas, ou o número da base escolhida acima.</span></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ENG</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> quanto maior, mais o conteúdo conversa com o público. Salvamentos e compartilhamentos pesam mais que curtidas, porque mostram utilidade e vontade de recomendar.</p>
-          <p><strong>Atenção à base:</strong> o cálculo sobre alcance costuma dar números maiores que sobre seguidores. Não existe uma base certa, mas é preciso comparar sempre usando a mesma.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> 380 curtidas, 25 comentários, 30 compartilhamentos e 55 salvamentos em um post com alcance de 6.000 pessoas → <strong>8,17%</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="cpm" data-cat="trafego social" aria-labelledby="h-cpm">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CPM</span><h3 id="h-cpm">Custo por mil impressões<small>CPM · Cost per mille</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> É o preço de fazer o seu anúncio aparecer mil vezes. Mede o custo de entrega, ou seja, quanto está caro ou barato chegar até o seu público.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CPM = valor investido ÷ impressões × 1.000</p>
-        <form class="calc" data-kpi="cpm" data-ex='{"spend":500,"imp":18000}' novalidate aria-label="Calculadora de Custo por mil impressões">
-          <div class="row2"><div class="fld"><label for="cpm-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpm-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpm-imp">Impressões</label><div class="inp"><input id="cpm-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPM</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o CPM sobe quando o público é muito disputado, quando os anúncios saturam ou em datas de alta concorrência, como a Black Friday. Se ele subir e o CTR cair junto, é hora de renovar criativos ou ampliar o público.</p>
-          <p><strong>Cuidado:</strong> CPM baixo não é resultado por si só. Ele só diz que a entrega foi barata, não que foi para as pessoas certas.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 18.000 impressões → <strong>R$ 27,78</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="freq" data-cat="trafego social" aria-labelledby="h-freq">
-        <div class="khead"><span class="kabbr" aria-hidden="true">FREQ</span><h3 id="h-freq">Frequência<small>FREQ · Frequency</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Informa quantas vezes, em média, cada pessoa viu o seu anúncio ou conteúdo no período. Ajuda a saber se você está lembrado ou se já está cansando o público.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>Frequência = impressões ÷ alcance</p>
-        <form class="calc" data-kpi="freq" data-ex='{"imp":18000,"reach":6000}' novalidate aria-label="Calculadora de Frequência">
-          <div class="row2"><div class="fld"><label for="freq-imp">Impressões</label><div class="inp"><input id="freq-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="freq-reach">Alcance (pessoas únicas)</label><div class="inp"><input id="freq-reach" name="reach" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · FREQ</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> pouca repetição pode não bastar para a mensagem ser lembrada; repetição demais cansa. O ponto ideal depende do objetivo e do tamanho do público: remarketing aguenta frequências maiores que campanhas de descoberta.</p>
-          <p><strong>Sinais de saturação:</strong> frequência subindo, CTR caindo e CPM aumentando ao mesmo tempo.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> 18.000 impressões para 6.000 pessoas alcançadas → <strong>3,00x</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="ctr" data-cat="trafego social" aria-labelledby="h-ctr">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CTR</span><h3 id="h-ctr">Taxa de cliques<small>CTR · Click-through rate</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> De cada 100 vezes que o anúncio ou o post aparece, quantas pessoas clicam? O CTR mede o quanto a imagem e a mensagem chamam atenção.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CTR = cliques ÷ impressões × 100</p>
-        <form class="calc" data-kpi="ctr" data-ex='{"clicks":320,"imp":18000}' novalidate aria-label="Calculadora de Taxa de cliques">
-          <div class="row2"><div class="fld"><label for="ctr-clicks">Cliques</label><div class="inp"><input id="ctr-clicks" name="clicks" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="ctr-imp">Impressões</label><div class="inp"><input id="ctr-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CTR</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> CTR baixo costuma indicar criativo ou público que não conversam com a oferta. CTR alto com poucas conversões pode indicar clique por curiosidade ou uma página que não entrega o que o anúncio promete.</p>
-          <p><strong>Compare com o certo:</strong> o CTR muda muito entre rede de pesquisa, redes sociais e display. Use como referência o histórico da própria conta, no mesmo canal e formato.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> 320 cliques em 18.000 impressões → <strong>1,78%</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="cpc" data-cat="trafego social" aria-labelledby="h-cpc">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CPC</span><h3 id="h-cpc">Custo por clique<small>CPC · Cost per click</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Quanto você paga, em média, por cada clique que leva uma pessoa ao seu site, página ou perfil.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CPC = valor investido ÷ cliques</p>
-        <form class="calc" data-kpi="cpc" data-ex='{"spend":500,"clicks":320}' novalidate aria-label="Calculadora de Custo por clique">
-          <div class="row2"><div class="fld"><label for="cpc-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpc-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpc-clicks">Cliques</label><div class="inp"><input id="cpc-clicks" name="clicks" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o CPC depende do leilão, da concorrência e da qualidade do anúncio. Anúncios mais relevantes e com CTR maior costumam pagar menos por clique.</p>
-          <p><strong>Cuidado:</strong> um CPC baixo com taxa de conversão baixa sai caro no fim. Olhe o CPC junto com o CPL ou o CPA.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 320 cliques → <strong>R$ 1,56</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="bounce" data-cat="trafego social" aria-labelledby="h-bounce">
-        <div class="khead"><span class="kabbr" aria-hidden="true">REJ</span><h3 id="h-bounce">Taxa de rejeição<small>REJ · Bounce rate</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Mostra a parcela de visitas em que a pessoa entrou no site e saiu sem interagir. É um sinal de que a página não correspondeu ao que ela esperava.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>Rejeição = sessões sem engajamento ÷ total de sessões × 100</p>
-        <form class="calc" data-kpi="bounce" data-ex='{"sess":1000,"nonEng":560}' novalidate aria-label="Calculadora de Taxa de rejeição">
-          <div class="row2"><div class="fld"><label for="bounce-sess">Total de sessões</label><div class="inp"><input id="bounce-sess" name="sess" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="bounce-nonEng">Sessões sem engajamento</label><div class="inp"><input id="bounce-nonEng" name="nonEng" type="text" inputmode="decimal" autocomplete="off" aria-describedby="bounce-nonEng-h"></div><span class="hint" id="bounce-nonEng-h">No GA4: sessões totais menos sessões engajadas.</span></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · REJ</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>No GA4:</strong> a taxa de rejeição é o inverso da taxa de engajamento. Uma sessão é considerada engajada quando dura mais de 10 segundos, tem uma conversão ou tem pelo menos 2 visualizações de página.</p>
-          <p><strong>Como ler:</strong> rejeição alta em página de campanha sugere desalinhamento entre anúncio e página, ou lentidão. Em um artigo de blog, porém, quem lê tudo e sai pode ter tido uma boa experiência.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> 1.000 sessões, sendo 560 sem engajamento → <strong>56,00%</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="conv" data-cat="trafego social vendas" aria-labelledby="h-conv">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CONV</span><h3 id="h-conv">Taxa de conversão<small>CONV · Conversion rate</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> De cada 100 pessoas que chegam, quantas fazem a ação que você quer: comprar, pedir orçamento, se cadastrar ou chamar no WhatsApp.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>Taxa de conversão = conversões ÷ visitas (ou cliques, ou leads) × 100</p>
-        <form class="calc" data-kpi="conv" data-ex='{"conv":40,"visits":1600}' novalidate aria-label="Calculadora de Taxa de conversão">
-          <div class="row2"><div class="fld"><label for="conv-conv">Conversões</label><div class="inp"><input id="conv-conv" name="conv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="conv-conv-h"></div><span class="hint" id="conv-conv-h">Vendas, leads, matrículas…</span></div><div class="fld"><label for="conv-visits">Visitas, cliques ou leads</label><div class="inp"><input id="conv-visits" name="visits" type="text" inputmode="decimal" autocomplete="off" aria-describedby="conv-visits-h"></div><span class="hint" id="conv-visits-h">A base sobre a qual a taxa é medida.</span></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CONV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> é a taxa que mais mexe no custo de aquisição. Se ela dobra, o CPL e o CPA caem pela metade sem mudar a verba.</p>
-          <p><strong>Dica:</strong> defina a base antes de calcular. No topo do funil, conversão de visita em lead; no meio, de lead em oportunidade; no fim, de oportunidade em venda. Cada etapa tem a sua taxa.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> 40 conversões para 1.600 visitas → <strong>2,50%</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="cpl" data-cat="trafego vendas" aria-labelledby="h-cpl">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CPL</span><h3 id="h-cpl">Custo por lead<small>CPL · Cost per lead</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Quanto custa, em média, gerar um contato interessado (lead), como um cadastro, um formulário ou uma mensagem.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CPL = valor investido ÷ leads gerados</p>
-        <form class="calc" data-kpi="cpl" data-ex='{"spend":1500,"leads":50,"qual":20}' novalidate aria-label="Calculadora de Custo por lead">
-          <div class="row2"><div class="fld"><label for="cpl-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpl-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpl-leads">Leads gerados</label><div class="inp"><input id="cpl-leads" name="leads" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="fld"><label for="cpl-qual">Leads qualificados (opcional)</label><div class="inp"><input id="cpl-qual" name="qual" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cpl-qual-h"></div><span class="hint" id="cpl-qual-h">Leads que o comercial considerou com perfil de compra.</span></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPL</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o CPL baixo é bom, mas só vale se o lead for bom. Por isso a calculadora também mostra o custo por lead qualificado.</p>
-          <p><strong>Leia mais:</strong> <a href="/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/">CPL baixo não é resultado: como medir a qualidade do lead</a>.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 1.500 investidos, 50 leads e 20 deles qualificados → <strong>R$ 30,00</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="cpa" data-cat="trafego vendas" aria-labelledby="h-cpa">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CPA</span><h3 id="h-cpa">Custo por aquisição<small>CPA · Cost per acquisition</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Quanto custa conquistar uma conversão final, geralmente uma venda, uma matrícula ou um cliente fechado, considerando só o investimento em mídia.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CPA = valor investido ÷ conversões (vendas)</p>
-        <form class="calc" data-kpi="cpa" data-ex='{"spend":3000,"conv":40,"profit":120}' novalidate aria-label="Calculadora de Custo por aquisição">
-          <div class="row2"><div class="fld"><label for="cpa-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpa-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpa-conv">Conversões (vendas)</label><div class="inp"><input id="cpa-conv" name="conv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="fld"><label for="cpa-profit">Lucro por venda, antes da mídia (opcional)</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpa-profit" name="profit" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cpa-profit-h"></div><span class="hint" id="cpa-profit-h">Preço menos custo do produto. É o teto que o CPA pode ter.</span></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPA</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o CPA só é "bom" ou "ruim" quando comparado ao lucro da venda. Se o CPA é maior que o lucro por venda, cada conversão dá prejuízo, a não ser que o cliente compre de novo (veja o LTV).</p>
-          <p><strong>CPA máximo:</strong> use o lucro por venda como limite para decidir até onde dá para escalar a campanha.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 3.000 investidos para 40 vendas, com lucro de R$ 120 por venda → <strong>R$ 75,00</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="roas" data-cat="trafego vendas" aria-labelledby="h-roas">
-        <div class="khead"><span class="kabbr" aria-hidden="true">ROAS</span><h3 id="h-roas">Retorno sobre investimento em anúncios<small>ROAS · Return on ad spend</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Mostra quantos reais de receita voltam para cada real investido em anúncios. É o indicador mais usado em e-commerce e em campanhas de venda direta.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>ROAS = receita gerada pelos anúncios ÷ investimento em anúncios</p>
-        <form class="calc" data-kpi="roas" data-ex='{"rev":12000,"inv":3000,"margin":40}' novalidate aria-label="Calculadora de Retorno sobre investimento em anúncios">
-          <div class="row2"><div class="fld"><label for="roas-rev">Receita gerada</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roas-rev" name="rev" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="roas-inv">Investimento em anúncios</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roas-inv" name="inv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="fld"><label for="roas-margin">Margem bruta do produto (opcional)</label><div class="inp has-suf"><input id="roas-margin" name="margin" type="text" inputmode="decimal" autocomplete="off" aria-describedby="roas-margin-h"><span class="suf" aria-hidden="true">%</span></div><span class="hint" id="roas-margin-h">Ex.: 40 para 40%. Mostra o ROAS mínimo para não ter prejuízo.</span></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ROAS</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> ROAS 4x significa R$ 4 de receita para cada R$ 1 em mídia. Mas receita não é lucro: o ROAS precisa passar do ROAS de equilíbrio, que é 1 dividido pela margem (margem de 40% pede ROAS de pelo menos 2,5x).</p>
-          <p><strong>ROAS ou ROI?</strong> O ROAS olha só a mídia e usa a receita. O ROI olha o negócio e usa o lucro.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 12.000 de receita com R$ 3.000 em anúncios e margem de 40% → <strong>4,00x</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="roi" data-cat="trafego vendas" aria-labelledby="h-roi">
-        <div class="khead"><span class="kabbr" aria-hidden="true">ROI</span><h3 id="h-roi">Retorno sobre investimento<small>ROI · Return on investment</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Mostra quanto lucro você teve em relação ao que gastou. Diferente do ROAS, o ROI considera também os outros custos da operação.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>ROI = (receita − custo total) ÷ custo total × 100</p>
-        <form class="calc" data-kpi="roi" data-ex='{"rev":12000,"inv":3000,"other":1000}' novalidate aria-label="Calculadora de Retorno sobre investimento">
-          <div class="row2"><div class="fld"><label for="roi-rev">Receita obtida</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-rev" name="rev" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="roi-inv">Investimento em mídia</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-inv" name="inv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="fld"><label for="roi-other">Outros custos (opcional)</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-other" name="other" type="text" inputmode="decimal" autocomplete="off" aria-describedby="roi-other-h"></div><span class="hint" id="roi-other-h">Produto, equipe, ferramentas, agência.</span></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ROI</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> ROI positivo significa lucro; zero é empate; negativo é prejuízo. Um ROI de 200% quer dizer que, para cada R$ 1 gasto, você recuperou o R$ 1 e ganhou mais R$ 2.</p>
-          <p><strong>Cuidado:</strong> para um ROI honesto, inclua todos os custos do período, não só o investimento em anúncios.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 12.000 de receita, R$ 3.000 em mídia e R$ 1.000 em outros custos → <strong>200,0%</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="cac" data-cat="vendas" aria-labelledby="h-cac">
-        <div class="khead"><span class="kabbr" aria-hidden="true">CAC</span><h3 id="h-cac">Custo de aquisição de clientes<small>CAC · Customer acquisition cost</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Quanto a empresa gasta, no total, para conquistar um novo cliente. Diferente do CPA, o CAC soma marketing e vendas.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>CAC = investimento em marketing e vendas ÷ novos clientes</p>
-        <form class="calc" data-kpi="cac" data-ex='{"inv":8000,"cust":20}' novalidate aria-label="Calculadora de Custo de aquisição de clientes">
-          <div class="row2"><div class="fld"><label for="cac-inv">Investimento em marketing e vendas</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cac-inv" name="inv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cac-inv-h"></div><span class="hint" id="cac-inv-h">Mídia, salários, comissões, ferramentas.</span></div><div class="fld"><label for="cac-cust">Novos clientes</label><div class="inp"><input id="cac-cust" name="cust" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CAC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o CAC sozinho não diz muito. Ele precisa ser comparado ao quanto o cliente deixa de retorno ao longo da relação, o LTV.</p>
-          <p><strong>Dica:</strong> use sempre o mesmo período no gasto e nos clientes. Se a venda leva meses, considere o atraso entre o investimento e o fechamento.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> R$ 8.000 em marketing e vendas para 20 novos clientes → <strong>R$ 400,00</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="ltv" data-cat="vendas" aria-labelledby="h-ltv">
-        <div class="khead"><span class="kabbr" aria-hidden="true">LTV</span><h3 id="h-ltv">Valor do tempo de vida do cliente<small>LTV · Lifetime value</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Estima quanto um cliente vale para o negócio durante toda a relação com a empresa. Ajuda a decidir quanto vale a pena pagar para conquistá-lo.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>LTV = ticket médio × compras por ano × anos de relação</p>
-        <form class="calc" data-kpi="ltv" data-ex='{"ticket":150,"freq":4,"years":3,"margin":50}' novalidate aria-label="Calculadora de Valor do tempo de vida do cliente">
-          <div class="row2"><div class="fld"><label for="ltv-ticket">Ticket médio</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltv-ticket" name="ticket" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="ltv-freq">Compras por ano</label><div class="inp"><input id="ltv-freq" name="freq" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
-          <div class="row2"><div class="fld"><label for="ltv-years">Anos como cliente</label><div class="inp"><input id="ltv-years" name="years" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltv-years-h"></div><span class="hint" id="ltv-years-h">Tempo médio de permanência.</span></div><div class="fld"><label for="ltv-margin">Margem bruta (opcional)</label><div class="inp has-suf"><input id="ltv-margin" name="margin" type="text" inputmode="decimal" autocomplete="off"><span class="suf" aria-hidden="true">%</span></div></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · LTV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> o LTV mostra o valor que o cliente deixa depois da primeira compra. Negócios com recompra (assinatura, escola, academia, e-commerce) costumam ter um LTV muito maior que o valor da primeira venda.</p>
-          <p><strong>Dica:</strong> para comparar com o CAC, prefira o LTV sobre a margem, que é mais conservador que o LTV sobre a receita.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> ticket de R$ 150, 4 compras por ano durante 3 anos e margem de 50% → <strong>R$ 1.800,00</strong></p>
-        </div></details>
-      </article>
-
-      <article class="kpi" id="ltvcac" data-cat="vendas" aria-labelledby="h-ltvcac">
-        <div class="khead"><span class="kabbr" aria-hidden="true">LTV:CAC</span><h3 id="h-ltvcac">Relação LTV por CAC<small>LTV:CAC · LTV to CAC ratio</small></h3></div>
-        <ul class="ktags" aria-label="Indicado para"><li>Vendas</li></ul>
-        <p class="kwhat"><strong>O que é:</strong> Compara quanto o cliente retorna com quanto custou conquistá-lo. Mostra se o modelo de aquisição da empresa se paga.</p>
-        <p class="kformula"><span class="sr">Fórmula: </span>LTV:CAC = LTV ÷ CAC</p>
-        <form class="calc" data-kpi="ltvcac" data-ex='{"ltv":1800,"cac":400}' novalidate aria-label="Calculadora de Relação LTV por CAC">
-          <div class="row2"><div class="fld"><label for="ltvcac-ltv">LTV</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltvcac-ltv" name="ltv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltvcac-ltv-h"></div><span class="hint" id="ltvcac-ltv-h">Calculado no card de LTV.</span></div><div class="fld"><label for="ltvcac-cac">CAC</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltvcac-cac" name="cac" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltvcac-cac-h"></div><span class="hint" id="ltvcac-cac-h">Calculado no card de CAC.</span></div></div>
-          <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · LTV:CAC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
-          <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
-        </form>
-        <details class="kmore"><summary>Como interpretar</summary><div>
-          <p><strong>Como ler:</strong> abaixo de 1x o cliente não paga o próprio custo; entre 1x e 3x o negócio se paga, mas com pouca folga; a regra prática de mercado mira 3x ou mais.</p>
-          <p><strong>Cuidado:</strong> é uma regra prática, não uma lei. Margem, prazo de retorno e caixa disponível mudam a conta de cada empresa.</p>
-          <p class="exemplo"><strong>Exemplo:</strong> LTV de R$ 1.800 e CAC de R$ 400 → <strong>4,50x</strong></p>
-        </div></details>
-      </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="alt" aria-labelledby="t-como">
+  <section class="alt how" aria-labelledby="t-como">
     <div class="wrap">
       <span class="eyebrow">Passo a passo</span>
       <h2 class="sec-title" id="t-como">Como usar a calculadora</h2>
@@ -451,6 +186,341 @@
         <li><div><b>Digite os números</b><span>Use dados do mesmo período em todos os campos. Para decimais, use vírgula. O resultado aparece enquanto você digita.</span></div></li>
         <li><div><b>Leia e compare</b><span>Abra “Como interpretar” e compare com o seu histórico e com o ponto de equilíbrio, não com números genéricos.</span></div></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="tool" aria-labelledby="t-tool">
+    <div class="wrap">
+      <span class="eyebrow">Escolha seu perfil</span>
+      <h2 class="sec-title" id="t-tool">Quais indicadores você precisa?</h2>
+      <noscript><p class="ns">Para calcular, ative o JavaScript no navegador. As explicações de cada indicador continuam disponíveis ao abrir cada item.</p></noscript>
+      <div class="toolbar"><div class="filters" role="group" aria-label="Filtrar indicadores por perfil">
+        <button type="button" data-filter="todos" data-desc="Todos os indicadores, do alcance ao valor do cliente." aria-pressed="true">Todos (14)</button>
+        <button type="button" data-filter="trafego" data-desc="Eficiência da mídia paga: custo, cliques, conversão e retorno." aria-pressed="false">Gestor de tráfego (10)</button>
+        <button type="button" data-filter="social" data-desc="Alcance, atenção e engajamento do conteúdo e dos anúncios." aria-pressed="false">Social media (7)</button>
+        <button type="button" data-filter="vendas" data-desc="Quanto custa conquistar um cliente, quanto ele vale e se a conta fecha." aria-pressed="false">Vendas (8)</button>
+      </div>
+      <p id="fdesc" aria-live="polite">Todos os indicadores, do alcance ao valor do cliente.</p>
+      <div class="fbar"><p id="fcount" aria-live="polite">Mostrando 14 de 14 indicadores</p><button type="button" class="linkbtn" id="toggleAll" aria-pressed="false">Expandir todos</button></div></div>
+
+      <div class="kgrid">
+
+      <details class="kpi" id="eng" data-cat="social">
+        <summary><span class="kabbr" aria-hidden="true">ENG</span><h3 id="h-eng">Taxa de engajamento<small>Quanto o público reage ao seu conteúdo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Social media</li><li class="en">Engagement rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto do seu público reagiu ao conteúdo: curtiu, comentou, compartilhou ou salvou. É o termômetro de quanto o conteúdo realmente interessa, e não só de quantas pessoas o viram.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Engajamento = (curtidas + comentários + compartilhamentos + salvamentos) ÷ base × 100</p>
+          </div>
+          <form class="calc" data-kpi="eng" data-ex='{"likes":380,"comments":25,"shares":30,"saves":55,"base":6000,"basis":"alcance"}' novalidate aria-label="Calculadora de Taxa de engajamento">
+            <div class="row2"><div class="fld"><label for="eng-likes">Curtidas</label><div class="inp"><input id="eng-likes" name="likes" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="eng-comments">Comentários</label><div class="inp"><input id="eng-comments" name="comments" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="row2"><div class="fld"><label for="eng-shares">Compartilhamentos</label><div class="inp"><input id="eng-shares" name="shares" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="eng-saves">Salvamentos</label><div class="inp"><input id="eng-saves" name="saves" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="eng-basis">Calcular sobre</label><div class="inp"><select id="eng-basis" name="basis"><option value="alcance">Alcance (recomendado)</option><option value="seguidores">Seguidores</option><option value="impressoes">Impressões</option></select></div></div>
+            <div class="fld"><label for="eng-base" data-baselabel>Alcance do período</label><div class="inp"><input id="eng-base" name="base" type="text" inputmode="decimal" autocomplete="off" aria-describedby="eng-base-h"></div><span class="hint" id="eng-base-h">Pessoas únicas alcançadas, ou o número da base escolhida acima.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ENG</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> quanto maior, mais o conteúdo conversa com o público. Salvamentos e compartilhamentos pesam mais que curtidas, porque mostram utilidade e vontade de recomendar.</p>
+            <p><strong>Atenção à base:</strong> o cálculo sobre alcance costuma dar números maiores que sobre seguidores. Não existe uma base certa, mas é preciso comparar sempre usando a mesma.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 380 curtidas, 25 comentários, 30 compartilhamentos e 55 salvamentos em um post com alcance de 6.000 pessoas → <strong>8,17%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpm" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">CPM</span><h3 id="h-cpm">Custo por mil impressões<small>Quanto custa aparecer mil vezes?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Cost per mille</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> É o preço de fazer o seu anúncio aparecer mil vezes. Mede o custo de entrega, ou seja, quanto está caro ou barato chegar até o seu público.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPM = valor investido ÷ impressões × 1.000</p>
+          </div>
+          <form class="calc" data-kpi="cpm" data-ex='{"spend":500,"imp":18000}' novalidate aria-label="Calculadora de Custo por mil impressões">
+            <div class="row2"><div class="fld"><label for="cpm-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpm-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpm-imp">Impressões</label><div class="inp"><input id="cpm-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPM</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CPM sobe quando o público é muito disputado, quando os anúncios saturam ou em datas de alta concorrência, como a Black Friday. Se ele subir e o CTR cair junto, é hora de renovar criativos ou ampliar o público.</p>
+            <p><strong>Cuidado:</strong> CPM baixo não é resultado por si só. Ele só diz que a entrega foi barata, não que foi para as pessoas certas.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 18.000 impressões → <strong>R$ 27,78</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="freq" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">FREQ</span><h3 id="h-freq">Frequência<small>Quantas vezes cada pessoa viu o anúncio?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Frequency</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Informa quantas vezes, em média, cada pessoa viu o seu anúncio ou conteúdo no período. Ajuda a saber se você está lembrado ou se já está cansando o público.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Frequência = impressões ÷ alcance</p>
+          </div>
+          <form class="calc" data-kpi="freq" data-ex='{"imp":18000,"reach":6000}' novalidate aria-label="Calculadora de Frequência">
+            <div class="row2"><div class="fld"><label for="freq-imp">Impressões</label><div class="inp"><input id="freq-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="freq-reach">Alcance (pessoas únicas)</label><div class="inp"><input id="freq-reach" name="reach" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · FREQ</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> pouca repetição pode não bastar para a mensagem ser lembrada; repetição demais cansa. O ponto ideal depende do objetivo e do tamanho do público: remarketing aguenta frequências maiores que campanhas de descoberta.</p>
+            <p><strong>Sinais de saturação:</strong> frequência subindo, CTR caindo e CPM aumentando ao mesmo tempo.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 18.000 impressões para 6.000 pessoas alcançadas → <strong>3,00x</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="ctr" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">CTR</span><h3 id="h-ctr">Taxa de cliques<small>Quantas pessoas clicam depois de ver?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Click-through rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> De cada 100 vezes que o anúncio ou o post aparece, quantas pessoas clicam? O CTR mede o quanto a imagem e a mensagem chamam atenção.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CTR = cliques ÷ impressões × 100</p>
+          </div>
+          <form class="calc" data-kpi="ctr" data-ex='{"clicks":320,"imp":18000}' novalidate aria-label="Calculadora de Taxa de cliques">
+            <div class="row2"><div class="fld"><label for="ctr-clicks">Cliques</label><div class="inp"><input id="ctr-clicks" name="clicks" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="ctr-imp">Impressões</label><div class="inp"><input id="ctr-imp" name="imp" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CTR</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> CTR baixo costuma indicar criativo ou público que não conversam com a oferta. CTR alto com poucas conversões pode indicar clique por curiosidade ou uma página que não entrega o que o anúncio promete.</p>
+            <p><strong>Compare com o certo:</strong> o CTR muda muito entre rede de pesquisa, redes sociais e display. Use como referência o histórico da própria conta, no mesmo canal e formato.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 320 cliques em 18.000 impressões → <strong>1,78%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpc" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">CPC</span><h3 id="h-cpc">Custo por clique<small>Quanto custa cada clique?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Cost per click</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Quanto você paga, em média, por cada clique que leva uma pessoa ao seu site, página ou perfil.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPC = valor investido ÷ cliques</p>
+          </div>
+          <form class="calc" data-kpi="cpc" data-ex='{"spend":500,"clicks":320}' novalidate aria-label="Calculadora de Custo por clique">
+            <div class="row2"><div class="fld"><label for="cpc-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpc-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpc-clicks">Cliques</label><div class="inp"><input id="cpc-clicks" name="clicks" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CPC depende do leilão, da concorrência e da qualidade do anúncio. Anúncios mais relevantes e com CTR maior costumam pagar menos por clique.</p>
+            <p><strong>Cuidado:</strong> um CPC baixo com taxa de conversão baixa sai caro no fim. Olhe o CPC junto com o CPL ou o CPA.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 500 investidos para 320 cliques → <strong>R$ 1,56</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="bounce" data-cat="trafego social">
+        <summary><span class="kabbr" aria-hidden="true">REJ</span><h3 id="h-bounce">Taxa de rejeição<small>Quantos visitantes saem sem interagir?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li class="en">Bounce rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra a parcela de visitas em que a pessoa entrou no site e saiu sem interagir. É um sinal de que a página não correspondeu ao que ela esperava.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Rejeição = sessões sem engajamento ÷ total de sessões × 100</p>
+          </div>
+          <form class="calc" data-kpi="bounce" data-ex='{"sess":1000,"nonEng":560}' novalidate aria-label="Calculadora de Taxa de rejeição">
+            <div class="row2"><div class="fld"><label for="bounce-sess">Total de sessões</label><div class="inp"><input id="bounce-sess" name="sess" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="bounce-nonEng">Sessões sem engajamento</label><div class="inp"><input id="bounce-nonEng" name="nonEng" type="text" inputmode="decimal" autocomplete="off" aria-describedby="bounce-nonEng-h"></div><span class="hint" id="bounce-nonEng-h">No GA4: sessões totais menos sessões engajadas.</span></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · REJ</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>No GA4:</strong> a taxa de rejeição é o inverso da taxa de engajamento. Uma sessão é considerada engajada quando dura mais de 10 segundos, tem uma conversão ou tem pelo menos 2 visualizações de página.</p>
+            <p><strong>Como ler:</strong> rejeição alta em página de campanha sugere desalinhamento entre anúncio e página, ou lentidão. Em um artigo de blog, porém, quem lê tudo e sai pode ter tido uma boa experiência.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 1.000 sessões, sendo 560 sem engajamento → <strong>56,00%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="conv" data-cat="trafego social vendas">
+        <summary><span class="kabbr" aria-hidden="true">CONV</span><h3 id="h-conv">Taxa de conversão<small>Quantos visitantes viram resultado?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Social media</li><li>Vendas</li><li class="en">Conversion rate</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> De cada 100 pessoas que chegam, quantas fazem a ação que você quer: comprar, pedir orçamento, se cadastrar ou chamar no WhatsApp.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>Taxa de conversão = conversões ÷ visitas (ou cliques, ou leads) × 100</p>
+          </div>
+          <form class="calc" data-kpi="conv" data-ex='{"conv":40,"visits":1600}' novalidate aria-label="Calculadora de Taxa de conversão">
+            <div class="row2"><div class="fld"><label for="conv-conv">Conversões</label><div class="inp"><input id="conv-conv" name="conv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="conv-conv-h"></div><span class="hint" id="conv-conv-h">Vendas, leads, matrículas…</span></div><div class="fld"><label for="conv-visits">Visitas, cliques ou leads</label><div class="inp"><input id="conv-visits" name="visits" type="text" inputmode="decimal" autocomplete="off" aria-describedby="conv-visits-h"></div><span class="hint" id="conv-visits-h">A base sobre a qual a taxa é medida.</span></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CONV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> é a taxa que mais mexe no custo de aquisição. Se ela dobra, o CPL e o CPA caem pela metade sem mudar a verba.</p>
+            <p><strong>Dica:</strong> defina a base antes de calcular. No topo do funil, conversão de visita em lead; no meio, de lead em oportunidade; no fim, de oportunidade em venda. Cada etapa tem a sua taxa.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> 40 conversões para 1.600 visitas → <strong>2,50%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpl" data-cat="trafego vendas">
+        <summary><span class="kabbr" aria-hidden="true">CPL</span><h3 id="h-cpl">Custo por lead<small>Quanto custa cada contato gerado?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li><li class="en">Cost per lead</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Quanto custa, em média, gerar um contato interessado (lead), como um cadastro, um formulário ou uma mensagem.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPL = valor investido ÷ leads gerados</p>
+          </div>
+          <form class="calc" data-kpi="cpl" data-ex='{"spend":1500,"leads":50,"qual":20}' novalidate aria-label="Calculadora de Custo por lead">
+            <div class="row2"><div class="fld"><label for="cpl-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpl-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpl-leads">Leads gerados</label><div class="inp"><input id="cpl-leads" name="leads" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="cpl-qual">Leads qualificados (opcional)</label><div class="inp"><input id="cpl-qual" name="qual" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cpl-qual-h"></div><span class="hint" id="cpl-qual-h">Leads que o comercial considerou com perfil de compra.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPL</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CPL baixo é bom, mas só vale se o lead for bom. Por isso a calculadora também mostra o custo por lead qualificado.</p>
+            <p><strong>Leia mais:</strong> <a href="/blog/cpl-baixo-nao-e-resultado-qualidade-do-lead/">CPL baixo não é resultado: como medir a qualidade do lead</a>.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 1.500 investidos, 50 leads e 20 deles qualificados → <strong>R$ 30,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cpa" data-cat="trafego vendas">
+        <summary><span class="kabbr" aria-hidden="true">CPA</span><h3 id="h-cpa">Custo por aquisição<small>Quanto custa cada venda?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li><li class="en">Cost per acquisition</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Quanto custa conquistar uma conversão final, geralmente uma venda, uma matrícula ou um cliente fechado, considerando só o investimento em mídia.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CPA = valor investido ÷ conversões (vendas)</p>
+          </div>
+          <form class="calc" data-kpi="cpa" data-ex='{"spend":3000,"conv":40,"profit":120}' novalidate aria-label="Calculadora de Custo por aquisição">
+            <div class="row2"><div class="fld"><label for="cpa-spend">Valor investido</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpa-spend" name="spend" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="cpa-conv">Conversões (vendas)</label><div class="inp"><input id="cpa-conv" name="conv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="cpa-profit">Lucro por venda, antes da mídia (opcional)</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cpa-profit" name="profit" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cpa-profit-h"></div><span class="hint" id="cpa-profit-h">Preço menos custo do produto. É o teto que o CPA pode ter.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CPA</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CPA só é "bom" ou "ruim" quando comparado ao lucro da venda. Se o CPA é maior que o lucro por venda, cada conversão dá prejuízo, a não ser que o cliente compre de novo (veja o LTV).</p>
+            <p><strong>CPA máximo:</strong> use o lucro por venda como limite para decidir até onde dá para escalar a campanha.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 3.000 investidos para 40 vendas, com lucro de R$ 120 por venda → <strong>R$ 75,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="roas" data-cat="trafego vendas">
+        <summary><span class="kabbr" aria-hidden="true">ROAS</span><h3 id="h-roas">Retorno sobre investimento em anúncios<small>Quanto volta de receita por real investido?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li><li class="en">Return on ad spend</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quantos reais de receita voltam para cada real investido em anúncios. É o indicador mais usado em e-commerce e em campanhas de venda direta.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>ROAS = receita gerada pelos anúncios ÷ investimento em anúncios</p>
+          </div>
+          <form class="calc" data-kpi="roas" data-ex='{"rev":12000,"inv":3000,"margin":40}' novalidate aria-label="Calculadora de Retorno sobre investimento em anúncios">
+            <div class="row2"><div class="fld"><label for="roas-rev">Receita gerada</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roas-rev" name="rev" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="roas-inv">Investimento em anúncios</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roas-inv" name="inv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="roas-margin">Margem bruta do produto (opcional)</label><div class="inp has-suf"><input id="roas-margin" name="margin" type="text" inputmode="decimal" autocomplete="off" aria-describedby="roas-margin-h"><span class="suf" aria-hidden="true">%</span></div><span class="hint" id="roas-margin-h">Ex.: 40 para 40%. Mostra o ROAS mínimo para não ter prejuízo.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ROAS</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> ROAS 4x significa R$ 4 de receita para cada R$ 1 em mídia. Mas receita não é lucro: o ROAS precisa passar do ROAS de equilíbrio, que é 1 dividido pela margem (margem de 40% pede ROAS de pelo menos 2,5x).</p>
+            <p><strong>ROAS ou ROI?</strong> O ROAS olha só a mídia e usa a receita. O ROI olha o negócio e usa o lucro.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 12.000 de receita com R$ 3.000 em anúncios e margem de 40% → <strong>4,00x</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="roi" data-cat="trafego vendas">
+        <summary><span class="kabbr" aria-hidden="true">ROI</span><h3 id="h-roi">Retorno sobre investimento<small>Quanto lucro sobre o que foi gasto?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Gestor de tráfego</li><li>Vendas</li><li class="en">Return on investment</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Mostra quanto lucro você teve em relação ao que gastou. Diferente do ROAS, o ROI considera também os outros custos da operação.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>ROI = (receita − custo total) ÷ custo total × 100</p>
+          </div>
+          <form class="calc" data-kpi="roi" data-ex='{"rev":12000,"inv":3000,"other":1000}' novalidate aria-label="Calculadora de Retorno sobre investimento">
+            <div class="row2"><div class="fld"><label for="roi-rev">Receita obtida</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-rev" name="rev" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="roi-inv">Investimento em mídia</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-inv" name="inv" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="fld"><label for="roi-other">Outros custos (opcional)</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="roi-other" name="other" type="text" inputmode="decimal" autocomplete="off" aria-describedby="roi-other-h"></div><span class="hint" id="roi-other-h">Produto, equipe, ferramentas, agência.</span></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · ROI</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> ROI positivo significa lucro; zero é empate; negativo é prejuízo. Um ROI de 200% quer dizer que, para cada R$ 1 gasto, você recuperou o R$ 1 e ganhou mais R$ 2.</p>
+            <p><strong>Cuidado:</strong> para um ROI honesto, inclua todos os custos do período, não só o investimento em anúncios.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 12.000 de receita, R$ 3.000 em mídia e R$ 1.000 em outros custos → <strong>200,0%</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="cac" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">CAC</span><h3 id="h-cac">Custo de aquisição de clientes<small>Quanto custa conquistar um cliente?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Customer acquisition cost</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Quanto a empresa gasta, no total, para conquistar um novo cliente. Diferente do CPA, o CAC soma marketing e vendas.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>CAC = investimento em marketing e vendas ÷ novos clientes</p>
+          </div>
+          <form class="calc" data-kpi="cac" data-ex='{"inv":8000,"cust":20}' novalidate aria-label="Calculadora de Custo de aquisição de clientes">
+            <div class="row2"><div class="fld"><label for="cac-inv">Investimento em marketing e vendas</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="cac-inv" name="inv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cac-inv-h"></div><span class="hint" id="cac-inv-h">Mídia, salários, comissões, ferramentas.</span></div><div class="fld"><label for="cac-cust">Novos clientes</label><div class="inp"><input id="cac-cust" name="cust" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · CAC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o CAC sozinho não diz muito. Ele precisa ser comparado ao quanto o cliente deixa de retorno ao longo da relação, o LTV.</p>
+            <p><strong>Dica:</strong> use sempre o mesmo período no gasto e nos clientes. Se a venda leva meses, considere o atraso entre o investimento e o fechamento.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> R$ 8.000 em marketing e vendas para 20 novos clientes → <strong>R$ 400,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="ltv" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">LTV</span><h3 id="h-ltv">Valor do tempo de vida do cliente<small>Quanto um cliente vale ao longo do tempo?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">Lifetime value</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Estima quanto um cliente vale para o negócio durante toda a relação com a empresa. Ajuda a decidir quanto vale a pena pagar para conquistá-lo.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>LTV = ticket médio × compras por ano × anos de relação</p>
+          </div>
+          <form class="calc" data-kpi="ltv" data-ex='{"ticket":150,"freq":4,"years":3,"margin":50}' novalidate aria-label="Calculadora de Valor do tempo de vida do cliente">
+            <div class="row2"><div class="fld"><label for="ltv-ticket">Ticket médio</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltv-ticket" name="ticket" type="text" inputmode="decimal" autocomplete="off"></div></div><div class="fld"><label for="ltv-freq">Compras por ano</label><div class="inp"><input id="ltv-freq" name="freq" type="text" inputmode="decimal" autocomplete="off"></div></div></div>
+            <div class="row2"><div class="fld"><label for="ltv-years">Anos como cliente</label><div class="inp"><input id="ltv-years" name="years" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltv-years-h"></div><span class="hint" id="ltv-years-h">Tempo médio de permanência.</span></div><div class="fld"><label for="ltv-margin">Margem bruta (opcional)</label><div class="inp has-suf"><input id="ltv-margin" name="margin" type="text" inputmode="decimal" autocomplete="off"><span class="suf" aria-hidden="true">%</span></div></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · LTV</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> o LTV mostra o valor que o cliente deixa depois da primeira compra. Negócios com recompra (assinatura, escola, academia, e-commerce) costumam ter um LTV muito maior que o valor da primeira venda.</p>
+            <p><strong>Dica:</strong> para comparar com o CAC, prefira o LTV sobre a margem, que é mais conservador que o LTV sobre a receita.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> ticket de R$ 150, 4 compras por ano durante 3 anos e margem de 50% → <strong>R$ 1.800,00</strong></p>
+          </div>
+        </div>
+      </details>
+
+      <details class="kpi" id="ltvcac" data-cat="vendas">
+        <summary><span class="kabbr" aria-hidden="true">LTV:CAC</span><h3 id="h-ltvcac">Relação LTV por CAC<small>A conquista do cliente se paga?</small></h3></summary>
+        <div class="kbody">
+          <div class="kintro">
+            <ul class="ktags" aria-label="Indicado para"><li>Vendas</li><li class="en">LTV to CAC ratio</li></ul>
+            <p class="kwhat"><strong>O que é:</strong> Compara quanto o cliente retorna com quanto custou conquistá-lo. Mostra se o modelo de aquisição da empresa se paga.</p>
+            <p class="kformula"><span class="sr">Fórmula: </span>LTV:CAC = LTV ÷ CAC</p>
+          </div>
+          <form class="calc" data-kpi="ltvcac" data-ex='{"ltv":1800,"cac":400}' novalidate aria-label="Calculadora de Relação LTV por CAC">
+            <div class="row2"><div class="fld"><label for="ltvcac-ltv">LTV</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltvcac-ltv" name="ltv" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltvcac-ltv-h"></div><span class="hint" id="ltvcac-ltv-h">Calculado no card de LTV.</span></div><div class="fld"><label for="ltvcac-cac">CAC</label><div class="inp has-pre"><span class="pre" aria-hidden="true">R$</span><input id="ltvcac-cac" name="cac" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ltvcac-cac-h"></div><span class="hint" id="ltvcac-cac-h">Calculado no card de CAC.</span></div></div>
+            <div class="out empty" role="status" aria-live="polite"><span class="lbl">Resultado · LTV:CAC</span><span class="val">Preencha os campos</span><ul class="lines"></ul></div>
+            <div class="acts"><button type="button" class="btn btn-ghost on-light" data-act="ex">Ver exemplo</button><button type="button" class="btn btn-ghost on-light" data-act="clear">Limpar</button></div>
+          </form>
+          <div class="kread">
+            <h4>Como interpretar</h4>
+            <p><strong>Como ler:</strong> abaixo de 1x o cliente não paga o próprio custo; entre 1x e 3x o negócio se paga, mas com pouca folga; a regra prática de mercado mira 3x ou mais.</p>
+            <p><strong>Cuidado:</strong> é uma regra prática, não uma lei. Margem, prazo de retorno e caixa disponível mudam a conta de cada empresa.</p>
+            <p class="exemplo"><strong>Exemplo:</strong> LTV de R$ 1.800 e CAC de R$ 400 → <strong>4,50x</strong></p>
+          </div>
+        </div>
+      </details>
+      </div>
     </div>
   </section>
 
