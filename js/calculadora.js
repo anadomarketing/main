@@ -19,6 +19,7 @@
   }
   function pct(n, d) { return fmt(n, d === undefined ? 2 : d) + '%'; }
   function brl(n) { return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); }
+  function brlp(n, d) { return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: d, maximumFractionDigits: d }); }
   function xx(n) { return fmt(n, 2) + 'x'; }
   function n1(n) { return fmt(n, n >= 100 ? 0 : 1); }
   function zero(nome) { return { error: 'O campo "' + nome + '" precisa ser maior que zero.' }; }
@@ -292,6 +293,219 @@
         var out = { value: pct(r, 1), tone: r > 0 ? 'good' : (r === 0 ? 'warn' : 'bad'), lines: ['Venda incremental: ' + fmt(inc, 0) + ' (promoção ' + (inc >= 0 ? 'acima' : 'abaixo') + ' da base).'] };
         if (has(v.cost) && inc > 0) out.lines.push('Custo por unidade incremental: ' + brl(v.cost / inc) + ' (use vendas em unidades).');
         return out;
+      }
+    },
+    /* ---------- Tráfego e social media ---------- */
+    cpv: {
+      need: ['spend', 'views'],
+      run: function (v) {
+        if (v.views === 0) return zero('Visualizações');
+        var r = v.spend / v.views;
+        return { value: brlp(r, 3), lines: ['A cada mil visualizações você paga ' + brl(r * 1000) + '.'] };
+      }
+    },
+    vtr: {
+      need: ['views', 'imp'],
+      run: function (v) {
+        if (v.imp === 0) return zero('Impressões');
+        if (v.views > v.imp) return { error: 'As visualizações não podem passar das impressões.' };
+        var r = v.views / v.imp * 100;
+        return { value: pct(r), lines: [fmt(v.views, 0) + ' visualizações em ' + fmt(v.imp, 0) + ' impressões do vídeo.', 'Compare sempre com o mesmo critério de visualização (por exemplo, 3 segundos ou 15 segundos).'] };
+      }
+    },
+    cpi: {
+      need: ['spend', 'installs'],
+      run: function (v) {
+        if (v.installs === 0) return zero('Instalações');
+        return { value: brl(v.spend / v.installs), lines: [fmt(v.installs, 0) + ' instalações com ' + brl(v.spend) + ' investidos.'] };
+      }
+    },
+    alcance: {
+      need: ['reach', 'followers'],
+      run: function (v) {
+        if (v.followers === 0) return zero('Seguidores');
+        var r = v.reach / v.followers * 100;
+        var out = { value: pct(r), lines: [fmt(v.reach, 0) + ' pessoas alcançadas para ' + fmt(v.followers, 0) + ' seguidores.'] };
+        if (r > 100) out.lines.push('Acima de 100%: o conteúdo chegou a mais gente do que a sua base, ou seja, também a quem não segue.');
+        return out;
+      }
+    },
+    cresc: {
+      need: ['start', 'end'],
+      run: function (v) {
+        if (v.start === 0) return zero('Seguidores no início');
+        var d = v.end - v.start, r = d / v.start * 100;
+        var out = { value: pct(r), tone: d > 0 ? 'good' : (d < 0 ? 'bad' : 'warn'), lines: ['Saldo de ' + (d >= 0 ? '+' : '-') + fmt(Math.abs(d), 0) + ' seguidores no período.'] };
+        if (has(v.months) && v.months > 0) out.lines.push('Crescimento médio de ' + pct((Math.pow(v.end / v.start, 1 / v.months) - 1) * 100) + ' ao mês.');
+        return out;
+      }
+    },
+    sov: {
+      need: ['brand', 'total'],
+      run: function (v) {
+        if (v.total === 0) return zero('Total de menções');
+        if (v.brand > v.total) return { error: 'As menções da marca não podem passar do total do mercado.' };
+        var r = v.brand / v.total * 100;
+        var out = { value: pct(r), lines: ['De cada 100 menções ao setor, ' + fmt(r, 1) + ' são da sua marca.'] };
+        if (has(v.ms)) {
+          if (r >= v.ms) { out.tone = 'good'; out.lines.push('Share of voice acima do market share: regra prática que costuma anteceder ganho de participação.'); }
+          else { out.tone = 'warn'; out.lines.push('Share of voice abaixo do market share: a marca fala menos do que vende e pode perder espaço.'); }
+        } else out.lines.push('Informe o market share para comparar a voz da marca com a venda.');
+        return out;
+      }
+    },
+    resp: {
+      need: ['answered', 'received'],
+      run: function (v) {
+        if (v.received === 0) return zero('Mensagens recebidas');
+        if (v.answered > v.received) return { error: 'As mensagens respondidas não podem passar das recebidas.' };
+        var r = v.answered / v.received * 100;
+        return { value: pct(r), lines: [fmt(v.received - v.answered, 0) + ' mensagem(ns) ficaram sem resposta.'] };
+      }
+    },
+    /* ---------- Vendas ---------- */
+    ticket: {
+      need: ['revenue', 'orders'],
+      run: function (v) {
+        if (v.orders === 0) return zero('Número de pedidos');
+        return { value: brl(v.revenue / v.orders), lines: [brl(v.revenue) + ' em ' + fmt(v.orders, 0) + ' pedido(s).'] };
+      }
+    },
+    recompra: {
+      need: ['repeat', 'total'],
+      run: function (v) {
+        if (v.total === 0) return zero('Total de clientes');
+        if (v.repeat > v.total) return { error: 'Os clientes que recompraram não podem passar do total de clientes.' };
+        var r = v.repeat / v.total * 100;
+        return { value: pct(r), lines: [fmt(v.repeat, 0) + ' de ' + fmt(v.total, 0) + ' clientes compraram mais de uma vez.'] };
+      }
+    },
+    churn: {
+      need: ['lost', 'start'],
+      run: function (v) {
+        if (v.start === 0) return zero('Clientes no início');
+        if (v.lost > v.start) return { error: 'Os clientes perdidos não podem passar dos clientes do início do período.' };
+        var r = v.lost / v.start * 100;
+        var out = { value: pct(r), lines: ['Retenção no período: ' + pct(100 - r) + '.'] };
+        if (r > 0) out.lines.push('Se esse churn for mensal, o cliente permanece em média ' + fmt(100 / r, 1) + ' mês(es).');
+        return out;
+      }
+    },
+    mrr: {
+      need: ['customers', 'arpu'],
+      run: function (v) {
+        var r = v.customers * v.arpu;
+        var out = { value: brl(r), lines: ['Receita anualizada (ARR): ' + brl(r * 12) + '.'] };
+        if (has(v.churn)) out.lines.push('Com churn de ' + pct(v.churn) + ' ao mês, a receita em risco é de ' + brl(r * v.churn / 100) + ' por mês.');
+        return out;
+      }
+    },
+    payback: {
+      need: ['cac', 'arpu'],
+      run: function (v) {
+        var m = has(v.margin) ? v.margin : 100;
+        if (v.arpu === 0 || m === 0) return { error: 'A receita mensal por cliente e a margem precisam ser maiores que zero.' };
+        if (m > 100) return { error: 'A margem não pode passar de 100%.' };
+        var r = v.cac / (v.arpu * m / 100);
+        var out = { value: fmt(r, 1) + ' meses', lines: ['Cada cliente devolve ' + brl(v.arpu * m / 100) + ' por mês de ' + (has(v.margin) ? 'lucro bruto' : 'receita') + '.'] };
+        if (r <= 12) { out.tone = 'good'; out.lines.push('Até 12 meses: referência comum para considerar o retorno saudável em negócios recorrentes.'); }
+        else if (r <= 18) { out.tone = 'warn'; out.lines.push('Entre 12 e 18 meses: exige caixa para sustentar o crescimento.'); }
+        else { out.tone = 'bad'; out.lines.push('Acima de 18 meses: o custo de aquisição demora a se pagar.'); }
+        return out;
+      }
+    },
+    fechamento: {
+      need: ['won', 'opps'],
+      run: function (v) {
+        if (v.opps === 0) return zero('Oportunidades');
+        if (v.won > v.opps) return { error: 'As vendas fechadas não podem passar das oportunidades.' };
+        var out = { value: pct(v.won / v.opps * 100), lines: [fmt(v.won, 0) + ' venda(s) de ' + fmt(v.opps, 0) + ' oportunidades.'] };
+        if (has(v.leads) && v.leads > 0) {
+          if (v.opps > v.leads) return { error: 'As oportunidades não podem passar do total de leads.' };
+          out.lines.push('Do lead à venda: ' + pct(v.won / v.leads * 100) + ' (' + fmt(v.leads, 0) + ' leads).');
+        }
+        return out;
+      }
+    },
+    /* ---------- Trade marketing (extras) ---------- */
+    distw: {
+      need: ['withb', 'total'],
+      run: function (v) {
+        if (v.total === 0) return zero('Venda total da categoria');
+        if (v.withb > v.total) return { error: 'A venda dos PDVs com a marca não pode passar da venda total da categoria.' };
+        var r = v.withb / v.total * 100;
+        return { value: pct(r), lines: ['Os PDVs que vendem a marca respondem por ' + pct(r, 1) + ' da venda da categoria no universo.', 'Compare com a distribuição numérica: se a ponderada for maior, a marca está nas lojas mais importantes.'] };
+      }
+    },
+    sellthru: {
+      need: ['sold', 'received'],
+      run: function (v) {
+        if (v.received === 0) return zero('Unidades recebidas');
+        var r = v.sold / v.received * 100;
+        var out = { value: pct(r, 1), lines: [fmt(v.sold, 0) + ' vendidas de ' + fmt(v.received, 0) + ' recebidas pelo varejo.'] };
+        if (r > 100) out.lines.push('Acima de 100%: o varejo vendeu também estoque anterior ao período.');
+        return out;
+      }
+    },
+    giro: {
+      need: ['sales', 'stock'],
+      run: function (v) {
+        if (v.stock === 0) return zero('Estoque médio');
+        var d = has(v.days) && v.days > 0 ? v.days : 30;
+        var out = { value: xx(v.sales / v.stock), lines: ['O estoque foi renovado ' + fmt(v.sales / v.stock, 2) + ' vez(es) em ' + fmt(d, 0) + ' dia(s).'] };
+        if (v.sales > 0) out.lines.push('Cobertura: ' + fmt(v.stock / (v.sales / d), 1) + ' dia(s) de venda no estoque.');
+        else out.lines.push('Sem vendas no período, a cobertura não pode ser calculada.');
+        return out;
+      }
+    },
+    fill: {
+      need: ['ordered', 'delivered'],
+      run: function (v) {
+        if (v.ordered === 0) return zero('Quantidade pedida');
+        if (v.delivered > v.ordered) return { error: 'A quantidade entregue não pode passar da pedida.' };
+        var r = v.delivered / v.ordered * 100;
+        return { value: pct(r), lines: ['Faltaram ' + fmt(v.ordered - v.delivered, 0) + ' unidade(s) para atender o pedido completo.'] };
+      }
+    },
+    plano: {
+      need: ['ok', 'total'],
+      run: function (v) {
+        if (v.total === 0) return zero('Itens do planograma');
+        if (v.ok > v.total) return { error: 'Os itens corretos não podem passar do total do planograma.' };
+        return { value: pct(v.ok / v.total * 100), lines: [fmt(v.total - v.ok, 0) + ' item(ns) fora do lugar, da frente ou do preço combinado.'] };
+      }
+    },
+    pstore: {
+      need: ['pts', 'max'],
+      run: function (v) {
+        if (v.max === 0) return zero('Pontos possíveis');
+        if (v.pts > v.max) return { error: 'Os pontos obtidos não podem passar dos pontos possíveis.' };
+        var r = v.pts / v.max * 100;
+        return { value: pct(r, 1), lines: [fmt(v.pts, 0) + ' de ' + fmt(v.max, 0) + ' pontos da auditoria.', 'Perdeu ' + fmt(v.max - v.pts, 0) + ' ponto(s): veja em quais critérios para priorizar a correção.'] };
+      }
+    },
+    preco: {
+      need: ['mine', 'comp'],
+      run: function (v) {
+        if (v.comp === 0) return zero('Preço do concorrente');
+        var i = v.mine / v.comp * 100, d = i - 100;
+        return { value: fmt(i, 1), lines: [d > 0 ? 'Seu preço está ' + pct(d, 1) + ' acima do concorrente (posicionamento premium).' : (d < 0 ? 'Seu preço está ' + pct(-d, 1) + ' abaixo do concorrente.' : 'Seu preço é igual ao do concorrente.'), 'Índice 100 = mesmo preço. Compare produtos equivalentes (mesmo tamanho e gramatura).'] };
+      }
+    },
+    roipromo: {
+      need: ['units', 'margin', 'cost'],
+      run: function (v) {
+        if (v.cost === 0) return zero('Custo da promoção');
+        var profit = v.units * v.margin, r = (profit - v.cost) / v.cost * 100;
+        return { value: pct(r, 1), tone: r > 0 ? 'good' : (r < 0 ? 'bad' : 'warn'), lines: ['Lucro incremental: ' + brl(profit) + ' para ' + brl(v.cost) + ' de custo.', 'Resultado líquido da promoção: ' + brl(profit - v.cost) + '.'] };
+      }
+    },
+    canib: {
+      need: ['gross', 'lost'],
+      run: function (v) {
+        if (v.gross === 0) return zero('Venda incremental do item promovido');
+        var net = v.gross - v.lost, r = v.lost / v.gross * 100;
+        return { value: pct(r, 1), tone: net < 0 ? 'bad' : (r > 30 ? 'warn' : 'good'), lines: ['Venda incremental líquida: ' + fmt(net, 0) + ' unidade(s) (' + fmt(v.gross, 0) + ' do item promovido menos ' + fmt(v.lost, 0) + ' perdidas em outros itens da marca).', net < 0 ? 'A promoção tirou mais venda dos seus outros produtos do que trouxe.' : 'Parte da venda extra veio de produtos da própria marca, não de consumo novo.'] };
       }
     },
     ltvcac: {
