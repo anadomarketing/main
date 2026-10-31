@@ -298,14 +298,36 @@
       c.hidden = !ok; if (ok) shown++;
     });
     if (cnt) cnt.textContent = 'Mostrando ' + shown + ' de ' + cards.length + ' indicadores';
+    if (typeof syncToggle === 'function') syncToggle();
     if (push) {
       try { history.replaceState(null, '', f === 'todos' ? location.pathname : '?perfil=' + f); } catch (e) {}
       track('kpi_filtro', { perfil: f, pagina: location.pathname });
     }
   }
   btns.forEach(function (b) { b.addEventListener('click', function () { setFilter(b.dataset.filter, true); }); });
+  /* Expandir / recolher todos (somente os visíveis) */
+  var tgl = d.getElementById('toggleAll');
+  function syncToggle() {
+    var vis = cards.filter(function (c) { return !c.hidden; });
+    var all = vis.length > 0 && vis.every(function (c) { return c.open; });
+    if (tgl) { tgl.textContent = all ? 'Recolher todos' : 'Expandir todos'; tgl.setAttribute('aria-pressed', all ? 'true' : 'false'); }
+  }
+  if (tgl) tgl.addEventListener('click', function () {
+    var open = tgl.getAttribute('aria-pressed') !== 'true';
+    cards.forEach(function (c) { if (!c.hidden) c.open = open; });
+    syncToggle();
+  });
+  cards.forEach(function (c) {
+    c.addEventListener('toggle', function () {
+      syncToggle();
+      if (c.open) track('kpi_aberto', { kpi: c.id, pagina: location.pathname });
+    });
+  });
   var p = 'todos';
   try { p = new URLSearchParams(location.search).get('perfil') || 'todos'; } catch (e) {}
   if (!btns.some(function (b) { return b.dataset.filter === p; })) p = 'todos';
   setFilter(p, false);
+  syncToggle();
+  var hid = (location.hash || '').slice(1), tg = hid && d.getElementById(hid);
+  if (tg && tg.classList.contains('kpi')) { tg.hidden = false; tg.open = true; setTimeout(function () { tg.scrollIntoView(); }, 50); }
 })(this);
