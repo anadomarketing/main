@@ -1,12 +1,13 @@
 /* Calculadora de KPIs — usa os tokens de /css/style.css */
 .bhero{padding:112px 0 56px;background:radial-gradient(900px 400px at 85% 10%,rgba(130,66,250,.28),transparent 60%),var(--ink);color:#fff}
-.bhero h1{font-size:clamp(2rem,6.5vw,3.6rem);font-weight:800;max-width:20ch}
+.bhero{text-align:center}
+.bhero h1{font-size:clamp(2rem,6.5vw,3.6rem);font-weight:800;max-width:20ch;margin-inline:auto}
 .bhero h1 em{font-style:normal;color:var(--accent-l)}
-.bhero .lead{font-size:1.15rem;color:#C5CBD6;max-width:60ch;margin:18px 0 0}
-.crumb{display:flex;flex-wrap:wrap;font-size:.88rem;color:#98A0AE;margin-bottom:18px}
+.bhero .lead{font-size:1.15rem;color:#C5CBD6;max-width:60ch;margin:18px auto 0}
+.crumb{display:flex;flex-wrap:wrap;justify-content:center;font-size:.88rem;color:#98A0AE;margin-bottom:18px}
 .crumb a{text-decoration:none}.crumb a:hover{color:var(--accent-l)}
 .crumb>*+*::before{content:"/";margin:0 8px;opacity:.5}
-.pmeta-line{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:20px;font-size:.92rem;color:#B9C0CC}
+.pmeta-line{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin-top:20px;font-size:.92rem;color:#B9C0CC}
 .pmeta-line strong{color:#fff;font-weight:600}
 
 /* Filtro */
