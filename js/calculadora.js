@@ -173,6 +173,127 @@
         return out;
       }
     },
+    /* ---------- Trade marketing ---------- */
+    osa: {
+      need: ['items', 'avail'],
+      run: function (v) {
+        if (v.items === 0) return zero('Itens auditados');
+        if (v.avail > v.items) return { error: 'Os itens disponíveis não podem passar dos itens auditados.' };
+        var r = v.avail / v.items * 100;
+        return { value: pct(r), lines: ['Ruptura equivalente: ' + pct(100 - r) + ' dos itens estavam faltando na gôndola.', fmt(v.items - v.avail, 0) + ' de ' + fmt(v.items, 0) + ' itens sem disponibilidade.'] };
+      }
+    },
+    ruptura: {
+      need: ['audit', 'out'],
+      run: function (v) {
+        if (v.audit === 0) return zero('Itens auditados');
+        if (v.out > v.audit) return { error: 'Os itens em ruptura não podem passar dos itens auditados.' };
+        var r = v.out / v.audit * 100;
+        var out = { value: pct(r), lines: ['OSA equivalente: ' + pct(100 - r) + '.'] };
+        if (has(v.daily) && has(v.days)) {
+          out.lines.push('Venda perdida estimada: ' + brl(v.out * v.daily * v.days) + ' (' + fmt(v.out, 0) + ' itens x ' + brl(v.daily) + ' por dia x ' + fmt(v.days, 0) + ' dia(s)).');
+        } else out.lines.push('Informe a venda média diária por item e os dias em ruptura para estimar a venda perdida.');
+        return out;
+      }
+    },
+    mshare: {
+      need: ['brand', 'market'],
+      run: function (v) {
+        if (v.market === 0) return zero('Vendas do mercado');
+        if (v.brand > v.market) return { error: 'As vendas da marca não podem passar das vendas do mercado.' };
+        var r = v.brand / v.market * 100;
+        var out = { value: pct(r), lines: ['Cada R$ 100 vendidos na categoria, R$ ' + fmt(r, 2) + ' foram da sua marca.'] };
+        if (has(v.prev)) {
+          var d = r - v.prev;
+          out.tone = d > 0 ? 'good' : (d < 0 ? 'bad' : 'warn');
+          out.lines.push((d > 0 ? 'Ganho' : (d < 0 ? 'Perda' : 'Sem variação')) + ' de ' + fmt(Math.abs(d), 2) + ' ponto(s) percentual(is) frente ao período anterior.');
+        } else out.lines.push('Informe o share do período anterior para ver se a marca ganhou ou perdeu espaço.');
+        return out;
+      }
+    },
+    shelf: {
+      need: ['fac', 'total'],
+      run: function (v) {
+        if (v.total === 0) return zero('Total de frentes da categoria');
+        if (v.fac > v.total) return { error: 'As frentes da marca não podem passar do total da categoria.' };
+        var r = v.fac / v.total * 100;
+        var out = { value: pct(r), lines: [fmt(v.fac, 0) + ' de ' + fmt(v.total, 0) + ' frentes na gôndola são da marca.'] };
+        if (has(v.ms)) {
+          var d = r - v.ms;
+          if (d >= 0) { out.tone = 'good'; out.lines.push('Gôndola ' + fmt(d, 2) + ' p.p. acima do market share: espaço proporcional ou maior que a venda.'); }
+          else { out.tone = 'warn'; out.lines.push('Gôndola ' + fmt(-d, 2) + ' p.p. abaixo do market share: pode haver espaço a negociar.'); }
+        } else out.lines.push('Informe o market share para comparar o espaço de gôndola com a venda da marca.');
+        return out;
+      }
+    },
+    dist: {
+      need: ['pdv', 'universe'],
+      run: function (v) {
+        if (v.universe === 0) return zero('Total de PDVs do universo');
+        if (v.pdv > v.universe) return { error: 'Os PDVs com a marca não podem passar do universo.' };
+        var r = v.pdv / v.universe * 100;
+        return { value: pct(r), lines: ['A marca está presente em ' + fmt(v.pdv, 0) + ' de ' + fmt(v.universe, 0) + ' PDVs.', 'Oportunidade: ' + fmt(v.universe - v.pdv, 0) + ' PDVs do universo ainda não vendem a marca.'] };
+      }
+    },
+    mpdv: {
+      need: ['done', 'planned'],
+      run: function (v) {
+        if (v.planned === 0) return zero('PDVs planejados');
+        if (v.done > v.planned) return { error: 'Os PDVs executados não podem passar dos planejados.' };
+        var r = v.done / v.planned * 100;
+        var out = { value: pct(r), lines: [fmt(v.planned - v.done, 0) + ' PDV(s) planejado(s) ficaram sem o material.'] };
+        if (has(v.inv) && v.done > 0) out.lines.push('Custo por PDV executado: ' + brl(v.inv / v.done) + '.');
+        return out;
+      }
+    },
+    visitas: {
+      need: ['done', 'planned'],
+      run: function (v) {
+        if (v.planned === 0) return zero('Visitas planejadas');
+        var r = v.done / v.planned * 100;
+        var out = { value: pct(r), lines: [fmt(v.done, 0) + ' de ' + fmt(v.planned, 0) + ' visitas planejadas foram realizadas.'] };
+        if (v.done < v.planned) out.lines.push('Faltaram ' + fmt(v.planned - v.done, 0) + ' visita(s) para cumprir o roteiro.');
+        if (has(v.days) && has(v.promo) && v.days > 0 && v.promo > 0) out.lines.push('Produtividade: ' + fmt(v.done / (v.days * v.promo), 1) + ' visita(s) por pessoa por dia.');
+        return out;
+      }
+    },
+    sellout: {
+      need: ['units', 'price'],
+      run: function (v) {
+        var r = v.units * v.price;
+        var out = { value: brl(r), lines: [fmt(v.units, 0) + ' unidade(s) vendida(s) ao consumidor final no ponto de venda.'] };
+        if (has(v.sellin)) {
+          if (v.sellin === 0) return zero('Sell-in');
+          var st = v.units / v.sellin * 100;
+          out.lines.push('Sell-through: ' + pct(st, 1) + ' do que foi enviado ao varejo já foi vendido ao consumidor.');
+        } else out.lines.push('Informe o sell-in (vendas ao varejo) para calcular o sell-through.');
+        return out;
+      }
+    },
+    elast: {
+      need: ['p0', 'p1', 'q0', 'q1'],
+      run: function (v) {
+        if (v.p0 === 0 || v.q0 === 0) return { error: 'Preço antes e quantidade antes precisam ser maiores que zero.' };
+        var dp = (v.p1 - v.p0) / v.p0 * 100, dq = (v.q1 - v.q0) / v.q0 * 100;
+        if (dp === 0) return { error: 'O preço precisa mudar para calcular a elasticidade.' };
+        var e = dq / dp;
+        var out = { value: fmt(e, 2), lines: ['Preço variou ' + pct(dp, 1) + ' e a quantidade vendida variou ' + pct(dq, 1) + '.'] };
+        var a = Math.abs(e);
+        out.lines.push(a > 1 ? 'Demanda elástica (|e| > 1): o consumidor reage forte ao preço.' : (a === 1 ? 'Elasticidade unitária: receita praticamente estável.' : 'Demanda inelástica (|e| < 1): o consumidor reage pouco ao preço.'));
+        out.lines.push('Receita: ' + brl(v.p0 * v.q0) + ' antes e ' + brl(v.p1 * v.q1) + ' depois.');
+        return out;
+      }
+    },
+    lift: {
+      need: ['base', 'promo'],
+      run: function (v) {
+        if (v.base === 0) return zero('Vendas sem promoção');
+        var inc = v.promo - v.base, r = inc / v.base * 100;
+        var out = { value: pct(r, 1), tone: r > 0 ? 'good' : (r === 0 ? 'warn' : 'bad'), lines: ['Venda incremental: ' + fmt(inc, 0) + ' (promoção ' + (inc >= 0 ? 'acima' : 'abaixo') + ' da base).'] };
+        if (has(v.cost) && inc > 0) out.lines.push('Custo por unidade incremental: ' + brl(v.cost / inc) + ' (use vendas em unidades).');
+        return out;
+      }
+    },
     ltvcac: {
       need: ['ltv', 'cac'],
       run: function (v) {
