@@ -209,7 +209,6 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
   .nav{display:flex}
   footer{padding-bottom:28px}
   .hero{padding:150px 0 100px}
-  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;gap:60px}
   .cases{grid-template-columns:repeat(3,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}
   .skills{grid-template-columns:repeat(4,1fr)}
