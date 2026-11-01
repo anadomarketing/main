@@ -67,8 +67,10 @@
 
   /* Consentimento + Google Tag Manager (só carrega após aceite) */
   var box = d.getElementById('consent');
+  if(box){var bp=box.querySelector('p');if(bp)bp.textContent='Uso cookies de medição (Google Tag Manager e Microsoft Clarity) para entender como o site é usado, incluindo mapas de calor e gravações anônimas de sessão. Você pode recusar sem perder nenhum conteúdo.'}
+  function loadClarity(){if(w.__clr)return;w.__clr=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(w,d,'clarity','script','z6lw4hqz32')}
   function loadGTM() {
-    if (w.__gtm) return; w.__gtm = 1;
+    if (w.__gtm) return; w.__gtm = 1; loadClarity();
     w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
     var s = d.createElement('script'); s.async = true;
     s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5H2NS7RF';
