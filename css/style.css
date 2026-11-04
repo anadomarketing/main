@@ -70,9 +70,10 @@ section{padding:72px 0}
 .hero .sub{font-size:1.15rem;color:#C5CBD6;max-width:52ch;margin:22px 0 14px}
 .hero .proof{font:500 .88rem/1.5 var(--mono);color:#98A0AE;margin-bottom:28px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
-.hero figure{margin:0;position:relative;max-width:380px;justify-self:center;width:100%}
-.hero figure::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid var(--accent);border-radius:50%}
-.hero figure img{position:relative;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 25%;border-radius:50%;background:#222a35}
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero .hero-bg{position:absolute;right:0;bottom:0;width:76%;height:auto;max-height:100%;object-fit:cover;object-position:left bottom;opacity:.65;z-index:-2}
+.hero .hero-bg{display:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 26%,rgba(14,17,22,.7) 44%,rgba(14,17,22,.1) 100%),linear-gradient(180deg,var(--ink) 0%,var(--ink) 16%,rgba(14,17,22,0) 42%,rgba(14,17,22,0) 70%,var(--ink) 100%)}
 
 /* Logos + números */
 .proofbar{background:var(--white);padding:40px 0;border-bottom:1px solid var(--line)}
@@ -209,6 +210,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
   .nav{display:flex}
   footer{padding-bottom:28px}
   .hero{padding:150px 0 100px}
+  .hero .hero-bg{display:block}
   .cases{grid-template-columns:repeat(3,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}
   .skills{grid-template-columns:repeat(4,1fr)}
