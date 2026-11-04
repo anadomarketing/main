@@ -57,6 +57,7 @@
 .calc{display:grid;gap:12px}
 .row2{display:grid;gap:12px}
 .fld{display:grid;gap:6px;min-width:0}
+.fld[hidden]{display:none}
 .fld label{font-weight:600;font-size:.92rem;line-height:1.3}
 .hint{font-size:.8rem;color:var(--muted);line-height:1.35}
 .inp{position:relative;display:flex;align-items:center}
