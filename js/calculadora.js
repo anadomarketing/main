@@ -23,6 +23,7 @@
   function xx(n) { return fmt(n, 2) + 'x'; }
   function n1(n) { return fmt(n, n >= 100 ? 0 : 1); }
   function zero(nome) { return { error: 'O campo "' + nome + '" precisa ser maior que zero.' }; }
+  function vezes(n) { return (n >= 1e6 ? fmt(n / 1e6, 2) + ' milhões de' : fmt(n, 0)) + ' vezes'; }
   function has(v) { return v !== null && v !== undefined; }
 
   /* ---------- Fórmulas ----------
@@ -38,8 +39,24 @@
       }
     },
     cpm: {
-      need: ['spend', 'imp'],
+      need: [],
       run: function (v) {
+        var m = v.mode || 'cpm';
+        if (m === 'imp') {
+          if (!has(v.spend) || !has(v.cpmv)) return null;
+          if (v.cpmv === 0) return zero('CPM');
+          var i = v.spend / v.cpmv * 1000;
+          return { label: 'Impressões estimadas', value: fmt(i, 0), lines: [
+            'Com ' + brl(v.spend) + ' e CPM de ' + brl(v.cpmv) + ', o anúncio aparece cerca de ' + vezes(i) + '.',
+            'Cada R$ 1.000 compra cerca de ' + fmt(1000 / v.cpmv * 1000, 0) + ' impressões a esse CPM.',
+            'São impressões, não pessoas: o alcance será menor, conforme a frequência.'] };
+        }
+        if (m === 'spend') {
+          if (!has(v.imp) || !has(v.cpmv)) return null;
+          var s = v.imp * v.cpmv / 1000;
+          return { label: 'Investimento necessário', value: brl(s), lines: ['Para ' + vezes(v.imp) + ' a um CPM de ' + brl(v.cpmv) + ', o investimento estimado é ' + brl(s) + '.'] };
+        }
+        if (!has(v.spend) || !has(v.imp)) return null;
         if (v.imp === 0) return zero('Impressões');
         var r = v.spend / v.imp * 1000;
         return { value: brl(r), lines: ['É quanto você paga para o anúncio aparecer 1.000 vezes.'] };
@@ -508,6 +525,186 @@
         return { value: pct(r, 1), tone: net < 0 ? 'bad' : (r > 30 ? 'warn' : 'good'), lines: ['Venda incremental líquida: ' + fmt(net, 0) + ' unidade(s) (' + fmt(v.gross, 0) + ' do item promovido menos ' + fmt(v.lost, 0) + ' perdidas em outros itens da marca).', net < 0 ? 'A promoção tirou mais venda dos seus outros produtos do que trouxe.' : 'Parte da venda extra veio de produtos da própria marca, não de consumo novo.'] };
       }
     },
+    mer: {
+      need: ['rev', 'spend'],
+      run: function (v) {
+        if (v.spend === 0) return zero('Gasto total de marketing');
+        var r = v.rev / v.spend;
+        var out = { value: xx(r), lines: ['Cada R$ 1 gasto em marketing, somando todos os canais, trouxe ' + brl(r) + ' de receita total.'] };
+        if (has(v.margin)) {
+          if (v.margin <= 0 || v.margin > 100) return { error: 'A margem de contribuição deve estar entre 0 e 100%.' };
+          var be = 100 / v.margin;
+          out.lines.push('MER de equilíbrio com essa margem: ' + xx(be) + '.');
+          if (r > be) { out.tone = 'good'; out.lines.push('Acima do equilíbrio: o marketing se paga e ainda deixa margem.'); }
+          else if (r === be) { out.tone = 'warn'; out.lines.push('Exatamente no equilíbrio: a margem cobre só o gasto de marketing.'); }
+          else { out.tone = 'bad'; out.lines.push('Abaixo do equilíbrio: a margem não cobre o gasto de marketing.'); }
+        } else out.lines.push('Informe a margem de contribuição para ver o MER mínimo para não ter prejuízo.');
+        return out;
+      }
+    },
+    roasbe: {
+      need: ['margin'],
+      run: function (v) {
+        if (v.margin <= 0 || v.margin > 100) return { error: 'A margem de contribuição deve estar entre 0 e 100%.' };
+        var be = 100 / v.margin;
+        var out = { value: xx(be), lines: ['Com margem de ' + pct(v.margin, 1) + ', cada R$ 1 em anúncios precisa trazer pelo menos ' + brl(be) + ' de receita para empatar.'] };
+        if (has(v.roas)) {
+          var d = (v.roas / be - 1) * 100;
+          if (v.roas > be) { out.tone = 'good'; out.lines.push('Seu ROAS de ' + xx(v.roas) + ' está ' + pct(d, 1) + ' acima do equilíbrio: sobra margem depois da mídia.'); }
+          else if (v.roas === be) { out.tone = 'warn'; out.lines.push('Seu ROAS está exatamente no equilíbrio: a margem cobre só a mídia.'); }
+          else { out.tone = 'bad'; out.lines.push('Seu ROAS de ' + xx(v.roas) + ' está ' + pct(-d, 1) + ' abaixo do equilíbrio: cada venda dá prejuízo depois de pagar a mídia.'); }
+        } else out.lines.push('Informe o ROAS atual para comparar com o equilíbrio.');
+        return out;
+      }
+    },
+    poas: {
+      need: ['rev', 'margin', 'inv'],
+      run: function (v) {
+        if (v.inv === 0) return zero('Investimento em anúncios');
+        if (v.margin <= 0 || v.margin > 100) return { error: 'A margem de contribuição deve estar entre 0 e 100%.' };
+        var profit = v.rev * v.margin / 100, r = profit / v.inv;
+        var out = { value: xx(r), lines: ['Lucro bruto gerado: ' + brl(profit) + ' para ' + brl(v.inv) + ' em anúncios.', 'Resultado depois da mídia: ' + brl(profit - v.inv) + '.', 'Para comparar, o ROAS dessa campanha é ' + xx(v.rev / v.inv) + '.'] };
+        out.tone = r > 1 ? 'good' : (r === 1 ? 'warn' : 'bad');
+        return out;
+      }
+    },
+    cpamax: {
+      need: ['ticket', 'margin'],
+      run: function (v) {
+        if (v.margin <= 0 || v.margin > 100) return { error: 'A margem de contribuição deve estar entre 0 e 100%.' };
+        var mx = v.ticket * v.margin / 100;
+        var out = { value: brl(mx), lines: ['Cada venda deixa ' + brl(mx) + ' de margem: é o máximo que cabe gastar para conquistar essa venda sem prejuízo na primeira compra.'] };
+        if (has(v.cpa)) {
+          var d = mx - v.cpa;
+          if (d > 0) { out.tone = 'good'; out.lines.push('Seu CPA de ' + brl(v.cpa) + ' está ' + brl(d) + ' abaixo do teto (folga de ' + pct(d / mx * 100, 1) + ').'); }
+          else if (d === 0) { out.tone = 'warn'; out.lines.push('Seu CPA está exatamente no teto.'); }
+          else { out.tone = 'bad'; out.lines.push('Seu CPA de ' + brl(v.cpa) + ' passa do teto em ' + brl(-d) + ': cada venda dá prejuízo na primeira compra.'); }
+        } else out.lines.push('Informe o CPA atual para comparar com o teto.');
+        out.lines.push('Se o cliente costuma recomprar, o teto pode ser maior: considere o LTV.');
+        return out;
+      }
+    },
+    ncac: {
+      need: ['spend', 'newc'],
+      run: function (v) {
+        if (v.newc === 0) return zero('Clientes novos');
+        var r = v.spend / v.newc;
+        var out = { value: brl(r), lines: ['Cada cliente novo custou ' + brl(r) + ' em aquisição.'] };
+        if (has(v.total)) {
+          if (v.total < v.newc) return { error: 'O total de pedidos não pode ser menor que os clientes novos.' };
+          out.lines.push('Clientes novos foram ' + pct(v.newc / v.total * 100, 1) + ' dos pedidos do período.');
+          out.lines.push('O custo por pedido misturado seria ' + brl(v.spend / v.total) + ', o que esconde o custo real de conquistar um cliente novo.');
+        } else out.lines.push('Informe o total de pedidos para ver quanto da venda veio de clientes novos.');
+        return out;
+      }
+    },
+    cplq: {
+      need: ['spend', 'qual'],
+      run: function (v) {
+        if (v.qual === 0) return zero('Leads qualificados');
+        var r = v.spend / v.qual;
+        var out = { value: brl(r), lines: ['Cada lead qualificado custou ' + brl(r) + '.'] };
+        if (has(v.leads)) {
+          if (v.leads === 0) return zero('Total de leads');
+          if (v.qual > v.leads) return { error: 'Os leads qualificados não podem passar do total de leads.' };
+          out.lines.push('CPL bruto: ' + brl(v.spend / v.leads) + '. Só ' + pct(v.qual / v.leads * 100, 1) + ' dos leads foram qualificados.');
+          out.lines.push('O lead qualificado custa ' + fmt(v.leads / v.qual, 1) + 'x o lead bruto.');
+        } else out.lines.push('Informe o total de leads para comparar com o CPL bruto.');
+        return out;
+      }
+    },
+    funil: {
+      need: ['mql', 'sql', 'won'],
+      run: function (v) {
+        if (v.mql === 0) return zero('MQL');
+        if (v.sql > v.mql) return { error: 'Os SQL não podem passar dos MQL.' };
+        if (v.won > v.sql) return { error: 'As vendas não podem passar dos SQL.' };
+        var lines = [];
+        if (has(v.leads)) {
+          if (v.leads === 0) return zero('Leads');
+          if (v.mql > v.leads) return { error: 'Os MQL não podem passar do total de leads.' };
+          lines.push('Lead → MQL: ' + pct(v.mql / v.leads * 100, 1) + '.');
+        }
+        lines.push('MQL → SQL: ' + pct(v.sql / v.mql * 100, 1) + '.');
+        lines.push('SQL → venda: ' + (v.sql ? pct(v.won / v.sql * 100, 1) : '—') + '.');
+        lines.push('A cada 100 MQL, ' + fmt(v.won / v.mql * 100, 1) + ' viram venda. Compare cada etapa com o histórico para achar onde o funil vaza.');
+        return { label: 'MQL → venda', value: pct(v.won / v.mql * 100, 1), lines: lines };
+      }
+    },
+    impshare: {
+      need: ['imp', 'elig'],
+      run: function (v) {
+        if (v.elig === 0) return zero('Impressões elegíveis');
+        if (v.imp > v.elig) return { error: 'As impressões recebidas não podem passar das elegíveis.' };
+        var r = v.imp / v.elig * 100;
+        var out = { value: pct(r, 1), lines: ['O anúncio apareceu em ' + fmt(v.imp, 0) + ' de ' + fmt(v.elig, 0) + ' oportunidades. Deixou passar ' + fmt(v.elig - v.imp, 0) + '.'] };
+        if (has(v.lb) && has(v.lr)) {
+          if (v.lb + v.lr > 100.5) return { error: 'As perdas por orçamento e por classificação não podem somar mais de 100%.' };
+          if (v.lb > v.lr) out.lines.push('A maior perda é por orçamento (' + pct(v.lb, 1) + '): vale revisar a verba, horários e a distribuição entre campanhas.');
+          else if (v.lr > v.lb) out.lines.push('A maior perda é por classificação (' + pct(v.lr, 1) + '): vale revisar lances, qualidade do anúncio e página de destino.');
+          else out.lines.push('As duas perdas pesam igual (' + pct(v.lb, 1) + ' cada).');
+        } else out.lines.push('Informe as perdas por orçamento e por classificação para saber o que limita a entrega.');
+        return out;
+      }
+    },
+    iroas: {
+      need: ['revt', 'revc', 'inv'],
+      run: function (v) {
+        if (v.inv === 0) return zero('Investimento em anúncios');
+        var inc = v.revt - v.revc, r = inc / v.inv;
+        var out = { value: xx(r), lines: [] };
+        if (inc <= 0) { out.tone = 'bad'; out.lines.push('O grupo sem anúncios vendeu igual ou mais: não há venda incremental mensurável.'); return out; }
+        out.lines.push('Receita incremental: ' + brl(inc) + ', ou ' + pct(inc / v.revt * 100, 1) + ' da receita do grupo com anúncios. O resto aconteceria de qualquer forma.');
+        if (has(v.rep) && v.rep > 0) out.lines.push('O ROAS informado pela plataforma foi ' + xx(v.rep) + '. O iROAS equivale a ' + pct(r / v.rep * 100, 1) + ' dele.');
+        return out;
+      }
+    },
+    veloc: {
+      need: ['opps', 'ticket', 'win', 'cycle'],
+      run: function (v) {
+        if (v.cycle === 0) return zero('Ciclo médio de vendas');
+        if (v.win > 100) return { error: 'A taxa de ganho deve estar entre 0 e 100%.' };
+        var r = v.opps * v.ticket * v.win / 100 / v.cycle;
+        return { value: brl(r) + '/dia', lines: ['Em 30 dias: cerca de ' + brl(r * 30) + ' em vendas fechadas.', 'Melhorar em 10% qualquer um dos quatro fatores (ou encurtar o ciclo em 10%) eleva a velocidade em 10% a 11%.'] };
+      }
+    },
+    abandono: {
+      need: ['carts', 'orders'],
+      run: function (v) {
+        if (v.carts === 0) return zero('Carrinhos criados');
+        if (v.orders > v.carts) return { error: 'As compras não podem passar dos carrinhos criados.' };
+        var ab = v.carts - v.orders, r = ab / v.carts * 100;
+        var back = ab * 0.1;
+        var out = { value: pct(r, 1), lines: [fmt(ab, 0) + ' carrinho(s) foram abandonados.', 'Recuperar 10% deles daria cerca de ' + fmt(back, 0) + ' pedido(s) a mais' + (has(v.ticket) ? ', ou ' + brl(back * v.ticket) + ' em receita.' : '.')] };
+        return out;
+      }
+    },
+    rpv: {
+      need: ['rev', 'visitors'],
+      run: function (v) {
+        if (v.visitors === 0) return zero('Visitantes');
+        var r = v.rev / v.visitors;
+        var out = { value: brl(r), lines: ['Cada 1.000 visitantes geraram cerca de ' + brl(r * 1000) + ' em receita.'] };
+        if (has(v.orders) && v.orders > 0) {
+          if (v.orders > v.visitors) return { error: 'As compras não podem passar dos visitantes.' };
+          out.lines.push('RPV = taxa de conversão (' + pct(v.orders / v.visitors * 100, 2) + ') × ticket médio (' + brl(v.rev / v.orders) + ').');
+        } else out.lines.push('Informe o número de compras para ver a conversão e o ticket médio por trás do RPV.');
+        return out;
+      }
+    },
+    hook: {
+      need: ['imp', 'v3'],
+      run: function (v) {
+        if (v.imp === 0) return zero('Impressões');
+        if (v.v3 > v.imp) return { error: 'As visualizações de 3 segundos não podem passar das impressões.' };
+        var out = { label: 'Hook rate', value: pct(v.v3 / v.imp * 100, 1), lines: ['De cada 100 impressões, ' + fmt(v.v3 / v.imp * 100, 1) + ' pessoas assistiram pelo menos 3 segundos.'] };
+        if (has(v.v15)) {
+          if (v.v15 > v.v3) return { error: 'As visualizações de 15 segundos não podem passar das de 3 segundos.' };
+          out.lines.push('Hold rate: ' + (v.v3 ? pct(v.v15 / v.v3 * 100, 1) : '—') + ' de quem passou dos 3 segundos chegou aos 15.');
+        } else out.lines.push('Informe as visualizações de 15 segundos para ver o hold rate.');
+        return out;
+      }
+    },
     ltvcac: {
       need: ['ltv', 'cac'],
       run: function (v) {
@@ -570,6 +767,7 @@
     var v = {}, bad = false;
     [].forEach.call(form.elements, function (el) {
       if (!el.name) return;
+      if (el.closest && el.closest('[hidden]')) return;
       if (el.tagName === 'SELECT') { v[el.name] = el.value; return; }
       var n = num(el.value);
       if (n !== null && isNaN(n)) { bad = true; el.setAttribute('aria-invalid', 'true'); } else el.removeAttribute('aria-invalid');
@@ -577,8 +775,10 @@
     });
     return { v: v, bad: bad };
   }
-  function paint(form, state, value, lines, tone) {
+  function paint(form, state, value, lines, tone, label) {
     var out = form.querySelector('.out');
+    var lb = out.querySelector('.lbl');
+    if (lb) { if (!form.dataset.lbl0) form.dataset.lbl0 = lb.textContent; lb.textContent = label ? 'Resultado · ' + label : form.dataset.lbl0; }
     out.className = 'out ' + state + (tone ? ' ' + tone : '');
     out.querySelector('.val').textContent = value;
     var ul = out.querySelector('.lines'); ul.textContent = '';
@@ -592,14 +792,21 @@
     var res = def.run(r.v);
     if (!res) return paint(form, 'empty', 'Preencha os campos', []);
     if (res.error) return paint(form, 'err', 'Confira os números', [res.error]);
-    paint(form, 'ok', res.value, res.lines, res.tone);
+    paint(form, 'ok', res.value, res.lines, res.tone, res.label);
     if (!fired[key]) { fired[key] = 1; track('kpi_calculado', { kpi: key, pagina: location.pathname }); }
   }
   function toStr(n) { return typeof n === 'number' ? n.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) : String(n); }
 
+  function applyMode(form) {
+    var sel = form.elements.mode; if (!sel) return;
+    [].forEach.call(form.querySelectorAll('[data-modes]'), function (f) { f.hidden = f.dataset.modes.split(' ').indexOf(sel.value) < 0; });
+  }
+
   [].forEach.call(d.querySelectorAll('form.calc'), function (form) {
+    applyMode(form);
     form.addEventListener('input', function () { calc(form); });
     form.addEventListener('change', function (e) {
+      if (e.target.name === 'mode') applyMode(form);
       if (e.target.name === 'basis') {
         var lb = form.querySelector('[data-baselabel]');
         if (lb) lb.textContent = { alcance: 'Alcance do período', seguidores: 'Seguidores', impressoes: 'Impressões do período' }[e.target.value] || 'Alcance do período';
@@ -610,7 +817,7 @@
     form.addEventListener('click', function (e) {
       var b = e.target.closest('[data-act]'); if (!b) return;
       if (b.dataset.act === 'clear') {
-        form.reset();
+        form.reset(); applyMode(form);
         var lb = form.querySelector('[data-baselabel]'); if (lb) lb.textContent = 'Alcance do período';
         [].forEach.call(form.elements, function (el) { el.removeAttribute('aria-invalid'); });
       }
@@ -618,6 +825,7 @@
         var ex = {}; try { ex = JSON.parse(form.dataset.ex || '{}'); } catch (err) {}
         form.reset();
         Object.keys(ex).forEach(function (k) { if (form.elements[k]) form.elements[k].value = toStr(ex[k]); });
+        applyMode(form);
         var sel = form.elements.basis; if (sel) sel.dispatchEvent(new Event('change', { bubbles: true }));
       }
       calc(form);
