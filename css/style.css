@@ -224,9 +224,11 @@ dialog::backdrop{background:rgba(8,10,14,.72)}
 .who span{font-size:.8rem;color:var(--muted);line-height:1.25;display:block}
 
 /* Contato */
-.contact{background:radial-gradient(700px 360px at 10% 0%,rgba(130,66,250,.3),transparent 60%),var(--ink);color:#fff;text-align:center}
+.contact{position:relative;overflow:hidden;isolation:isolate;background:var(--ink);color:#fff;text-align:center}
+.contact .contact-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.15;z-index:-2;pointer-events:none;user-select:none}
+.contact::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(700px 360px at 10% 0%,rgba(130,66,250,.3),transparent 60%),linear-gradient(180deg,var(--ink) 0%,rgba(14,17,22,.45) 30%,rgba(14,17,22,.45) 70%,var(--ink) 100%)}
 .contact .sec-title{margin-inline:auto}
-.contact .sec-lead{margin-inline:auto}
+.contact .sec-lead{margin-inline:auto;color:#D5DAE3}
 .contact .cta-row{justify-content:center}
 .links{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:28px;font-size:.95rem}
 .links a{color:#C5CBD6;display:inline-flex;align-items:center;gap:8px;min-height:44px}
