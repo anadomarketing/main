@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de precificação, markup e margem de lucro | Ana D&#x27;avilla</title>
+<meta name="description" content="Calcule o preço de venda ideal com impostos, despesas variáveis e margem de lucro desejada. Entenda a diferença entre markup e margem e veja se cobre os custos fixos.">
+<meta name="author" content="Ana C. D'avilla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1116">
+<link rel="canonical" href="https://anadomkt.com.br/ferramentas/calculadora-markup-margem/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238242fa'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ana D'avilla">
+<meta property="og:title" content="Calculadora de precificação, markup e margem de lucro | Ana D&#x27;avilla">
+<meta property="og:description" content="Calcule o preço de venda ideal com impostos, despesas variáveis e margem de lucro desejada. Entenda a diferença entre markup e margem e veja se cobre os custos fixos.">
+<meta property="og:url" content="https://anadomkt.com.br/ferramentas/calculadora-markup-margem/">
+<meta property="og:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadora de precificação, markup e margem de lucro | Ana D&#x27;avilla">
+<meta name="twitter:description" content="Calcule o preço de venda ideal com impostos, despesas variáveis e margem de lucro desejada. Entenda a diferença entre markup e margem e veja se cobre os custos fixos.">
+<meta name="twitter:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/blog.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Calculadora de precificação e margem de lucro (markup)", "url": "https://anadomkt.com.br/ferramentas/calculadora-markup-margem/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "description": "Calcule o preço de venda ideal com impostos, despesas variáveis e margem de lucro desejada. Entenda a diferença entre markup e margem e veja se cobre os custos fixos.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "author": {"@type": "Person", "name": "Ana C. D'avilla", "url": "https://anadomkt.com.br/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://anadomkt.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://anadomkt.com.br/ferramentas/"}, {"@type": "ListItem", "position": 3, "name": "Precificação e markup", "item": "https://anadomkt.com.br/ferramentas/calculadora-markup-margem/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre markup e margem de lucro?", "acceptedAnswer": {"@type": "Answer", "text": "Markup é calculado sobre o custo; margem é calculada sobre o preço de venda. Por isso 100% de markup corresponde a 50% de margem. O preço correto parte da margem desejada sobre o preço."}}, {"@type": "Question", "name": "Como calcular o preço de venda com margem de lucro?", "acceptedAnswer": {"@type": "Answer", "text": "Divida o custo por (1 menos a soma das porcentagens de impostos, despesas variáveis e margem desejada). Exemplo: custo de R$ 100, impostos de 8%, variáveis de 7% e margem de 20% dão R$ 100 ÷ 0,65 = R$ 153,85."}}, {"@type": "Question", "name": "Como saber se o preço cobre meus custos fixos?", "acceptedAnswer": {"@type": "Answer", "text": "Informe os custos fixos mensais e o volume de vendas: a calculadora rateia o custo fixo por unidade, mostra o ponto de equilíbrio e, se você preencher o preço atual, indica se ele cobre a estrutura."}}]}]}
+</script>
+<style>
+.tf-sec{background:var(--paper);padding:48px 0 64px}
+.tf-grid{display:grid;gap:22px;align-items:start}
+.tf-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px}
+.tf-card h2{font:800 1.15rem/1.3 var(--display);margin:0 0 4px}
+.tf-card .hint{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.tf-f{display:grid;gap:14px}
+.tf-r2{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.tf-fld label{display:block;font-weight:700;font-size:.88rem;margin-bottom:6px;color:#2a303b}
+.tf-fld small{display:block;color:var(--muted);font-size:.78rem;margin-top:5px;line-height:1.4}
+.tf-in{position:relative}
+.tf-in span{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;font-size:.92rem;pointer-events:none}
+.tf-in span.r{left:auto;right:13px}
+.tf-in input,.tf-fld select{width:100%;font:600 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 13px 12px 40px;min-height:46px;transition:border-color .15s,box-shadow .15s}
+.tf-in input.p{padding-left:13px;padding-right:34px}
+.tf-fld select{padding-left:13px}
+.tf-in input:focus,.tf-fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(130,66,250,.15);background:#fff}
+.tf-chk{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:#2a303b;line-height:1.4}
+.tf-chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent)}
+.tf-sep{height:1px;background:var(--line);margin:6px 0}
+.tf-res{background:linear-gradient(160deg,#171C24,#0E1116);color:#fff;border-radius:22px;padding:28px 24px;border:1px solid #262c38}
+.tf-res .lbl{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#A9B0BD;font-weight:700}
+.tf-big{font:800 clamp(2.1rem,7vw,3rem)/1.1 var(--display);letter-spacing:-.02em;color:#fff;margin:6px 0 2px}
+.tf-big em{font-style:normal;color:var(--accent-l)}
+.tf-sub{color:#C5CBD6;font-size:.95rem;margin:0 0 18px}
+.tf-bar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#262c38;margin:6px 0 14px}
+.tf-bar i{display:block;height:100%}
+.tf-ls{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.tf-ls li{display:flex;justify-content:space-between;gap:12px;font-size:.93rem;color:#DDE1E8;padding:0;margin:0}
+.tf-ls li::before{display:none!important;content:none!important}
+.tf-ls li span:first-child{display:flex;align-items:center;gap:9px}
+.tf-ls li span:first-child::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c,#8242fa);flex:none}
+.tf-ls b{font-weight:700;color:#fff;white-space:nowrap}
+.tf-tot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #333a48;margin-top:14px;padding-top:14px;font-weight:700}
+.tf-box{margin-top:16px;padding:16px;border-radius:14px;background:rgba(130,66,250,.14);border:1px solid rgba(166,123,255,.35);font-size:.93rem;line-height:1.55;color:#E6E9F0}
+.tf-box strong{color:#fff}
+.tf-box.warn{background:rgba(255,170,60,.12);border-color:rgba(255,170,60,.45)}
+.tf-box.bad{background:rgba(255,90,90,.13);border-color:rgba(255,110,110,.5)}
+.tf-box.ok{background:rgba(60,200,140,.12);border-color:rgba(70,210,150,.45)}
+.tf-box h3{font:800 .95rem var(--display);margin:0 0 6px;color:#fff}
+.tf-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
+.tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
+.tf-kpis span{font-size:.78rem;color:#A9B0BD}
+.tf-info{margin-top:30px;display:grid;gap:22px}
+.tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
+.tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
+.tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tf-tb th,.tf-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.tf-tb th{background:#EDE8FB;font-weight:800;font-size:.85rem}
+.tf-note{font-size:.84rem;color:var(--muted);line-height:1.55;margin-top:14px}
+.tf-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.tf-faq summary{font-weight:700;cursor:pointer}
+.tf-faq p{margin:10px 0 0}
+@media (min-width:900px){.tf-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}.tf-res{position:sticky;top:84px}}
+@media (max-width:420px){.tf-r2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/blog/">Blog</a>
+      <a href="/ferramentas/" class="active">Ferramentas</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+<section class="bhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/ferramentas/">Ferramentas</a><span>Precificação e markup</span></nav>
+    <h1>Precifique certo: <em>markup</em> não é margem.</h1>
+    <p class="lead">Informe custo, impostos, despesas variáveis e a margem desejada. A ferramenta entrega o preço ideal e avisa se ele cobre os custos fixos.</p>
+  </div>
+</section>
+<section class="tf-sec">
+  <div class="wrap">
+<div class="tf-grid">
+<div class="tf-card"><h2>Dados do produto ou serviço</h2><p class="hint">Informe os custos e a margem que você quer. Todas as porcentagens incidem sobre o preço de venda.</p>
+<div class="tf-f"><div class="tf-fld"><label for="custo">Custo unitário do produto/serviço</label><div class="tf-in"><span>R$</span><input id="custo" type="text" inputmode="decimal" value="100,00" placeholder="" autocomplete="off"></div><small>Compra, produção ou custo direto de entregar uma unidade.</small></div>
+<div class="tf-r2"><div class="tf-fld"><label for="imp">Impostos sobre a venda</label><div class="tf-in"><input class="p" id="imp" type="text" inputmode="decimal" value="8" placeholder="" autocomplete="off"><span class="r">%</span></div><small>Simples, ICMS, ISS etc.</small></div><div class="tf-fld"><label for="var">Despesas variáveis</label><div class="tf-in"><input class="p" id="var" type="text" inputmode="decimal" value="7" placeholder="" autocomplete="off"><span class="r">%</span></div><small>Comissão, taxa de cartão, frete.</small></div></div>
+<div class="tf-fld"><label for="mar">Margem de lucro desejada</label><div class="tf-in"><input class="p" id="mar" type="text" inputmode="decimal" value="20" placeholder="" autocomplete="off"><span class="r">%</span></div><small>Lucro líquido sobre o preço de venda.</small></div>
+<div class="tf-sep"></div>
+<div class="tf-r2"><div class="tf-fld"><label for="fix">Custos fixos mensais</label><div class="tf-in"><span>R$</span><input id="fix" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div><small>Aluguel, salários, ferramentas.</small></div><div class="tf-fld"><label for="vol">Vendas por mês (unidades)</label><div class="tf-in"><span>un</span><input id="vol" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div><small>Para ratear o custo fixo.</small></div></div>
+<div class="tf-fld"><label for="pp">Preço que você pratica hoje (opcional)</label><div class="tf-in"><span>R$</span><input id="pp" type="text" inputmode="decimal" value="" placeholder="Ex.: 150,00" autocomplete="off"></div><small>Preencha para descobrir sua margem real.</small></div>
+</div></div>
+<div class="tf-res" aria-live="polite">
+<div class="lbl">Preço de venda ideal</div>
+<div class="tf-big" id="o-p">R$ 0,00</div>
+<p class="tf-sub" id="o-s"></p>
+<div class="tf-kpis"><div><b id="k-mk">0%</b><span>Markup sobre o custo</span></div><div><b id="k-x">0x</b><span>Multiplicador</span></div><div><b id="k-mc">R$ 0</b><span>Margem de contribuição</span></div><div><b id="k-min">R$ 0</b><span>Preço mínimo (lucro zero)</span></div></div>
+<div class="tf-bar" id="o-bar"></div>
+<ul class="tf-ls" id="o-ls"></ul>
+<div class="tf-box" id="o-eq" hidden></div>
+<div class="tf-box" id="o-msg"></div>
+</div></div>
+    <div class="tf-info"><div class="tf-faq"><h2>Perguntas frequentes</h2><details><summary>Qual a diferença entre markup e margem de lucro?</summary><p>Markup é calculado sobre o custo; margem é calculada sobre o preço de venda. Por isso 100% de markup corresponde a 50% de margem. O preço correto parte da margem desejada sobre o preço.</p></details><details><summary>Como calcular o preço de venda com margem de lucro?</summary><p>Divida o custo por (1 menos a soma das porcentagens de impostos, despesas variáveis e margem desejada). Exemplo: custo de R$ 100, impostos de 8%, variáveis de 7% e margem de 20% dão R$ 100 ÷ 0,65 = R$ 153,85.</p></details><details><summary>Como saber se o preço cobre meus custos fixos?</summary><p>Informe os custos fixos mensais e o volume de vendas: a calculadora rateia o custo fixo por unidade, mostra o ponto de equilíbrio e, se você preencher o preço atual, indica se ele cobre a estrutura.</p></details></div>
+<div><h2>Markup e margem de lucro: qual a diferença?</h2><p>Markup é o percentual aplicado <strong>sobre o custo</strong>. Margem é o percentual do lucro <strong>sobre o preço de venda</strong>. Um markup de 100% (preço = 2x o custo) dá margem de apenas 50%. Confundir os dois é um dos erros de precificação mais comuns.</p>
+<table class="tf-tb"><thead><tr><th>Markup sobre o custo</th><th>Margem sobre o preço</th></tr></thead><tbody><tr><td>25%</td><td>20%</td></tr><tr><td>50%</td><td>33,3%</td></tr><tr><td>100%</td><td>50%</td></tr><tr><td>150%</td><td>60%</td></tr></tbody></table></div>
+<div><h2>A fórmula usada</h2><p><strong>Preço = (custo + custo fixo por unidade) ÷ (1 − impostos − despesas variáveis − margem desejada)</strong>. Impostos, despesas variáveis e margem são percentuais do preço, por isso a soma deles precisa ficar abaixo de 100%.</p><p class="tf-note">Estimativa de apoio à decisão. Não considera sazonalidade, descontos nem mudanças de regime tributário. Valide os impostos com seu contador.</p></div></div>
+  </div>
+</section>
+<section class="contact" id="contato">
+  <img class="contact-bg" src="/img/contato-fundo-planejamento-marketing-1600.webp" srcset="/img/contato-fundo-planejamento-marketing-800.webp 800w, /img/contato-fundo-planejamento-marketing-1600.webp 1600w" sizes="100vw" width="1600" height="1045" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low">
+  <div class="wrap">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2 class="sec-title">Quer conversar sobre o seu projeto?</h2>
+    <p class="sec-lead">Mídia, CRM, dados ou automação: me conte o que você precisa.</p>
+    <div class="cta-row"><a class="btn btn-primary" data-wa="ferramentas" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/#cases">Ver cases</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap" style="justify-content:center;text-align:center">
+    <span>© 2026 Ana C. D'avilla · Todos os direitos reservados.</span>
+  </div>
+</footer>
+<div class="fab"><a class="fab-btn" data-wa="fab" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div>
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Uso cookies de medição (Google Tag Manager) para entender como o site é usado. Você pode recusar sem perder nenhum conteúdo.</p>
+  <div class="row"><button class="btn btn-ghost" data-consent="no" type="button">Recusar</button><button class="btn btn-primary" data-consent="yes" type="button">Aceitar</button></div>
+</div>
+<script src="/js/blog.js" defer></script>
+<script>
+(function(){function num(v){v=String(v||'').trim();if(!v)return 0;if(v.indexOf(',')>-1)v=v.replace(/\./g,'').replace(',','.');else if(!/^\d+\.\d{1,2}$/.test(v))v=v.replace(/\./g,'');var n=parseFloat(v);return isFinite(n)?n:0}
+function brl(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function pct(n,d){return n.toLocaleString('pt-BR',{minimumFractionDigits:d==null?1:d,maximumFractionDigits:d==null?1:d})+'%'}
+function $(i){return document.getElementById(i)}
+
+var cols=['#4f7cff','#f0a53c','#a67bff','#ff6b6b','#3cc88c'];
+function calc(){
+ var C=num($('custo').value),t=num($('imp').value)/100,v=num($('var').value)/100,m=num($('mar').value)/100,F=num($('fix').value),N=num($('vol').value),Pp=num($('pp').value);
+ var den=1-t-v-m,msg=$('o-msg'),eq=$('o-eq');eq.hidden=true;
+ if(den<=0){$('o-p').textContent='Inviável';$('o-s').textContent='';msg.className='tf-box bad';msg.innerHTML='<h3>Margem impossível</h3>A soma de impostos ('+pct(t*100)+'), despesas variáveis ('+pct(v*100)+') e margem ('+pct(m*100)+') chega a '+pct((t+v+m)*100)+' do preço. Passou de 100%, nenhum preço fecha a conta. Reduza a margem ou as despesas.';['k-mk','k-x','k-mc','k-min'].forEach(function(i){$(i).textContent='-'});$('o-bar').innerHTML='';$('o-ls').innerHTML='';return}
+ var rat=N>0?F/N:0,P=(C+rat)/den,mcu=P*(1-t-v)-C,mk=C>0?(P-C)/C:0,pmin=(C+rat)/(1-t-v);
+ $('o-p').textContent=brl(P);
+ $('o-s').textContent=N>0&&F>0?'Já inclui '+brl(rat)+' de custo fixo por unidade.':'Sem rateio de custos fixos (informe custos fixos e volume para incluir).';
+ $('k-mk').textContent=pct(mk*100);$('k-x').textContent=(C>0?P/C:0).toLocaleString('pt-BR',{maximumFractionDigits:2,minimumFractionDigits:2})+'x';$('k-mc').textContent=brl(mcu);$('k-min').textContent=brl(pmin);
+ var it=[['Custo do produto/serviço',C],['Rateio de custos fixos',rat],['Impostos',P*t],['Despesas variáveis',P*v],['Lucro líquido',P*m]],bar='',ls='';
+ it.forEach(function(x,i){if(x[1]<=0)return;bar+='<i style="width:'+(x[1]/P*100)+'%;background:'+cols[i]+'" title="'+x[0]+'"></i>';ls+='<li style="--c:'+cols[i]+'"><span>'+x[0]+'</span><b>'+brl(x[1])+'</b></li>'});
+ $('o-bar').innerHTML=bar;$('o-ls').innerHTML=ls;
+ var h='',cls='tf-box ok';
+ if(F>0){var be=mcu>0?Math.ceil(F/mcu):0;h+='Ponto de equilíbrio no preço ideal: <strong>'+be.toLocaleString('pt-BR')+' unidades/mês</strong> para cobrir os custos fixos de '+brl(F)+'.<br>'}
+ if(Pp>0){
+  var mcp=Pp*(1-t-v)-C,mreal=(mcp-rat)/Pp,mkp=C>0?(Pp-C)/C:0,res=N>0?mcp*N-F:null;
+  eq.hidden=false;
+  eq.innerHTML='<h3>Markup não é margem</h3>Seu preço atual de '+brl(Pp)+' é um markup de <strong>'+pct(mkp*100)+'</strong> sobre o custo, mas a margem real de lucro é de <strong>'+pct(mreal*100)+'</strong> sobre o preço, depois de impostos, despesas variáveis'+(rat>0?' e custo fixo':'')+'.';
+  if(mreal<0){cls='tf-box bad';h+='<br>Com o preço atual você <strong>tem prejuízo</strong> por unidade vendida.'}
+  else if(mreal<m){cls='tf-box warn';h+='<br>Seu preço atual rende menos que a margem desejada. Para chegar a '+pct(m*100)+', precisa vender a <strong>'+brl(P)+'</strong>.'}
+  if(res!==null)h+='<br>Resultado mensal estimado com '+N.toLocaleString('pt-BR')+' unidades: <strong>'+brl(res)+'</strong>'+(res<0?' (não cobre os custos fixos).':' (cobre os custos fixos).');
+  else if(F>0)h+='<br>Informe as vendas por mês para ver se o preço atual cobre os custos fixos.';
+ }else if(F>0&&N<=0){cls='tf-box warn';h+='<br>Informe as vendas mensais para ratear o custo fixo no preço.'}
+ if(!h){h='Preço calculado: custo ÷ (1 − impostos − despesas variáveis − margem). Informe custos fixos e volume para checar se a margem cobre a estrutura.'}
+ msg.className=cls;msg.innerHTML=h;
+}
+['custo','imp','var','mar','fix','vol','pp'].forEach(function(i){$(i).addEventListener('input',calc)});
+calc();})();
+</script>
+</body>
+</html>
