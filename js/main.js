@@ -129,3 +129,30 @@
     sync();
   });
 })();
+
+/* Contagem animada dos números da Trajetória */
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el) {
+    var end = parseFloat(el.getAttribute('data-count')), pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '';
+    var dur = 1600, t0 = null;
+    function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(end * e) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (x) { if (x.isIntersecting) { run(x.target); io.unobserve(x.target); } });
+  }, { threshold: 0.6 });
+  els.forEach(function (el) {
+    var pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '';
+    el.textContent = pre + '0' + suf;
+    io.observe(el);
+  });
+})();
