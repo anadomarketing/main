@@ -103,10 +103,17 @@ section{padding:72px 0}
 /* Logos + números */
 .proofbar{background:var(--white);padding:40px 0;border-bottom:1px solid var(--line)}
 .proofbar p{font:600 .78rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:20px}
-.proofbar p.wl{font:500 1rem/1.4 var(--body);letter-spacing:0;text-transform:none;color:var(--ink);margin:-8px 0 24px}
+.proofbar p.pb-title{font-size:.98rem}
+.proofbar p.wl{font:400 .84rem/1.4 var(--body);letter-spacing:0;text-transform:none;color:var(--muted);margin:-10px 0 26px}
 .logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 36px}
-.logos img{height:34px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:.2s}
+.logos img{height:41px;width:auto;max-width:156px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:.2s}
 .logos img:hover{filter:none;opacity:1}
+.marquee{overflow:hidden;width:100%}
+.marquee .logos{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:0;width:max-content;animation:lg-scroll 55s linear infinite;will-change:transform}
+.marquee .logos li{flex:none;display:flex;align-items:center;padding:0 30px}
+.marquee:hover .logos{animation-play-state:paused}
+@keyframes lg-scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.marquee .logos{animation:none}.marquee .logos li[aria-hidden]{display:none}}
 .logos .wm{font:700 1.15rem/1 var(--display);letter-spacing:-.01em;color:#6b7280;white-space:nowrap}
 
 /* Cases */
@@ -179,6 +186,17 @@ dialog::backdrop{background:rgba(8,10,14,.72)}
 
 /* Depoimentos */
 .quotes{display:grid;gap:16px}
+.qcar{position:relative}
+.qtrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.qtrack::-webkit-scrollbar{display:none}
+.qtrack:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--r)}
+.qtrack .quote{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.qnav{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.qbtn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .15s,color .15s,opacity .15s}
+.qbtn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.qbtn:disabled{opacity:.35;cursor:default}
+.no-js .qnav{display:none}
+@media (prefers-reduced-motion:reduce){.qtrack{scroll-behavior:auto}}
 .quote{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px}
 .quote h3{font-size:1.15rem;font-weight:800;line-height:1.25}
 .quote p{font-size:.95rem;color:var(--muted);margin:0}
@@ -193,7 +211,9 @@ dialog::backdrop{background:rgba(8,10,14,.72)}
 .contact .sec-lead{margin-inline:auto}
 .contact .cta-row{justify-content:center}
 .links{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:28px;font-size:.95rem}
-.links a{color:#C5CBD6}
+.links a{color:#C5CBD6;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.links .ic{flex:none}
+.cta-row .ic{flex:none}
 .links a:hover{color:var(--accent-l)}
 footer{background:#080A0E;color:#8A92A0;padding:28px 0 96px;font-size:.88rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
@@ -223,6 +243,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 /* Tablet */
 @media (min-width:700px){
   .cases,.quotes,.skills{grid-template-columns:repeat(2,1fr)}
+  .qtrack .quote{flex-basis:calc((100% - 16px)/2)}
   .certs{grid-template-columns:repeat(2,1fr)}
   .res{grid-template-columns:repeat(4,1fr)}
   .consent{left:auto;right:16px;max-width:420px}
@@ -238,6 +259,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
   .hero .hero-bg{display:block}
   .cases{grid-template-columns:repeat(3,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}
+  .qtrack .quote{flex-basis:calc((100% - 32px)/3)}
   .skills{grid-template-columns:repeat(4,1fr)}
   .steps{grid-template-columns:repeat(4,1fr)}
   .steps li{flex-direction:column;border-left:0;border-top:3px solid var(--accent);border-radius:0 0 12px 12px}
