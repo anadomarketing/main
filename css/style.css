@@ -76,9 +76,9 @@ section{padding:72px 0}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 26%,rgba(14,17,22,.7) 44%,rgba(14,17,22,.1) 100%),linear-gradient(180deg,var(--ink) 0%,var(--ink) 16%,rgba(14,17,22,0) 42%,rgba(14,17,22,0) 70%,var(--ink) 100%)}
 
 /* FAQ e links da home */
-.hfaq{margin-top:24px}
-.hq{margin-bottom:10px;break-inside:avoid}
-@media (min-width:760px){.hfaq{column-count:2;column-gap:16px}.hq{margin-bottom:12px}}
+.hfaq{margin-top:24px;display:grid;gap:10px;align-items:start}
+.hcol{display:grid;gap:10px;align-content:start}
+@media (min-width:760px){.hfaq{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 .hq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px}
 .hq summary{cursor:pointer;font-weight:700;line-height:1.4;display:flex;align-items:flex-start;gap:12px;list-style:none}
 .hq summary::-webkit-details-marker{display:none}
