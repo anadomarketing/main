@@ -72,7 +72,9 @@ section{padding:72px 0}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
 .hero{position:relative;overflow:hidden;isolation:isolate}
 .hero .hero-bg{position:absolute;right:0;bottom:0;width:76%;height:auto;max-height:100%;object-fit:cover;object-position:left bottom;opacity:.65;z-index:-2}
-.hero .hero-bg{display:none}
+@media (max-width:859px){.hero::after{background:linear-gradient(180deg,var(--ink) 0%,rgba(14,17,22,.78) 38%,rgba(14,17,22,.45) 100%)}}
+/* mobile: imagem do notebook visível, mais suave */
+.hero .hero-bg{display:block;right:0;bottom:0;left:0;width:100%;height:78%;max-height:none;object-fit:cover;object-position:32% bottom;opacity:.42;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 45%);mask-image:linear-gradient(180deg,transparent 0%,#000 45%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 26%,rgba(14,17,22,.7) 44%,rgba(14,17,22,.1) 100%),linear-gradient(180deg,var(--ink) 0%,var(--ink) 16%,rgba(14,17,22,0) 42%,rgba(14,17,22,0) 70%,var(--ink) 100%)}
 
 /* FAQ e links da home */
@@ -279,7 +281,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
   .nav{display:flex}
   footer{padding-bottom:28px}
   .hero{padding:150px 0 100px}
-  .hero .hero-bg{display:block}
+  .hero .hero-bg{right:0;left:auto;width:76%;height:auto;max-height:100%;object-position:left bottom;opacity:.65;-webkit-mask-image:none;mask-image:none}
   .cases{grid-template-columns:repeat(3,1fr)}
   .quotes{grid-template-columns:repeat(3,1fr)}
   .qtrack .quote{flex-basis:calc((100% - 32px)/3)}
