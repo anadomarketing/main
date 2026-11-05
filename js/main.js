@@ -104,6 +104,26 @@
       tr.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: 'smooth' });
       track('depoimentos_seta', { sentido: b.dataset.dir === '1' ? 'proximo' : 'anterior' });
     });
+    /* Arrastar com o mouse (toque já rola nativamente) */
+    var drag = null;
+    tr.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    tr.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      drag = { x: e.clientX, left: tr.scrollLeft, moved: false };
+    });
+    w.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (!drag.moved && Math.abs(dx) > 4) { drag.moved = true; tr.classList.add('dragging'); }
+      if (drag.moved) tr.scrollLeft = drag.left - dx;
+    });
+    function endDrag() {
+      if (!drag) return;
+      var moved = drag.moved; drag = null;
+      if (moved) { tr.classList.remove('dragging'); sync(); track('depoimentos_arrastar', {}); }
+    }
+    w.addEventListener('pointerup', endDrag);
+    w.addEventListener('pointercancel', endDrag);
     tr.addEventListener('scroll', function () { w.requestAnimationFrame(sync); }, { passive: true });
     w.addEventListener('resize', sync);
     sync();
