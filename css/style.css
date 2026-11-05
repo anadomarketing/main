@@ -76,17 +76,30 @@ section{padding:72px 0}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 26%,rgba(14,17,22,.7) 44%,rgba(14,17,22,.1) 100%),linear-gradient(180deg,var(--ink) 0%,var(--ink) 16%,rgba(14,17,22,0) 42%,rgba(14,17,22,0) 70%,var(--ink) 100%)}
 
 /* FAQ e links da home */
-.hfaq{display:grid;gap:10px;max-width:820px;margin-top:24px}
+.hfaq{margin-top:24px}
+.hq{margin-bottom:10px;break-inside:avoid}
+@media (min-width:760px){.hfaq{column-count:2;column-gap:16px}.hq{margin-bottom:12px}}
 .hq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px}
-.hq summary{cursor:pointer;font-weight:700;line-height:1.4}
+.hq summary{cursor:pointer;font-weight:700;line-height:1.4;display:flex;align-items:flex-start;gap:12px;list-style:none}
+.hq summary::-webkit-details-marker{display:none}
+.hq summary::after{content:"+";margin-left:auto;font:800 1.3rem/1.1 var(--mono);color:var(--accent);flex:none}
+.hq[open] summary::after{content:"−"}
 .hq p{margin:10px 0 0;color:#3b4150;line-height:1.65}
-.hq a,.rlinks a strong{color:var(--accent-d)}
+.hq a{color:var(--accent-d)}
 .hq a{text-decoration:underline;text-underline-offset:3px}
-.rlinks{display:grid;gap:14px;margin-top:24px}
-.rlinks a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;text-decoration:none;height:100%}
-.rlinks a span{display:block;margin-top:6px;color:#3b4150;font-size:.97rem;line-height:1.5}
-.rlinks a:hover{border-color:var(--accent)}
+.cf{text-align:center}
+.cf .sec-title,.cf .sec-lead{margin-inline:auto}
+.rlinks{display:grid;gap:18px;margin-top:36px;text-align:center}
+.rlinks a{display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:32px 24px 26px;text-decoration:none;color:var(--ink);transition:transform .2s,border-color .2s,box-shadow .2s}
+.rlinks a:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 14px 34px rgba(130,66,250,.16)}
+.rlinks .ri{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent-d));color:#fff;margin-bottom:6px;box-shadow:0 8px 20px rgba(130,66,250,.3)}
+.rlinks strong{font:800 1.2rem/1.25 var(--display);letter-spacing:-.01em}
+.rlinks .rd{color:#3b4150;font-size:.97rem;line-height:1.55;max-width:34ch}
+.rlinks .rgo{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;font-weight:700;color:var(--accent-d)}
+.rlinks .rgo svg{transition:transform .2s}
+.rlinks a:hover .rgo svg{transform:translateX(4px)}
 @media (min-width:900px){.rlinks{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){.rlinks a,.rlinks .rgo svg{transition:none}.rlinks a:hover{transform:none}}
 
 .terms{display:grid;gap:12px;margin-top:24px}
 .term{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
@@ -221,8 +234,11 @@ footer a{color:#B9C0CC}
 footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoration:underline;cursor:pointer;padding:0}
 
 /* CTA fixo mobile + cookies */
-.fab{position:fixed;left:16px;right:16px;bottom:16px;z-index:40}
-.fab .btn{width:100%;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.fab{position:fixed;right:18px;bottom:18px;z-index:40}
+.fab-btn{display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .15s,background .15s}
+.fab-btn:hover{background:#1ebe5a;transform:scale(1.06)}
+.fab-btn:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--accent)}
+@media (prefers-reduced-motion:reduce){.fab-btn{transition:none}}
 .consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:#fff;color:var(--ink);border-radius:14px;padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.35);display:none;gap:12px;flex-direction:column;font-size:.9rem}
 .consent.show{display:flex}
 .consent p{margin:0}
@@ -251,7 +267,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 /* Desktop */
 @media (min-width:980px){
   section{padding:104px 0}
-  .burger,.fab{display:none}
+  .burger{display:none}
   .top .wrap{justify-content:center}
   .nav{display:flex}
   footer{padding-bottom:28px}
