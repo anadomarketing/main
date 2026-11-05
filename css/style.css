@@ -118,7 +118,7 @@ section{padding:72px 0}
 /* Logos + números */
 .proofbar{background:var(--white);padding:40px 0;border-bottom:1px solid var(--line)}
 .proofbar p{font:600 .78rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:20px}
-.proofbar p.pb-title{font-size:.98rem}
+.proofbar p.pb-title{font-size:.98rem;margin-bottom:36px}
 .proofbar p.wl{font:400 .84rem/1.4 var(--body);letter-spacing:0;text-transform:none;color:var(--muted);margin:-10px 0 26px}
 .logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 36px}
 .logos img{height:41px;width:auto;max-width:156px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:.2s}
