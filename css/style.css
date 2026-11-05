@@ -290,3 +290,33 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
   .cols{grid-template-columns:1.25fr 1fr;gap:72px}
   .certs{grid-template-columns:1fr}
 }
+
+/* Trajetória */
+.tj-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0 20px}
+.tj-st{background:linear-gradient(135deg,#4b22a8,#341478);color:#fff;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.tj-st b{display:block;font-size:clamp(22px,4vw,32px);line-height:1.1}
+.tj-st span{font-size:13px;line-height:1.25;opacity:.85}
+.tj-grid{display:grid;gap:16px;align-items:start}
+.tj-side{display:grid;gap:16px}
+.tj-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.tj-card h3{margin:0 0 14px;font-size:18px}
+.tj-tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.tj-tl li{position:relative;margin-bottom:16px}
+.tj-tl li:last-child{margin-bottom:0}
+.tj-tl li::before{content:"";position:absolute;left:-25px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tj-tl b{display:block}
+.tj-tl em{display:block;font-style:normal;color:var(--muted);font-size:14px}
+.tj-tl span{display:block;font-size:13px;color:var(--accent-d);margin-top:2px}
+.tj-chips{list-style:none;margin:0;padding:0}
+.tj-chips li{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.tj-chips li:last-child{border:0;padding-bottom:0}
+.tj-chips li:first-child{padding-top:0}
+.tj-chips i{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(130,66,250,.12);display:grid;place-items:center;font-style:normal;font-size:15px}
+.tj-chips b{display:block;font-size:15px}
+.tj-chips em{font-style:normal;font-size:13px;color:var(--muted)}
+.tj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tj-tags span{font-size:12.5px;background:rgba(130,66,250,.1);color:var(--accent-d);border-radius:99px;padding:5px 11px}
+.tj-cv{margin-top:22px}
+.tj-cv .btn{display:inline-flex;gap:8px;align-items:center}
+@media (min-width:860px){.tj-grid{grid-template-columns:1.25fr 1fr}}
+@media (max-width:520px){.tj-st b{font-size:19px;white-space:nowrap}.tj-stats{gap:8px}.tj-st{padding:12px 10px;align-items:center;text-align:center}.tj-st span{font-size:11.5px}.tj-card{padding:18px}}
