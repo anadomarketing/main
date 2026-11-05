@@ -199,9 +199,14 @@ dialog::backdrop{background:rgba(8,10,14,.72)}
 
 /* Depoimentos */
 .quotes{display:grid;gap:16px}
+#depoimentos .eyebrow{display:block;text-align:center}
+#depoimentos .sec-title,#depoimentos .sec-lead{text-align:center;margin-inline:auto}
 .qcar{position:relative}
 .qtrack{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
 .qtrack::-webkit-scrollbar{display:none}
+.qtrack{cursor:grab}
+.qtrack.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none;-webkit-user-select:none}
+.qtrack img{-webkit-user-drag:none}
 .qtrack:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--r)}
 .qtrack .quote{flex:0 0 100%;scroll-snap-align:start;min-width:0}
 .qnav{display:flex;justify-content:center;gap:12px;margin-top:22px}
