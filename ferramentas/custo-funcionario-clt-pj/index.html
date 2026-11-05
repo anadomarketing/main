@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulador de custo real de funcionário: CLT vs PJ | Ana D&#x27;avilla</title>
+<meta name="description" content="Descubra quanto um funcionário CLT custa de verdade para a empresa (FGTS, 13º, férias, encargos e benefícios) e compare com a contratação via PJ.">
+<meta name="author" content="Ana C. D'avilla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1116">
+<link rel="canonical" href="https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238242fa'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ana D'avilla">
+<meta property="og:title" content="Simulador de custo real de funcionário: CLT vs PJ | Ana D&#x27;avilla">
+<meta property="og:description" content="Descubra quanto um funcionário CLT custa de verdade para a empresa (FGTS, 13º, férias, encargos e benefícios) e compare com a contratação via PJ.">
+<meta property="og:url" content="https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/">
+<meta property="og:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Simulador de custo real de funcionário: CLT vs PJ | Ana D&#x27;avilla">
+<meta name="twitter:description" content="Descubra quanto um funcionário CLT custa de verdade para a empresa (FGTS, 13º, férias, encargos e benefícios) e compare com a contratação via PJ.">
+<meta name="twitter:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/blog.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Simulador de custo real de funcionário (CLT vs PJ)", "url": "https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "description": "Descubra quanto um funcionário CLT custa de verdade para a empresa (FGTS, 13º, férias, encargos e benefícios) e compare com a contratação via PJ.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "author": {"@type": "Person", "name": "Ana C. D'avilla", "url": "https://anadomkt.com.br/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://anadomkt.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://anadomkt.com.br/ferramentas/"}, {"@type": "ListItem", "position": 3, "name": "Custo de funcionário CLT vs PJ", "item": "https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa um funcionário CLT além do salário?", "acceptedAnswer": {"@type": "Answer", "text": "Em geral, de 1,3x a 1,8x o salário bruto, dependendo do regime tributário e dos benefícios. No Simples Nacional o custo tende a ser menor porque o INSS patronal está dentro do DAS."}}, {"@type": "Question", "name": "PJ sempre sai mais barato que CLT para a empresa?", "acceptedAnswer": {"@type": "Answer", "text": "Em valor mensal costuma sair, porque a empresa não paga encargos nem provisões. Mas se houver subordinação, horário fixo e exclusividade, o vínculo pode ser reconhecido na Justiça do Trabalho, gerando passivo."}}, {"@type": "Question", "name": "O que é o regime tributário e por que ele muda o custo?", "acceptedAnswer": {"@type": "Answer", "text": "No Simples Nacional, a contribuição patronal ao INSS é recolhida dentro do DAS (nos Anexos I, II, III e V). No Lucro Presumido ou Real, a empresa paga INSS patronal, RAT e terceiros separadamente, o que encarece a folha."}}]}]}
+</script>
+<style>
+.tf-sec{background:var(--paper);padding:48px 0 64px}
+.tf-grid{display:grid;gap:22px;align-items:start}
+.tf-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px}
+.tf-card h2{font:800 1.15rem/1.3 var(--display);margin:0 0 4px}
+.tf-card .hint{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.tf-f{display:grid;gap:14px}
+.tf-r2{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.tf-fld label{display:block;font-weight:700;font-size:.88rem;margin-bottom:6px;color:#2a303b}
+.tf-fld small{display:block;color:var(--muted);font-size:.78rem;margin-top:5px;line-height:1.4}
+.tf-in{position:relative}
+.tf-in span{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;font-size:.92rem;pointer-events:none}
+.tf-in span.r{left:auto;right:13px}
+.tf-in input,.tf-fld select{width:100%;font:600 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 13px 12px 40px;min-height:46px;transition:border-color .15s,box-shadow .15s}
+.tf-in input.p{padding-left:13px;padding-right:34px}
+.tf-fld select{padding-left:13px}
+.tf-in input:focus,.tf-fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(130,66,250,.15);background:#fff}
+.tf-chk{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:#2a303b;line-height:1.4}
+.tf-chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent)}
+.tf-sep{height:1px;background:var(--line);margin:6px 0}
+.tf-res{background:linear-gradient(160deg,#171C24,#0E1116);color:#fff;border-radius:22px;padding:28px 24px;border:1px solid #262c38}
+.tf-res .lbl{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#A9B0BD;font-weight:700}
+.tf-big{font:800 clamp(2.1rem,7vw,3rem)/1.1 var(--display);letter-spacing:-.02em;color:#fff;margin:6px 0 2px}
+.tf-big em{font-style:normal;color:var(--accent-l)}
+.tf-sub{color:#C5CBD6;font-size:.95rem;margin:0 0 18px}
+.tf-bar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#262c38;margin:6px 0 14px}
+.tf-bar i{display:block;height:100%}
+.tf-ls{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.tf-ls li{display:flex;justify-content:space-between;gap:12px;font-size:.93rem;color:#DDE1E8;padding:0;margin:0}
+.tf-ls li::before{display:none!important;content:none!important}
+.tf-ls li span:first-child{display:flex;align-items:center;gap:9px}
+.tf-ls li span:first-child::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c,#8242fa);flex:none}
+.tf-ls b{font-weight:700;color:#fff;white-space:nowrap}
+.tf-tot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #333a48;margin-top:14px;padding-top:14px;font-weight:700}
+.tf-box{margin-top:16px;padding:16px;border-radius:14px;background:rgba(130,66,250,.14);border:1px solid rgba(166,123,255,.35);font-size:.93rem;line-height:1.55;color:#E6E9F0}
+.tf-box strong{color:#fff}
+.tf-box.warn{background:rgba(255,170,60,.12);border-color:rgba(255,170,60,.45)}
+.tf-box.bad{background:rgba(255,90,90,.13);border-color:rgba(255,110,110,.5)}
+.tf-box.ok{background:rgba(60,200,140,.12);border-color:rgba(70,210,150,.45)}
+.tf-box h3{font:800 .95rem var(--display);margin:0 0 6px;color:#fff}
+.tf-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
+.tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
+.tf-kpis span{font-size:.78rem;color:#A9B0BD}
+.tf-info{margin-top:30px;display:grid;gap:22px}
+.tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
+.tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
+.tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tf-tb th,.tf-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.tf-tb th{background:#EDE8FB;font-weight:800;font-size:.85rem}
+.tf-note{font-size:.84rem;color:var(--muted);line-height:1.55;margin-top:14px}
+.tf-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.tf-faq summary{font-weight:700;cursor:pointer}
+.tf-faq p{margin:10px 0 0}
+@media (min-width:900px){.tf-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}.tf-res{position:sticky;top:84px}}
+@media (max-width:420px){.tf-r2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/blog/">Blog</a>
+      <a href="/ferramentas/" class="active">Ferramentas</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+<section class="bhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/ferramentas/">Ferramentas</a><span>Custo de funcionário CLT vs PJ</span></nav>
+    <h1>Quanto custa <em>de verdade</em> um funcionário CLT?</h1>
+    <p class="lead">Informe o salário e veja o custo mensal total para a empresa, com encargos, provisões e benefícios, além da equivalência com a contratação via PJ.</p>
+  </div>
+</section>
+<section class="tf-sec">
+  <div class="wrap">
+<div class="tf-grid">
+<div class="tf-card"><h2>Dados da contratação</h2><p class="hint">Preencha o salário e os benefícios. O resultado atualiza na hora.</p>
+<div class="tf-f"><div class="tf-fld"><label for="sal">Salário bruto mensal</label><div class="tf-in"><span>R$</span><input id="sal" type="text" inputmode="decimal" value="5.000,00" placeholder="" autocomplete="off"></div></div>
+<div class="tf-fld"><label for="reg">Regime tributário da empresa</label><select id="reg"><option value="simples">Simples Nacional (Anexos I, II, III e V)</option><option value="real">Lucro Presumido ou Lucro Real</option></select><small>No Simples, o INSS patronal já está dentro do DAS. No Lucro Presumido/Real, a empresa paga INSS patronal, RAT e terceiros.</small></div>
+<div class="tf-fld" id="ratw" hidden><label for="rat">Alíquota RAT (risco da atividade)</label><select id="rat"><option value="1">1% (risco leve)</option><option value="2" selected>2% (risco médio)</option><option value="3">3% (risco grave)</option></select></div>
+<div class="tf-sep"></div>
+<div class="tf-r2"><div class="tf-fld"><label for="vt">Vale-transporte (total/mês)</label><div class="tf-in"><span>R$</span><input id="vt" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div><small>Desconta 6% do salário do funcionário.</small></div><div class="tf-fld"><label for="vr">VR / VA (mês)</label><div class="tf-in"><span>R$</span><input id="vr" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div></div></div>
+<div class="tf-r2"><div class="tf-fld"><label for="saude">Plano de saúde (mês)</label><div class="tf-in"><span>R$</span><input id="saude" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div></div><div class="tf-fld"><label for="outros">Outros benefícios (mês)</label><div class="tf-in"><span>R$</span><input id="outros" type="text" inputmode="decimal" value="0" placeholder="" autocomplete="off"></div></div></div>
+<label class="tf-chk"><input type="checkbox" id="multa" checked><span>Provisionar a multa de 40% do FGTS (custo de uma eventual demissão sem justa causa)</span></label>
+<div class="tf-sep"></div>
+<div class="tf-fld"><label for="pjtax">Imposto estimado do PJ (para a comparação)</label><div class="tf-in"><input class="p" id="pjtax" type="text" inputmode="decimal" value="6" placeholder="" autocomplete="off"><span class="r">%</span></div><small>Simples Nacional costuma ficar entre 6% e 15,5% para serviços. Ajuste conforme o caso.</small></div>
+</div></div>
+<div class="tf-res" aria-live="polite">
+<div class="lbl">Custo mensal total para a empresa</div>
+<div class="tf-big" id="o-total">R$ 0,00</div>
+<p class="tf-sub" id="o-mult"></p>
+<div class="tf-bar" id="o-bar"></div>
+<ul class="tf-ls" id="o-ls"></ul>
+<div class="tf-tot"><span>Custo anual</span><b id="o-ano"></b></div>
+<div class="tf-box" id="o-pj"></div>
+<div class="tf-box warn"><h3>Atenção com a pejotização</h3>Contratar PJ para uma função com horário fixo, subordinação e exclusividade pode ser reconhecido como vínculo de emprego, com risco de passivo trabalhista. Use a comparação como referência de custo, não como orientação jurídica.</div>
+</div></div>
+    <div class="tf-info"><div class="tf-faq"><h2>Perguntas frequentes</h2><details><summary>Quanto custa um funcionário CLT além do salário?</summary><p>Em geral, de 1,3x a 1,8x o salário bruto, dependendo do regime tributário e dos benefícios. No Simples Nacional o custo tende a ser menor porque o INSS patronal está dentro do DAS.</p></details><details><summary>PJ sempre sai mais barato que CLT para a empresa?</summary><p>Em valor mensal costuma sair, porque a empresa não paga encargos nem provisões. Mas se houver subordinação, horário fixo e exclusividade, o vínculo pode ser reconhecido na Justiça do Trabalho, gerando passivo.</p></details><details><summary>O que é o regime tributário e por que ele muda o custo?</summary><p>No Simples Nacional, a contribuição patronal ao INSS é recolhida dentro do DAS (nos Anexos I, II, III e V). No Lucro Presumido ou Real, a empresa paga INSS patronal, RAT e terceiros separadamente, o que encarece a folha.</p></details></div>
+<div><h2>O que entra no custo de um funcionário CLT</h2><p>O salário é só a ponta. Sobre ele (e sobre as provisões de 13º e férias) incidem FGTS e, fora do Simples, INSS patronal, RAT e contribuições a terceiros. Somam-se ainda os benefícios e a provisão para eventual rescisão. Por isso o custo real costuma ficar muito acima do salário nominal.</p></div>
+<div><h2>Como o simulador calcula</h2><ul><li>13º e férias com 1/3 provisionados mês a mês (1/12 cada).</li><li>FGTS de 8% sobre salário, 13º e férias.</li><li>Fora do Simples: INSS patronal de 20%, RAT de 1% a 3% e terceiros de 5,8%.</li><li>Multa de 40% do FGTS provisionada (3,2% da remuneração).</li><li>Vale-transporte: a empresa arca com o que passar de 6% do salário.</li></ul><p class="tf-note">Estimativa para apoiar a decisão. Convenções coletivas, aviso prévio, horas extras e regras específicas do seu setor podem alterar o valor. Confirme com seu contador antes de contratar.</p></div></div>
+  </div>
+</section>
+<section class="contact" id="contato">
+  <img class="contact-bg" src="/img/contato-fundo-planejamento-marketing-1600.webp" srcset="/img/contato-fundo-planejamento-marketing-800.webp 800w, /img/contato-fundo-planejamento-marketing-1600.webp 1600w" sizes="100vw" width="1600" height="1045" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low">
+  <div class="wrap">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2 class="sec-title">Quer conversar sobre o seu projeto?</h2>
+    <p class="sec-lead">Mídia, CRM, dados ou automação: me conte o que você precisa.</p>
+    <div class="cta-row"><a class="btn btn-primary" data-wa="ferramentas" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/#cases">Ver cases</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap" style="justify-content:center;text-align:center">
+    <span>© 2026 Ana C. D'avilla · Todos os direitos reservados.</span>
+  </div>
+</footer>
+<div class="fab"><a class="fab-btn" data-wa="fab" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div>
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Uso cookies de medição (Google Tag Manager) para entender como o site é usado. Você pode recusar sem perder nenhum conteúdo.</p>
+  <div class="row"><button class="btn btn-ghost" data-consent="no" type="button">Recusar</button><button class="btn btn-primary" data-consent="yes" type="button">Aceitar</button></div>
+</div>
+<script src="/js/blog.js" defer></script>
+<script>
+(function(){function num(v){v=String(v||'').trim();if(!v)return 0;if(v.indexOf(',')>-1)v=v.replace(/\./g,'').replace(',','.');else if(!/^\d+\.\d{1,2}$/.test(v))v=v.replace(/\./g,'');var n=parseFloat(v);return isFinite(n)?n:0}
+function brl(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function pct(n,d){return n.toLocaleString('pt-BR',{minimumFractionDigits:d==null?1:d,maximumFractionDigits:d==null?1:d})+'%'}
+function $(i){return document.getElementById(i)}
+
+var cols=['#8242fa','#a67bff','#6a2fe0','#2B3A67','#4f7cff','#3cc88c','#f0a53c'];
+function calc(){
+ var S=num($('sal').value),reg=$('reg').value,rat=num($('rat').value),vt=num($('vt').value),vr=num($('vr').value),sa=num($('saude').value),ou=num($('outros').value),mo=$('multa').checked,tx=num($('pjtax').value)/100;
+ $('ratw').hidden=reg!=='real';
+ var d13=S/12,fer=(S+S/3)/12,rem=S+d13+fer;
+ var fgts=.08*rem,inss=reg==='real'?(.20+rat/100+.058)*rem:0,multa=mo?.08*.40*rem:0;
+ var vtc=Math.max(0,vt-.06*S),ben=vr+sa+ou+vtc;
+ var tot=S+d13+fer+fgts+inss+multa+ben;
+ var it=[['Salário bruto',S],['13º salário (provisão)',d13],['Férias + 1/3 (provisão)',fer],['FGTS (8%)',fgts],['INSS patronal, RAT e terceiros',inss],['Multa 40% do FGTS (provisão)',multa],['Benefícios (VT líquido, VR/VA, saúde, outros)',ben]];
+ $('o-total').textContent=brl(tot);
+ $('o-mult').textContent=S>0?'Isso equivale a '+(tot/S).toLocaleString('pt-BR',{maximumFractionDigits:2,minimumFractionDigits:2})+'x o salário bruto.':'Informe o salário para calcular.';
+ var bar='',ls='';
+ it.forEach(function(x,i){if(x[1]<=0||tot<=0)return;bar+='<i style="width:'+(x[1]/tot*100)+'%;background:'+cols[i]+'" title="'+x[0]+'"></i>';ls+='<li style="--c:'+cols[i]+'"><span>'+x[0]+'</span><b>'+brl(x[1])+'</b></li>'});
+ $('o-bar').innerHTML=bar;$('o-ls').innerHTML=ls;$('o-ano').textContent=brl(tot*12);
+ var pkg=(14+1/3)*S,fg2=.08*pkg,mpk=(pkg+fg2+(vr+sa+ou)*12)/12,pj=tx<1?mpk/(1-tx):0,diff=tot-pj;
+ var h='<h3>Comparação com PJ</h3>';
+ if(S>0){
+  h+='Para o profissional ter o mesmo ganho de um CLT (13º, férias, FGTS e benefícios), o PJ precisaria faturar cerca de <strong>'+brl(pj)+'/mês</strong>, já descontando '+pct(tx*100,1)+' de imposto.<br><br>';
+  if(diff>0)h+='Para a empresa, isso é <strong>'+brl(diff)+'/mês a menos</strong> que o CLT ('+brl(diff*12)+'/ano), mas sem direitos trabalhistas e com o risco citado abaixo.';
+  else h+='Nesse cenário, o PJ equivalente sairia <strong>'+brl(-diff)+'/mês a mais</strong> que o CLT para a empresa.';
+ }else h+='Informe o salário para ver a comparação.';
+ $('o-pj').innerHTML=h;
+}
+['sal','reg','rat','vt','vr','saude','outros','multa','pjtax'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
+calc();})();
+</script>
+</body>
+</html>
