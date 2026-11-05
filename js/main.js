@@ -89,4 +89,23 @@
       store('consent', null); closeDlg(d.getElementById('privacy')); box.classList.add('show');
     }
   });
+
+  /* Carrossel de depoimentos */
+  [].forEach.call(d.querySelectorAll('[data-car]'), function (car) {
+    var tr = car.querySelector('.qtrack'), prev = car.querySelector('[data-dir="-1"]'), next = car.querySelector('[data-dir="1"]');
+    if (!tr || !prev || !next) return;
+    function step() { var q = tr.querySelector('.quote'); return q ? q.getBoundingClientRect().width + 16 : 0; }
+    function sync() {
+      prev.disabled = tr.scrollLeft <= 2;
+      next.disabled = tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 2;
+    }
+    car.addEventListener('click', function (e) {
+      var b = e.target.closest('.qbtn'); if (!b) return;
+      tr.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: 'smooth' });
+      track('depoimentos_seta', { sentido: b.dataset.dir === '1' ? 'proximo' : 'anterior' });
+    });
+    tr.addEventListener('scroll', function () { w.requestAnimationFrame(sync); }, { passive: true });
+    w.addEventListener('resize', sync);
+    sync();
+  });
 })();
