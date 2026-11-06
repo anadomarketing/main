@@ -29,6 +29,11 @@
 {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Simulador de custo entre contratação PJ x CLT", "url": "https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "description": "Compare o custo de contratar CLT ou PJ: encargos, FGTS, 13º, férias, impostos e contador. Descubra quanto um PJ precisa faturar para equivaler a um CLT, e a diferença honesta.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "author": {"@type": "Person", "name": "Ana C. D'avilla", "url": "https://anadomkt.com.br/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://anadomkt.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://anadomkt.com.br/ferramentas/"}, {"@type": "ListItem", "position": 3, "name": "Custo entre contratação PJ x CLT", "item": "https://anadomkt.com.br/ferramentas/custo-funcionario-clt-pj/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa um funcionário CLT além do salário?", "acceptedAnswer": {"@type": "Answer", "text": "Em geral, de 1,3x a 1,8x o salário bruto, dependendo do regime tributário e dos benefícios. No Simples Nacional o custo tende a ser menor porque o INSS patronal está dentro do DAS."}}, {"@type": "Question", "name": "R$ 4.000 no PJ equivalem a quanto no CLT?", "acceptedAnswer": {"@type": "Answer", "text": "Considerando imposto de 6%, contador de R$ 250, INSS sobre o pró-labore e a falta de 13º, férias e FGTS, R$ 4.000 no PJ equivalem a um CLT de cerca de R$ 3 mil brutos (em torno de 1,8 salário mínimo). Use a ferramenta com os seus números."}}, {"@type": "Question", "name": "PJ sempre sai mais barato que CLT para a empresa?", "acceptedAnswer": {"@type": "Answer", "text": "Só se o PJ receber menos do que o equivalente ao CLT. No ponto de equivalência, o custo para a empresa é parecido. Além disso, com subordinação, horário fixo e exclusividade, o vínculo pode ser reconhecido na Justiça do Trabalho."}}, {"@type": "Question", "name": "O que é o regime tributário e por que ele muda o custo?", "acceptedAnswer": {"@type": "Answer", "text": "No Simples Nacional, a contribuição patronal ao INSS é recolhida dentro do DAS (nos Anexos I, II, III e V). No Lucro Presumido ou Real, a empresa paga INSS patronal, RAT e terceiros separadamente, o que encarece a folha."}}]}]}
 </script>
 <style>
+.bhero{text-align:center}.bhero h1{margin-inline:auto;max-width:none}.bhero .lead{margin:18px auto 0;max-width:60ch;text-wrap:balance}
+.crumb{display:flex;flex-wrap:wrap;justify-content:center}
+.pmeta-line{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px;font-size:.92rem;color:#B9C0CC}
+.pmeta-line span{border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:7px 16px;line-height:1.3}.pmeta-line strong{color:#fff;font-weight:600}
+@media (min-width:900px){.bhero h1{white-space:nowrap;font-size:clamp(2.4rem,4.6vw,3.6rem)}.bhero .lead{max-width:960px}}
 .tf-sec{background:var(--paper);padding:48px 0 64px}
 .tf-grid{display:grid;gap:22px;align-items:start}
 .tf-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px}
@@ -72,7 +77,7 @@
 .tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
 .tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
 .tf-kpis span{font-size:.78rem;color:#A9B0BD}
-.tf-info{margin-top:30px;display:grid;gap:22px}
+.tf-info{margin-top:30px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}.tf-info>*{min-width:0}.tf-tb{display:block;overflow-x:auto}
 .tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
 .tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
 .tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -130,6 +135,7 @@
     <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/ferramentas/">Ferramentas</a><span>Custo entre contratação PJ x CLT</span></nav>
     <h1>Custo entre contratação <em>PJ x CLT</em></h1>
     <p class="lead">Veja quanto um CLT custa para a empresa, quanto custa ser PJ e qual valor de PJ equivale, de verdade, a um salário CLT.</p>
+    <p class="pmeta-line"><span>Tabelas <strong>INSS e IRRF</strong> 2026</span><span>Gratuita e sem cadastro</span><span>Cálculo no seu navegador</span><span>Por <strong>Ana D'avilla</strong></span></p>
   </div>
 </section>
 <section class="tf-sec">
