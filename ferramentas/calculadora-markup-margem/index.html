@@ -29,6 +29,11 @@
 {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Calculadora de precificação e margem de lucro (markup)", "url": "https://anadomkt.com.br/ferramentas/calculadora-markup-margem/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "description": "Calcule o preço de venda ideal com impostos, despesas variáveis e margem de lucro desejada. Entenda a diferença entre markup e margem e veja se cobre os custos fixos.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "author": {"@type": "Person", "name": "Ana C. D'avilla", "url": "https://anadomkt.com.br/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://anadomkt.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://anadomkt.com.br/ferramentas/"}, {"@type": "ListItem", "position": 3, "name": "Precificação e markup", "item": "https://anadomkt.com.br/ferramentas/calculadora-markup-margem/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre markup e margem de lucro?", "acceptedAnswer": {"@type": "Answer", "text": "Markup é calculado sobre o custo; margem é calculada sobre o preço de venda. Por isso 100% de markup corresponde a 50% de margem. O preço correto parte da margem desejada sobre o preço."}}, {"@type": "Question", "name": "Como calcular o preço de venda com margem de lucro?", "acceptedAnswer": {"@type": "Answer", "text": "Divida o custo por (1 menos a soma das porcentagens de impostos, despesas variáveis e margem desejada). Exemplo: custo de R$ 100, impostos de 8%, variáveis de 7% e margem de 20% dão R$ 100 ÷ 0,65 = R$ 153,85."}}, {"@type": "Question", "name": "Como saber se o preço cobre meus custos fixos?", "acceptedAnswer": {"@type": "Answer", "text": "Informe os custos fixos mensais e o volume de vendas: a calculadora rateia o custo fixo por unidade, mostra o ponto de equilíbrio e, se você preencher o preço atual, indica se ele cobre a estrutura."}}]}]}
 </script>
 <style>
+.bhero{text-align:center}.bhero h1{margin-inline:auto;max-width:none}.bhero .lead{margin:18px auto 0;max-width:60ch;text-wrap:balance}
+.crumb{display:flex;flex-wrap:wrap;justify-content:center}
+.pmeta-line{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px;font-size:.92rem;color:#B9C0CC}
+.pmeta-line span{border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:7px 16px;line-height:1.3}.pmeta-line strong{color:#fff;font-weight:600}
+@media (min-width:900px){.bhero h1{white-space:nowrap;font-size:clamp(2.4rem,4.6vw,3.6rem)}.bhero .lead{max-width:960px}}
 .tf-sec{background:var(--paper);padding:48px 0 64px}
 .tf-grid{display:grid;gap:22px;align-items:start}
 .tf-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px}
@@ -72,7 +77,7 @@
 .tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
 .tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
 .tf-kpis span{font-size:.78rem;color:#A9B0BD}
-.tf-info{margin-top:30px;display:grid;gap:22px}
+.tf-info{margin-top:30px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}.tf-info>*{min-width:0}.tf-tb{display:block;overflow-x:auto}
 .tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
 .tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
 .tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -82,6 +87,30 @@
 .tf-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
 .tf-faq summary{font-weight:700;cursor:pointer}
 .tf-faq p{margin:10px 0 0}
+.tf-col{display:grid;gap:22px}.tf-col .tf-res{position:static}
+.tf-ct{width:100%;border-collapse:collapse;font-size:.88rem;margin:4px 0 4px}.tf-ct th,.tf-ct td{padding:8px 6px;text-align:left;border-bottom:1px solid #2c3342;color:#DDE1E8;vertical-align:top}.tf-ct th{font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:#A9B0BD}.tf-ct td:first-child{color:#fff;font-weight:600}
+
+.tf-rule{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#8242fa,#6a2fe0);border-radius:16px;padding:14px 16px;margin:0 0 16px;color:#fff}
+.tf-rule b{font:800 1.9rem/1 var(--display);letter-spacing:-.02em;flex:none}
+.tf-rule span{font-size:.93rem;line-height:1.45;color:#EFE9FF}.tf-rule strong{color:#fff}
+.tf-vis{display:grid;gap:12px;margin:0 0 16px}
+.tf-vl{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;color:#DDE1E8;margin-bottom:5px}
+.tf-vl b{color:#fff;white-space:nowrap}.tf-vl i{font-style:normal;color:#A9B0BD;font-weight:600;margin-left:4px}
+.tf-vt{height:16px;border-radius:99px;background:#262c38;overflow:hidden}.tf-vt div{height:100%;border-radius:99px;transition:width .35s}
+.tf-vv{font-size:.9rem;line-height:1.5;padding:12px 14px;border-radius:12px;color:#E6E9F0}
+.tf-vv.ok{background:rgba(60,200,140,.12);border:1px solid rgba(70,210,150,.45)}.tf-vv.warn{background:rgba(255,170,60,.12);border:1px solid rgba(255,170,60,.45)}
+.tf-avs{display:grid;gap:14px}.tf-avs h3{font:800 1.05rem var(--display);margin:6px 0 2px}
+.tf-avg{display:grid;gap:12px}
+.tf-av{background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:14px 16px}
+.tf-av strong{display:block;font-weight:800;margin-bottom:4px}
+.tf-av p{margin:0;font-size:.95rem;line-height:1.55}
+.tf-av{display:flex;gap:14px;align-items:flex-start}
+.tf-av .ai{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+.tf-avs>p:first-of-type,.tf-avs h3{text-align:center}.tf-avs>p:first-of-type{max-width:60ch;margin-inline:auto}
+.tf-avs .tf-avt{text-align:center;margin-bottom:0}
+@media (min-width:900px){.tf-avs .tf-avt{white-space:nowrap}}
+.tf-av.g{--c:#2fb37a}.tf-av.r{--c:#e5484d}.tf-av.y{--c:#f0a53c}
+@media (min-width:760px){.tf-avg{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:900px){.tf-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}.tf-res{position:sticky;top:84px}}
 @media (max-width:420px){.tf-r2{grid-template-columns:1fr}}
 </style>
@@ -106,6 +135,7 @@
     <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/ferramentas/">Ferramentas</a><span>Precificação e markup</span></nav>
     <h1>Precifique certo: <em>markup</em> não é margem.</h1>
     <p class="lead">Informe custo, impostos, despesas variáveis e a margem desejada. A ferramenta entrega o preço ideal e avisa se ele cobre os custos fixos.</p>
+    <p class="pmeta-line"><span>Preço, <strong>markup</strong> e margem</span><span>Gratuita e sem cadastro</span><span>Cálculo no seu navegador</span><span>Por <strong>Ana D'avilla</strong></span></p>
   </div>
 </section>
 <section class="tf-sec">
