@@ -85,6 +85,15 @@
 .tf-col{display:grid;gap:22px}.tf-col .tf-res{position:static}
 .tf-ct{width:100%;border-collapse:collapse;font-size:.88rem;margin:4px 0 4px}.tf-ct th,.tf-ct td{padding:8px 6px;text-align:left;border-bottom:1px solid #2c3342;color:#DDE1E8;vertical-align:top}.tf-ct th{font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:#A9B0BD}.tf-ct td:first-child{color:#fff;font-weight:600}
 
+.tf-rule{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#8242fa,#6a2fe0);border-radius:16px;padding:14px 16px;margin:0 0 16px;color:#fff}
+.tf-rule b{font:800 1.9rem/1 var(--display);letter-spacing:-.02em;flex:none}
+.tf-rule span{font-size:.93rem;line-height:1.45;color:#EFE9FF}.tf-rule strong{color:#fff}
+.tf-vis{display:grid;gap:12px;margin:0 0 16px}
+.tf-vl{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;color:#DDE1E8;margin-bottom:5px}
+.tf-vl b{color:#fff;white-space:nowrap}.tf-vl i{font-style:normal;color:#A9B0BD;font-weight:600;margin-left:4px}
+.tf-vt{height:16px;border-radius:99px;background:#262c38;overflow:hidden}.tf-vt div{height:100%;border-radius:99px;transition:width .35s}
+.tf-vv{font-size:.9rem;line-height:1.5;padding:12px 14px;border-radius:12px;color:#E6E9F0}
+.tf-vv.ok{background:rgba(60,200,140,.12);border:1px solid rgba(70,210,150,.45)}.tf-vv.warn{background:rgba(255,170,60,.12);border:1px solid rgba(255,170,60,.45)}
 .tf-avs{display:grid;gap:14px}.tf-avs h3{font:800 1.05rem var(--display);margin:6px 0 2px}
 .tf-avg{display:grid;gap:12px}
 .tf-av{background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:14px 16px}
@@ -154,6 +163,8 @@
 <div class="lbl">Comparação honesta: CLT x PJ</div>
 <div class="tf-big" id="o-eq">-</div>
 <p class="tf-sub" id="o-eqs"></p>
+<div class="tf-rule"><b>+25%</b><span>Regra prática: para valer a pena, o PJ deve cobrar <strong>no mínimo 25% a mais</strong> do que receberia no CLT.</span></div>
+<div class="tf-vis" id="o-vis"></div>
 <table class="tf-ct"><thead><tr><th></th><th>CLT</th><th>PJ</th></tr></thead><tbody id="o-tb"></tbody></table>
 <div class="tf-box" id="o-pj"></div>
 <div class="tf-box warn"><h3>Atenção com a pejotização</h3>Contratar PJ para uma função com horário fixo, subordinação e exclusividade pode ser reconhecido como vínculo de emprego, com risco de passivo trabalhista. Use a comparação como referência de custo, não como orientação jurídica.</div>
@@ -211,9 +222,13 @@ function calc(){
  var bar='',ls='';it.forEach(function(x,i){if(x[1]<=0||tot<=0)return;bar+='<i style="width:'+(x[1]/tot*100)+'%;background:'+cols[i]+'" title="'+x[0]+'"></i>';ls+='<li style="--c:'+cols[i]+'"><span>'+x[0]+'</span><b>'+brl(x[1])+'</b></li>'});
  $('o-bar').innerHTML=bar;$('o-ls').innerHTML=ls;$('o-ano').textContent=brl(tot*12);
  var p=pjCalc(R,tx,cont),cl=cltAnual(S,benNet)/12,inssS=inssF(S),irS=irF(S),mult=S>0?R/S:0;
- if(S<=0||R<=0){$('o-eq').textContent='-';$('o-eqs').textContent='';$('o-tb').innerHTML='';$('o-pj').innerHTML='Informe um valor para ver a comparação.';return}
+ if(S<=0||R<=0){$('o-vis').innerHTML='';$('o-eq').textContent='-';$('o-eqs').textContent='';$('o-vis').innerHTML='';$('o-tb').innerHTML='';$('o-pj').innerHTML='Informe um valor para ver a comparação.';return}
  $('o-eq').innerHTML=modo==='clt'?'PJ equivalente: <em>'+brl(R)+'</em>':'CLT equivalente: <em>'+brl(S)+'</em>';
  $('o-eqs').textContent='Um PJ de '+brl(R)+' recebe, no fim, o mesmo que um CLT de '+brl(S)+' bruto ('+(S/MIN).toLocaleString('pt-BR',{maximumFractionDigits:1,minimumFractionDigits:1})+' salários mínimos).';
+ (function(){var fl=S*1.25,tp=Math.max(R,fl,S),rows=[['CLT (referência)',S,'#4f7cff','100%'],['PJ mínimo recomendado',fl,'#f0a53c','+25%'],['PJ equivalente (cálculo)',R,'#8242fa','+'+Math.round((R/S-1)*100)+'%']],h='';
+ rows.forEach(function(r){h+='<div class="tf-vb"><div class="tf-vl"><span>'+r[0]+'</span><b>'+brl(r[1])+' <i>'+r[3]+'</i></b></div><div class="tf-vt"><div style="width:'+(r[1]/tp*100)+'%;background:'+r[2]+'"></div></div></div>'});
+ var ok=R>=fl-0.5;h+='<div class="tf-vv '+(ok?'ok':'warn')+'">'+(ok?'O cálculo fica acima da regra dos 25%: o PJ precisa de '+pct((R/S-1)*100,0)+' a mais que o CLT.':'Neste caso o cálculo dá só '+pct((R/S-1)*100,0)+' a mais, mas mantenha pelo menos 25% (sugestão: '+brl(fl)+') para cobrir meses sem faturar, férias sem receber e imprevistos.')+'</div>';
+ $('o-vis').innerHTML=h})();
  function tr(a,b,c){return '<tr><td>'+a+'</td><td>'+b+'</td><td>'+c+'</td></tr>'}
  $('o-tb').innerHTML=tr('Empresa paga por mês',brl(tot),brl(R))+tr('Descontos do profissional','INSS '+brl(inssS)+(irS>0?' + IR '+brl(irS):''),'Imposto '+brl(p.imp))+tr('','',' INSS pró-labore '+brl(p.inss))+tr('Contador','-',brl(cont))+tr('Ganho mensal líquido (CLT inclui FGTS e benefícios)',brl(cl),brl(p.liq))+tr('13º, férias, FGTS e multa','Sim','Não')+tr('Benefícios do INSS (auxílio, aposentadoria)','Sim','Só sobre o pró-labore');
  var dif=tot-R,h='<h3>A diferença honesta</h3>';
