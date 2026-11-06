@@ -77,11 +77,11 @@
 .tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
 .tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
 .tf-kpis span{font-size:.78rem;color:#A9B0BD}
-.tf-info{margin-top:30px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}.tf-info>*{min-width:0}.tf-tb{display:block;overflow-x:auto}
+.tf-info{margin-top:30px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}.tf-info>*{min-width:0}
 .tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
 .tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
-.tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.tf-tb th,.tf-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.tf-tb{display:table;width:100%;border-collapse:separate;border-spacing:0;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tf-tb th,.tf-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}.tf-tb tr:last-child td{border-bottom:0}.tf-tb td{overflow-wrap:break-word}.tf-tb td:first-child{white-space:nowrap;font-weight:700}@media (max-width:600px){.tf-tb{font-size:.86rem}.tf-tb th,.tf-tb td{padding:9px 9px}}
 .tf-tb th{background:#EDE8FB;font-weight:800;font-size:.85rem}
 .tf-note{font-size:.84rem;color:var(--muted);line-height:1.55;margin-top:14px}
 .tf-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
@@ -188,7 +188,7 @@
 </div>
 </div></div>
     <div class="tf-info"><div class="tf-faq"><h2>Perguntas frequentes</h2><details><summary>O que são UTMs?</summary><p>São parâmetros colocados no final de um link (utm_source, utm_medium, utm_campaign, utm_term e utm_content) que dizem ao Google Analytics e a outras ferramentas de onde veio cada visita.</p></details><details><summary>Quais parâmetros UTM são obrigatórios?</summary><p>Origem (utm_source), mídia (utm_medium) e campanha (utm_campaign). Termo e conteúdo são opcionais e ajudam a separar palavras-chave, públicos e anúncios.</p></details><details><summary>Maiúsculas e minúsculas fazem diferença?</summary><p>Sim. O Google Analytics diferencia os valores pela escrita, então "Facebook" e "facebook" aparecem como origens separadas. Por isso o gerador padroniza tudo em minúsculas.</p></details><details><summary>Posso usar UTM junto com a marcação automática do Google Ads?</summary><p>Pode. A marcação automática (gclid) e as UTMs convivem. Se quiser nomes reais de campanha, use parâmetros dinâmicos como {campaignid}, {adgroupid} e {keyword} no modelo de acompanhamento.</p></details></div>
-<div><h2>Como nomear cada parâmetro</h2><table class="tf-tb"><thead><tr><th>Parâmetro</th><th>O que responde</th><th>Exemplo</th></tr></thead><tbody><tr><td>utm_source</td><td>De onde vem o clique</td><td>google, facebook, newsletter</td></tr><tr><td>utm_medium</td><td>Qual o tipo de mídia</td><td>cpc, paid_social, email</td></tr><tr><td>utm_campaign</td><td>Qual campanha</td><td>black_friday_2026</td></tr><tr><td>utm_term</td><td>Palavra-chave ou público</td><td>sapato_social</td></tr><tr><td>utm_content</td><td>Qual anúncio ou variação</td><td>video_depoimento_a</td></tr></tbody></table></div>
+<div><h2>Como nomear cada parâmetro</h2><table class="tf-tb"><thead><tr><th>Parâmetro</th><th>O que responde</th><th>Exemplo</th></tr></thead><tbody><tr><td>utm_source</td><td>De onde vem o clique</td><td>google, facebook, newsletter</td></tr><tr><td>utm_medium</td><td>Qual o tipo de mídia</td><td>cpc, paid_<wbr>social, email</td></tr><tr><td>utm_campaign</td><td>Qual campanha</td><td>black_<wbr>friday_<wbr>2026</td></tr><tr><td>utm_term</td><td>Palavra-chave ou público</td><td>sapato_social</td></tr><tr><td>utm_content</td><td>Qual anúncio ou variação</td><td>video_<wbr>depoimento_<wbr>a</td></tr></tbody></table></div>
 <div><h2>Boas práticas de parametrização</h2><ul><li>Use sempre minúsculas e um único separador. "Google", "google" e "GOOGLE" viram três origens diferentes nos relatórios.</li><li>Defina um padrão e use em toda a equipe. A ferramenta padroniza por você.</li><li>Origem, mídia e campanha são os campos que não podem faltar.</li><li>Não use UTM em links internos do site. Isso reinicia a sessão e perde a origem real do visitante.</li><li>No Google Ads, mantenha a marcação automática (gclid) ativa. As UTMs funcionam junto com ela.</li></ul><p class="tf-note">O histórico fica salvo só no seu navegador, não é enviado para nenhum servidor.</p></div></div>
   </div>
 </section>
