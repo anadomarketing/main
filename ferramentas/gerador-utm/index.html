@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerador de UTM: parametrização de links de campanha | Ana D&#x27;avilla</title>
+<meta name="description" content="Gerador de UTM gratuito: monte links rastreáveis para Google Ads, Meta Ads, e-mail e redes sociais, com padronização automática e histórico.">
+<meta name="author" content="Ana C. D'avilla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1116">
+<link rel="canonical" href="https://anadomkt.com.br/ferramentas/gerador-utm/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238242fa'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ana D'avilla">
+<meta property="og:title" content="Gerador de UTM: parametrização de links de campanha | Ana D&#x27;avilla">
+<meta property="og:description" content="Gerador de UTM gratuito: monte links rastreáveis para Google Ads, Meta Ads, e-mail e redes sociais, com padronização automática e histórico.">
+<meta property="og:url" content="https://anadomkt.com.br/ferramentas/gerador-utm/">
+<meta property="og:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gerador de UTM: parametrização de links de campanha | Ana D&#x27;avilla">
+<meta name="twitter:description" content="Gerador de UTM gratuito: monte links rastreáveis para Google Ads, Meta Ads, e-mail e redes sociais, com padronização automática e histórico.">
+<meta name="twitter:image" content="https://anadomkt.com.br/img/quemsou.webp">
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/blog.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Gerador de UTM (parametrização de links)", "url": "https://anadomkt.com.br/ferramentas/gerador-utm/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "pt-BR", "description": "Gerador de UTM gratuito: monte links rastreáveis para Google Ads, Meta Ads, e-mail e redes sociais, com padronização automática e histórico.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "author": {"@type": "Person", "name": "Ana C. D'avilla", "url": "https://anadomkt.com.br/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://anadomkt.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://anadomkt.com.br/ferramentas/"}, {"@type": "ListItem", "position": 3, "name": "Gerador de UTM", "item": "https://anadomkt.com.br/ferramentas/gerador-utm/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que são UTMs?", "acceptedAnswer": {"@type": "Answer", "text": "São parâmetros colocados no final de um link (utm_source, utm_medium, utm_campaign, utm_term e utm_content) que dizem ao Google Analytics e a outras ferramentas de onde veio cada visita."}}, {"@type": "Question", "name": "Quais parâmetros UTM são obrigatórios?", "acceptedAnswer": {"@type": "Answer", "text": "Origem (utm_source), mídia (utm_medium) e campanha (utm_campaign). Termo e conteúdo são opcionais e ajudam a separar palavras-chave, públicos e anúncios."}}, {"@type": "Question", "name": "Maiúsculas e minúsculas fazem diferença?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. O Google Analytics diferencia os valores pela escrita, então \"Facebook\" e \"facebook\" aparecem como origens separadas. Por isso o gerador padroniza tudo em minúsculas."}}, {"@type": "Question", "name": "Posso usar UTM junto com a marcação automática do Google Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Pode. A marcação automática (gclid) e as UTMs convivem. Se quiser nomes reais de campanha, use parâmetros dinâmicos como {campaignid}, {adgroupid} e {keyword} no modelo de acompanhamento."}}]}]}
+</script>
+<style>
+.tf-sec{background:var(--paper);padding:48px 0 64px}
+.tf-grid{display:grid;gap:22px;align-items:start}
+.tf-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px}
+.tf-card h2{font:800 1.15rem/1.3 var(--display);margin:0 0 4px}
+.tf-card .hint{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.tf-f{display:grid;gap:14px}
+.tf-r2{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.tf-fld label{display:block;font-weight:700;font-size:.88rem;margin-bottom:6px;color:#2a303b}
+.tf-fld small{display:block;color:var(--muted);font-size:.78rem;margin-top:5px;line-height:1.4}
+.tf-in{position:relative}
+.tf-in span{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;font-size:.92rem;pointer-events:none}
+.tf-in span.r{left:auto;right:13px}
+.tf-in input,.tf-fld select{width:100%;font:600 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 13px 12px 40px;min-height:46px;transition:border-color .15s,box-shadow .15s}
+.tf-in input.p{padding-left:13px;padding-right:34px}
+.tf-fld select{padding-left:13px}
+.tf-in input:focus,.tf-fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(130,66,250,.15);background:#fff}
+.tf-chk{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:#2a303b;line-height:1.4}
+.tf-chk input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent)}
+.tf-sep{height:1px;background:var(--line);margin:6px 0}
+.tf-res{background:linear-gradient(160deg,#171C24,#0E1116);color:#fff;border-radius:22px;padding:28px 24px;border:1px solid #262c38}
+.tf-res .lbl{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#A9B0BD;font-weight:700}
+.tf-big{font:800 clamp(2.1rem,7vw,3rem)/1.1 var(--display);letter-spacing:-.02em;color:#fff;margin:6px 0 2px}
+.tf-big em{font-style:normal;color:var(--accent-l)}
+.tf-sub{color:#C5CBD6;font-size:.95rem;margin:0 0 18px}
+.tf-bar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#262c38;margin:6px 0 14px}
+.tf-bar i{display:block;height:100%}
+.tf-ls{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.tf-ls li{display:flex;justify-content:space-between;gap:12px;font-size:.93rem;color:#DDE1E8;padding:0;margin:0}
+.tf-ls li::before{display:none!important;content:none!important}
+.tf-ls li span:first-child{display:flex;align-items:center;gap:9px}
+.tf-ls li span:first-child::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c,#8242fa);flex:none}
+.tf-ls b{font-weight:700;color:#fff;white-space:nowrap}
+.tf-tot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #333a48;margin-top:14px;padding-top:14px;font-weight:700}
+.tf-box{margin-top:16px;padding:16px;border-radius:14px;background:rgba(130,66,250,.14);border:1px solid rgba(166,123,255,.35);font-size:.93rem;line-height:1.55;color:#E6E9F0}
+.tf-box strong{color:#fff}
+.tf-box.warn{background:rgba(255,170,60,.12);border-color:rgba(255,170,60,.45)}
+.tf-box.bad{background:rgba(255,90,90,.13);border-color:rgba(255,110,110,.5)}
+.tf-box.ok{background:rgba(60,200,140,.12);border-color:rgba(70,210,150,.45)}
+.tf-box h3{font:800 .95rem var(--display);margin:0 0 6px;color:#fff}
+.tf-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.tf-kpis div{background:#1d2330;border:1px solid #2c3342;border-radius:14px;padding:12px 14px}
+.tf-kpis b{display:block;font:800 1.25rem/1.2 var(--display);color:#fff}
+.tf-kpis span{font-size:.78rem;color:#A9B0BD}
+.tf-info{margin-top:30px;display:grid;gap:22px}
+.tf-info h2{font:800 1.3rem var(--display);margin:0 0 10px}
+.tf-info p,.tf-info li{color:#3b4150;line-height:1.65;font-size:1rem}
+.tf-tb{width:100%;border-collapse:collapse;font-size:.95rem;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tf-tb th,.tf-tb td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.tf-tb th{background:#EDE8FB;font-weight:800;font-size:.85rem}
+.tf-note{font-size:.84rem;color:var(--muted);line-height:1.55;margin-top:14px}
+.tf-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.tf-faq summary{font-weight:700;cursor:pointer}
+.tf-faq p{margin:10px 0 0}
+.tf-col{display:grid;gap:22px}.tf-col .tf-res{position:static}
+.tf-ct{width:100%;border-collapse:collapse;font-size:.88rem;margin:4px 0 4px}.tf-ct th,.tf-ct td{padding:8px 6px;text-align:left;border-bottom:1px solid #2c3342;color:#DDE1E8;vertical-align:top}.tf-ct th{font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:#A9B0BD}.tf-ct td:first-child{color:#fff;font-weight:600}
+
+.tf-rule{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#8242fa,#6a2fe0);border-radius:16px;padding:14px 16px;margin:0 0 16px;color:#fff}
+.tf-rule b{font:800 1.9rem/1 var(--display);letter-spacing:-.02em;flex:none}
+.tf-rule span{font-size:.93rem;line-height:1.45;color:#EFE9FF}.tf-rule strong{color:#fff}
+.tf-vis{display:grid;gap:12px;margin:0 0 16px}
+.tf-vl{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;color:#DDE1E8;margin-bottom:5px}
+.tf-vl b{color:#fff;white-space:nowrap}.tf-vl i{font-style:normal;color:#A9B0BD;font-weight:600;margin-left:4px}
+.tf-vt{height:16px;border-radius:99px;background:#262c38;overflow:hidden}.tf-vt div{height:100%;border-radius:99px;transition:width .35s}
+.tf-vv{font-size:.9rem;line-height:1.5;padding:12px 14px;border-radius:12px;color:#E6E9F0}
+.tf-vv.ok{background:rgba(60,200,140,.12);border:1px solid rgba(70,210,150,.45)}.tf-vv.warn{background:rgba(255,170,60,.12);border:1px solid rgba(255,170,60,.45)}
+.tf-avs{display:grid;gap:14px}.tf-avs h3{font:800 1.05rem var(--display);margin:6px 0 2px}
+.tf-avg{display:grid;gap:12px}
+.tf-av{background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:14px 16px}
+.tf-av strong{display:block;font-weight:800;margin-bottom:4px}
+.tf-av p{margin:0;font-size:.95rem;line-height:1.55}
+.tf-av{display:flex;gap:14px;align-items:flex-start}
+.tf-av .ai{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+.tf-avs>p:first-of-type,.tf-avs h3{text-align:center}.tf-avs>p:first-of-type{max-width:60ch;margin-inline:auto}
+.tf-avs .tf-avt{text-align:center;margin-bottom:0}
+@media (min-width:900px){.tf-avs .tf-avt{white-space:nowrap}}
+.tf-av.g{--c:#2fb37a}.tf-av.r{--c:#e5484d}.tf-av.y{--c:#f0a53c}
+@media (min-width:760px){.tf-avg{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.tf-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}.tf-res{position:sticky;top:84px}}
+@media (max-width:420px){.tf-r2{grid-template-columns:1fr}}
+</style>
+<style>.tf-in input.t{padding:12px 13px}
+.tf-col{grid-template-columns:minmax(0,1fr)}.tf-grid>*,.tf-col>*{min-width:0}
+.tf-res{overflow:hidden}
+.tf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tf-chip{font:700 .82rem var(--body);color:#2a303b;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+.tf-chip:hover,.tf-chip:focus-visible{border-color:var(--accent);color:var(--accent-d);background:#F5F0FF;outline:none}
+.tf-chip.dyn{border-style:dashed}
+.tf-url{font:600 .9rem/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0b0e13;border:1px solid #2c3342;border-radius:14px;padding:14px;color:#DDE1E8;word-break:break-all;min-height:64px}
+.tf-url em{font-style:normal;color:var(--accent-l)}
+.tf-btns{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+.tf-b{font:800 .92rem var(--body);border:0;border-radius:12px;padding:12px 18px;cursor:pointer;min-height:46px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.tf-b.p{background:var(--accent);color:#fff}.tf-b.p:hover{background:var(--accent-d)}
+.tf-b.g{background:transparent;color:#fff;border:1.5px solid #3a4152}.tf-b.g:hover{border-color:var(--accent-l)}
+.tf-b[disabled]{opacity:.45;cursor:not-allowed}
+.tf-pt{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:16px}
+.tf-pt td{padding:7px 4px;border-bottom:1px solid #2c3342;color:#DDE1E8;vertical-align:top;word-break:break-all}.tf-pt td:first-child{color:#A9B0BD;white-space:nowrap;padding-right:12px}
+.tf-hist{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.tf-hist li{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#1d2330;border:1px solid #2c3342;border-radius:12px;padding:9px 12px;font-size:.8rem;color:#DDE1E8;margin:0}
+.tf-hist li::before{display:none!important;content:none!important}
+.tf-hist span{flex:1 1 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tf-hist button{flex:none;background:none;border:0;color:var(--accent-l);font:700 .8rem var(--body);cursor:pointer;padding:4px 6px}
+.tf-hh{display:flex;justify-content:space-between;align-items:center;margin-top:20px;font-weight:800;color:#fff;font-size:.95rem}
+.tf-hh button{background:none;border:0;color:var(--accent-l);font:700 .82rem var(--body);cursor:pointer}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/">Início</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/blog/">Blog</a>
+      <a href="/ferramentas/" class="active">Ferramentas</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+<section class="bhero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><a href="/">Início</a><a href="/ferramentas/">Ferramentas</a><span>Gerador de UTM</span></nav>
+    <h1>Gerador de UTM <em>sem erro de digitação.</em></h1>
+    <p class="lead">Monte links rastreáveis para Google Ads, Meta Ads, e-mail e redes sociais, com nomenclatura padronizada e histórico dos seus links.</p>
+  </div>
+</section>
+<section class="tf-sec">
+  <div class="wrap">
+<div class="tf-grid">
+<div class="tf-card"><h2>Monte o link</h2><p class="hint">Preencha os campos. O link atualiza na hora, já padronizado.</p>
+<div class="tf-f">
+<div class="tf-fld"><label for="url">URL da página de destino</label><div class="tf-in"><input class="t" id="url" type="text" placeholder="https://seusite.com.br/pagina" autocomplete="off" spellcheck="false"></div></div>
+<div class="tf-fld"><label>Atalhos de origem e mídia</label><div class="tf-chips" id="chips"><button type="button" class="tf-chip" data-s="google" data-m="cpc">Google Ads</button><button type="button" class="tf-chip" data-s="youtube" data-m="paid_video">YouTube Ads</button><button type="button" class="tf-chip" data-s="facebook" data-m="paid_social">Meta (Facebook)</button><button type="button" class="tf-chip" data-s="instagram" data-m="paid_social">Meta (Instagram)</button><button type="button" class="tf-chip" data-s="linkedin" data-m="paid_social">LinkedIn Ads</button><button type="button" class="tf-chip" data-s="tiktok" data-m="paid_social">TikTok Ads</button><button type="button" class="tf-chip" data-s="newsletter" data-m="email">E-mail</button><button type="button" class="tf-chip" data-s="whatsapp" data-m="social">WhatsApp</button><button type="button" class="tf-chip" data-s="instagram" data-m="social">Instagram orgânico</button></div></div>
+<div class="tf-r2"><div class="tf-fld"><label for="src">Origem (utm_source)*</label><div class="tf-in"><input class="t" id="src" type="text" value="" placeholder="google, facebook, newsletter" autocomplete="off" spellcheck="false"></div></div><div class="tf-fld"><label for="med">Mídia (utm_medium)*</label><div class="tf-in"><input class="t" id="med" type="text" value="" placeholder="cpc, paid_social, email" autocomplete="off" spellcheck="false"></div></div></div>
+<div class="tf-fld"><label for="camp">Campanha (utm_campaign)*</label><div class="tf-in"><input class="t" id="camp" type="text" value="" placeholder="black_friday_2026" autocomplete="off" spellcheck="false"></div></div>
+<div class="tf-r2"><div class="tf-fld"><label for="term">Termo (utm_term)</label><div class="tf-in"><input class="t" id="term" type="text" value="" placeholder="palavra-chave ou público" autocomplete="off" spellcheck="false"></div></div><div class="tf-fld"><label for="cont">Conteúdo (utm_content)</label><div class="tf-in"><input class="t" id="cont" type="text" value="" placeholder="anuncio_video_a" autocomplete="off" spellcheck="false"></div></div></div>
+<div class="tf-fld"><label>Parâmetros dinâmicos (preenchidos pela plataforma)</label><div class="tf-chips"><button type="button" class="tf-chip dyn" id="dg">Google Ads</button><button type="button" class="tf-chip dyn" id="dm">Meta Ads</button></div><small>Preenche campanha, conteúdo e termo com variáveis que o anúncio troca pelo nome real.</small></div>
+<div class="tf-sep"></div>
+<div class="tf-r2"><div class="tf-fld"><label for="sep">Separador de palavras</label><select id="sep"><option value="_">Underline (_)</option><option value="-">Hífen (-)</option></select></div><div class="tf-fld"><label>Padronização</label><label class="tf-chk"><input type="checkbox" id="norm" checked><span>Minúsculas, sem acentos e sem espaços</span></label></div></div>
+</div></div>
+<div class="tf-col">
+<div class="tf-res" aria-live="polite">
+<div class="lbl">Seu link com UTM</div>
+<div class="tf-url" id="o-url">Preencha a URL, origem, mídia e campanha.</div>
+<div class="tf-btns"><button type="button" class="tf-b p" id="b-copy" disabled>Copiar link</button><a class="tf-b g" id="b-open" href="#" target="_blank" rel="noopener" hidden>Abrir</a><button type="button" class="tf-b g" id="b-save" disabled>Salvar no histórico</button></div>
+<div id="o-msg"></div>
+<table class="tf-pt" id="o-pt"></table>
+<div class="tf-hh"><span>Histórico neste navegador</span><button type="button" id="b-csv" hidden>Baixar CSV</button></div>
+<ul class="tf-hist" id="o-hist"></ul>
+</div>
+</div></div>
+    <div class="tf-info"><div class="tf-faq"><h2>Perguntas frequentes</h2><details><summary>O que são UTMs?</summary><p>São parâmetros colocados no final de um link (utm_source, utm_medium, utm_campaign, utm_term e utm_content) que dizem ao Google Analytics e a outras ferramentas de onde veio cada visita.</p></details><details><summary>Quais parâmetros UTM são obrigatórios?</summary><p>Origem (utm_source), mídia (utm_medium) e campanha (utm_campaign). Termo e conteúdo são opcionais e ajudam a separar palavras-chave, públicos e anúncios.</p></details><details><summary>Maiúsculas e minúsculas fazem diferença?</summary><p>Sim. O Google Analytics diferencia os valores pela escrita, então "Facebook" e "facebook" aparecem como origens separadas. Por isso o gerador padroniza tudo em minúsculas.</p></details><details><summary>Posso usar UTM junto com a marcação automática do Google Ads?</summary><p>Pode. A marcação automática (gclid) e as UTMs convivem. Se quiser nomes reais de campanha, use parâmetros dinâmicos como {campaignid}, {adgroupid} e {keyword} no modelo de acompanhamento.</p></details></div>
+<div><h2>Como nomear cada parâmetro</h2><table class="tf-tb"><thead><tr><th>Parâmetro</th><th>O que responde</th><th>Exemplo</th></tr></thead><tbody><tr><td>utm_source</td><td>De onde vem o clique</td><td>google, facebook, newsletter</td></tr><tr><td>utm_medium</td><td>Qual o tipo de mídia</td><td>cpc, paid_social, email</td></tr><tr><td>utm_campaign</td><td>Qual campanha</td><td>black_friday_2026</td></tr><tr><td>utm_term</td><td>Palavra-chave ou público</td><td>sapato_social</td></tr><tr><td>utm_content</td><td>Qual anúncio ou variação</td><td>video_depoimento_a</td></tr></tbody></table></div>
+<div><h2>Boas práticas de parametrização</h2><ul><li>Use sempre minúsculas e um único separador. "Google", "google" e "GOOGLE" viram três origens diferentes nos relatórios.</li><li>Defina um padrão e use em toda a equipe. A ferramenta padroniza por você.</li><li>Origem, mídia e campanha são os campos que não podem faltar.</li><li>Não use UTM em links internos do site. Isso reinicia a sessão e perde a origem real do visitante.</li><li>No Google Ads, mantenha a marcação automática (gclid) ativa. As UTMs funcionam junto com ela.</li></ul><p class="tf-note">O histórico fica salvo só no seu navegador, não é enviado para nenhum servidor.</p></div></div>
+  </div>
+</section>
+<section class="contact" id="contato">
+  <img class="contact-bg" src="/img/contato-fundo-planejamento-marketing-1600.webp" srcset="/img/contato-fundo-planejamento-marketing-800.webp 800w, /img/contato-fundo-planejamento-marketing-1600.webp 1600w" sizes="100vw" width="1600" height="1045" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low">
+  <div class="wrap">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2 class="sec-title">Quer conversar sobre o seu projeto?</h2>
+    <p class="sec-lead">Mídia, CRM, dados ou automação: me conte o que você precisa.</p>
+    <div class="cta-row"><a class="btn btn-primary" data-wa="ferramentas" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-ghost" href="/#cases">Ver cases</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap" style="justify-content:center;text-align:center">
+    <span>© 2026 Ana C. D'avilla · Todos os direitos reservados.</span>
+  </div>
+</footer>
+<div class="fab"><a class="fab-btn" data-wa="fab" href="https://wa.me/5562994141488?text=Ol%C3%A1%20Ana%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div>
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Uso cookies de medição (Google Tag Manager) para entender como o site é usado. Você pode recusar sem perder nenhum conteúdo.</p>
+  <div class="row"><button class="btn btn-ghost" data-consent="no" type="button">Recusar</button><button class="btn btn-primary" data-consent="yes" type="button">Aceitar</button></div>
+</div>
+<script src="/js/blog.js" defer></script>
+<script>
+(function(){function num(v){v=String(v||'').trim();if(!v)return 0;if(v.indexOf(',')>-1)v=v.replace(/\./g,'').replace(',','.');else if(!/^\d+\.\d{1,2}$/.test(v))v=v.replace(/\./g,'');var n=parseFloat(v);return isFinite(n)?n:0}
+function brl(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function pct(n,d){return n.toLocaleString('pt-BR',{minimumFractionDigits:d==null?1:d,maximumFractionDigits:d==null?1:d})+'%'}
+function $(i){return document.getElementById(i)}
+
+var HK='anadomkt_utm_hist',KEYS=[['utm_source','src'],['utm_medium','med'],['utm_campaign','camp'],['utm_term','term'],['utm_content','cont']],cur='';
+function strip(s){try{return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}catch(e){return s}}
+function isDyn(v){return /^\{\{?[^{}\s]+\}?\}$/.test(v)}
+function clean(v,norm,sep){v=String(v||'').trim();if(!v)return'';if(isDyn(v))return v;if(norm){v=strip(v).toLowerCase().replace(/[^a-z0-9._\-+ ]+/g,' ').replace(/[\s_\-+]+/g,sep).replace(new RegExp('^\\'+sep+'+|\\'+sep+'+$','g'),'')}return v}
+function enc(v){return isDyn(v)?v:encodeURIComponent(v)}
+function build(){
+ var norm=$('norm').checked,sep=$('sep').value,u=$('url').value.trim(),msgs=[],vals={};
+ KEYS.forEach(function(k){vals[k[0]]=clean($(k[1]).value,norm,sep)});
+ var missing=[];if(!u)missing.push('URL');if(!vals.utm_source)missing.push('origem');if(!vals.utm_medium)missing.push('mídia');if(!vals.utm_campaign)missing.push('campanha');
+ var ok=missing.length===0;
+ if(u&&!/^https?:\/\//i.test(u)){if(/^[\w-]+(\.[\w-]+)+/.test(u)){u='https://'+u;msgs.push(['ok','Adicionei https:// no início da URL.'])}else{ok=false;msgs.push(['warn','A URL precisa começar com http:// ou https://.'])}}
+ var hash='',h=u.indexOf('#');if(h>-1){hash=u.slice(h);u=u.slice(0,h)}
+ var has=/[?&]utm_/i.test(u);if(has)msgs.push(['warn','A URL já tem parâmetros utm_. Remova-os para não duplicar.']);
+ var q=[];KEYS.forEach(function(k){if(vals[k[0]])q.push(k[0]+'='+enc(vals[k[0]]))});
+ var sepch=u.indexOf('?')>-1?(/[?&]$/.test(u)?'':'&'):'?';
+ cur=ok&&q.length?u+sepch+q.join('&')+hash:'';
+ var el=$('o-url');
+ if(cur){var base=u+sepch;el.innerHTML=base.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'<em>'+q.join('&').replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</em>'+hash.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+ else el.textContent=missing.length?'Falta preencher: '+missing.join(', ')+'.':'Confira a URL.';
+ $('b-copy').disabled=!cur;$('b-save').disabled=!cur;var bo=$('b-open');bo.hidden=!cur;if(cur)bo.href=cur;
+ if(cur){var raw=KEYS.some(function(k){return $(k[1]).value.trim()&&vals[k[0]]!==$(k[1]).value.trim()&&!isDyn(vals[k[0]])});if(raw)msgs.push(['ok','Valores padronizados (minúsculas, sem acentos, "'+sep+'" no lugar de espaços).']);if(!vals.utm_term&&!vals.utm_content)msgs.push(['ok','Dica: use utm_content para diferenciar anúncios e utm_term para palavra-chave ou público.'])}
+ $('o-msg').innerHTML=msgs.map(function(m){return '<div class="tf-box '+m[0]+'" style="margin-top:12px">'+m[1]+'</div>'}).join('');
+ $('o-pt').innerHTML=cur?KEYS.filter(function(k){return vals[k[0]]}).map(function(k){return '<tr><td>'+k[0]+'</td><td>'+vals[k[0]].replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</td></tr>'}).join(''):'';
+}
+function copy(t,btn){var done=function(){var o=btn.textContent;btn.textContent='Copiado!';setTimeout(function(){btn.textContent=o},1600)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fb()})}else fb();function fb(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}}
+function hist(){try{return JSON.parse(localStorage.getItem(HK)||'[]')}catch(e){return[]}}
+function saveH(a){try{localStorage.setItem(HK,JSON.stringify(a))}catch(e){}}
+function drawH(){var a=hist(),ul=$('o-hist');ul.innerHTML='';$('b-csv').hidden=!a.length;a.forEach(function(x,i){var li=document.createElement('li'),sp=document.createElement('span');sp.textContent=x;sp.title=x;var c=document.createElement('button');c.textContent='Copiar';c.onclick=function(){copy(x,c)};var d=document.createElement('button');d.textContent='Remover';d.onclick=function(){var b=hist();b.splice(i,1);saveH(b);drawH()};li.appendChild(sp);li.appendChild(c);li.appendChild(d);ul.appendChild(li)})}
+Array.prototype.forEach.call(document.querySelectorAll('#chips .tf-chip'),function(c){c.addEventListener('click',function(){$('src').value=c.getAttribute('data-s');$('med').value=c.getAttribute('data-m');build()})});
+$('dg').addEventListener('click',function(){$('src').value='google';$('med').value='cpc';$('camp').value='{campaignid}';$('cont').value='{adgroupid}';$('term').value='{keyword}';build()});
+$('dm').addEventListener('click',function(){$('src').value='facebook';$('med').value='paid_social';$('camp').value='{{campaign.name}}';$('cont').value='{{ad.name}}';$('term').value='{{adset.name}}';build()});
+['url','src','med','camp','term','cont','sep','norm'].forEach(function(i){$(i).addEventListener('input',build);$(i).addEventListener('change',build)});
+$('b-copy').addEventListener('click',function(){if(cur)copy(cur,$('b-copy'))});
+$('b-save').addEventListener('click',function(){if(!cur)return;var a=hist();if(a.indexOf(cur)<0)a.unshift(cur);saveH(a.slice(0,20));drawH()});
+$('b-csv').addEventListener('click',function(){var a=hist(),rows=['link'].concat(a.map(function(x){return '"'+x.replace(/"/g,'""')+'"'}));var b=new Blob(['\ufeff'+rows.join('\n')],{type:'text/csv;charset=utf-8'}),l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='links-utm.csv';document.body.appendChild(l);l.click();document.body.removeChild(l)});
+build();drawH();})();
+</script>
+</body>
+</html>
