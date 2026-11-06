@@ -1,0 +1,93 @@
+/* Auditoria de Google Ads — usa os tokens de /css/style.css e a base de calculadora.css */
+:root{--okc:#1E9E5A;--warnc:#C77F00;--badc:#D64545}
+.quiz{padding:40px 0 72px}
+.quiz .wrap{max-width:860px}
+.ns{background:#fff7e0;border:1px solid #f0d58a;border-radius:12px;padding:14px 18px;margin-bottom:20px}
+
+/* Progresso */
+.qhead{margin-bottom:20px}
+.qsteps{display:flex;gap:6px;margin-bottom:12px}
+.qsteps li{flex:1;min-width:0}
+.qsteps button{width:100%;height:44px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font:700 .95rem var(--body);color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:border-color .15s,background .15s}
+.qsteps button:hover{border-color:var(--accent)}
+.qsteps button.done{background:var(--paper);color:var(--ink);border-color:#bdb9ae}
+.qsteps button[aria-current=step]{background:var(--ink);border-color:var(--ink);color:#fff}
+.qbar{height:8px;background:#e8e5dc;border-radius:99px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .25s}
+.qcount{margin:8px 0 0;font-size:.9rem;color:var(--muted)}
+
+/* Perguntas */
+.qsec{border:0;margin:0;padding:0;min-width:0}
+.qsec legend{padding:0;display:block;margin-bottom:6px}
+.qnum{display:block;font:700 .78rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.qname{display:block;font-size:clamp(1.5rem,4vw,2rem);font-weight:800;line-height:1.15;margin-top:4px}
+.qintro{margin:8px 0 20px;color:var(--muted);max-width:60ch}
+.q{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:12px;transition:border-color .15s}
+.q.miss{border-color:var(--badc);box-shadow:0 0 0 3px rgba(214,69,69,.12)}
+.qt{margin:0 0 8px;font-weight:600;line-height:1.4}
+.qwhy{margin:0 0 12px}
+.qwhy summary{cursor:pointer;font-size:.88rem;font-weight:600;color:var(--accent-d);list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:32px}
+.qwhy summary::-webkit-details-marker{display:none}
+.qwhy summary::before{content:"+";font:800 1rem/1 var(--mono)}
+.qwhy[open] summary::before{content:"−"}
+.qwhy p{margin:6px 0 0;font-size:.93rem;color:var(--muted);max-width:62ch}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opts span{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:600 .95rem var(--body);transition:border-color .15s,background .15s,color .15s}
+.opts label:hover span{border-color:var(--accent)}
+.opts input:focus-visible+span{outline:3px solid var(--accent-l);outline-offset:2px}
+.opts input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.qerr{margin:4px 0 12px;color:var(--badc);font-weight:600}
+.qnav{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.qnav .btn{min-height:48px}
+
+/* JS ativo: uma seção por vez */
+.js .qsec[hidden]{display:none}
+
+/* Resultado */
+.result{outline:none}
+.rtop{background:var(--ink);color:#fff;border-radius:20px;padding:28px 24px;display:grid;gap:22px;justify-items:center;text-align:center}
+.ring{--p:0;--c:var(--okc);width:168px;height:168px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.14) 0);display:grid;place-items:center;position:relative}
+.ring::before{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--ink)}
+.ring b{position:relative;font:800 3.2rem/1 var(--mono);letter-spacing:-.04em}
+.ring small{position:relative;display:block;font:600 .8rem var(--mono);color:var(--muted-d);margin-top:-6px}
+.ring>div{position:relative;text-align:center}
+.lvl{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;margin:0}
+.rtxt{margin:6px auto 0;color:#C5CBD6;max-width:52ch}
+.rtop.good .lvl{color:#5BE39A}.rtop.warn .lvl{color:#F5B544}.rtop.bad .lvl{color:#FF8A8A}
+.rsec{margin-top:28px}
+.rsec h3{font-size:1.3rem;margin:0 0 14px}
+.bars{display:grid;gap:12px}
+.bar{display:grid;gap:5px}
+.bar .bl{display:flex;justify-content:space-between;gap:12px;font-weight:600;font-size:.95rem}
+.bar .bl span:last-child{font-family:var(--mono);color:var(--muted)}
+.bar .bt{height:10px;border-radius:99px;background:#e8e5dc;overflow:hidden}
+.bar .bt i{display:block;height:100%;border-radius:99px;background:var(--okc)}
+.bar.warn .bt i{background:var(--warnc)}.bar.bad .bt i{background:var(--badc)}
+.prio{display:grid;gap:12px;counter-reset:p}
+.prio li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px 16px 58px;position:relative;counter-increment:p}
+.prio li::before{content:counter(p);position:absolute;left:16px;top:16px;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--accent-l);display:grid;place-items:center;font:800 .95rem var(--mono)}
+.prio .pq{font-weight:700;margin:0 0 4px;line-height:1.35}
+.prio .ps{display:inline-block;font:700 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-d);margin-bottom:4px}
+.prio .pf{margin:0;color:var(--muted);font-size:.95rem}
+.okbox{background:#fff;border:1px solid var(--line);border-left:5px solid var(--okc);border-radius:var(--r);padding:16px 18px}
+.okbox p{margin:0}
+.rcta{margin-top:28px;background:#fff;border:2px solid var(--accent);border-radius:20px;padding:24px;display:grid;gap:10px}
+.rcta h3{margin:0;font-size:1.4rem}
+.rcta p{margin:0;color:var(--muted)}
+.ractions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.ractions .btn{min-height:46px}
+.rnote{margin-top:16px;font-size:.85rem;color:var(--muted)}
+.how .steps.three{margin-top:24px}
+.stepn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--accent-l);display:grid;place-items:center;font:800 .95rem var(--mono)}
+@media (min-width:720px){
+  .rtop{grid-template-columns:auto 1fr;text-align:left;justify-items:start;padding:32px;gap:32px}
+  .rtxt{margin-left:0}
+}
+@media print{
+  .top,.bhero,.qhead,#quizform,.alt,.faq,.contact,.fab,.consent,footer,.ractions,.how,section[aria-labelledby=t-faq]{display:none!important}
+  .result[hidden]{display:none}
+  body{background:#fff}
+}
+@media (prefers-reduced-motion:reduce){.qbar i,.opts span,.qsteps button{transition:none}}
