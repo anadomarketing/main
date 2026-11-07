@@ -435,3 +435,7 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 .rv{transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1) var(--d,0s),transform .9s cubic-bezier(.22,1,.36,1) var(--d,0s)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv,.rv.in{opacity:1;transform:none;transition:none}}
+
+.hero .proof-ck{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px}
+.hero .proof-ck li{position:relative;padding-left:26px}
+.hero .proof-ck li::before{content:"\2713";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:grid;place-items:center}
