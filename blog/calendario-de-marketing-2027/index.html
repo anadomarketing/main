@@ -42,6 +42,16 @@
 .cd .t{display:block;font:800 1rem/1.1 var(--mono);color:var(--ink)}
 .cb h4{font-size:1.02rem;margin:0 0 4px;line-height:1.3}
 .cal.sm li{padding:11px 14px}
+.mcal>h3{font-size:1.5rem;margin:52px 0 8px;padding-top:26px;border-top:1px solid var(--line)}
+.mcal>h3:first-of-type{margin-top:22px;padding-top:0;border-top:0}
+.mcal>.cmp{margin:0 0 6px}
+.mcal .cal{margin-top:16px;gap:12px!important}
+.cal li{align-items:center;grid-template-columns:104px 1fr}
+.cd{align-self:stretch;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4px 14px 4px 0}
+.cd time,.cd .t{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd small{text-align:center}
+.cb h3{margin:0 0 8px}
+@media(max-width:520px){.cal li{align-items:start;grid-template-columns:1fr}.cd{align-self:auto;border-right:0;border-bottom:1px solid var(--line);flex-direction:row;justify-content:flex-start;align-items:baseline;gap:10px;padding:0 0 8px}.cd small{margin:0}.mcal>h3{font-size:1.3rem;margin-top:40px;padding-top:22px}}
 .stabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin:14px 0 8px;scrollbar-width:thin}
 .stabs button{flex:0 0 auto;min-height:42px;padding:6px 16px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font:600 .9rem var(--body);cursor:pointer;white-space:nowrap}
 .stabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
