@@ -439,3 +439,5 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 .hero .proof-ck{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px}
 .hero .proof-ck li{position:relative;padding-left:26px}
 .hero .proof-ck li::before{content:"\2713";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:grid;place-items:center}
+.qbtn{background:var(--accent);border-color:var(--accent);color:#fff}
+.qbtn:hover:not(:disabled){background:var(--accent-d);border-color:var(--accent-d);color:#fff}
