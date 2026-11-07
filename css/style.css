@@ -441,3 +441,16 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 .hero .proof-ck li::before{content:"\2713";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:grid;place-items:center}
 .qbtn{background:var(--accent);border-color:var(--accent);color:#fff}
 .qbtn:hover:not(:disabled){background:var(--accent-d);border-color:var(--accent-d);color:#fff}
+/* foto: deslocamento e hover */
+@media (min-width:900px){.hero-ph{transform:translateX(-48px)}}
+.hero-ph::before{transition:inset .45s cubic-bezier(.2,.7,.2,1)}
+.hero-ph img{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.hero-ph .hchip{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.ab-ph img{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s}
+@media (hover:hover){
+.hero-ph:hover img{transform:translate(-6px,-6px);box-shadow:0 26px 50px rgba(130,66,250,.28)}
+.hero-ph:hover::before{inset:24px -24px -24px 24px}
+.hero-ph:hover .hchip{transform:translate(-4px,-8px) rotate(-3deg)}
+.ab-ph:hover img{transform:scale(1.04);border-color:var(--accent);box-shadow:0 0 0 6px rgba(130,66,250,.22),0 24px 50px rgba(0,0,0,.35)}
+}
+@media (prefers-reduced-motion:reduce){.hero-ph img,.hero-ph::before,.hero-ph .hchip,.ab-ph img{transition:none}.hero-ph:hover img,.ab-ph:hover img,.hero-ph:hover .hchip{transform:none}}
