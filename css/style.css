@@ -430,3 +430,8 @@ footer button{background:none;border:0;color:#B9C0CC;font:inherit;text-decoratio
 @media (max-width:979px){.top .burger{margin-left:auto}}
 
 .ab-cv{position:absolute;left:0;right:0;bottom:22px;margin-inline:auto;width:max-content;z-index:2;min-height:44px;padding:10px 20px;font-size:.92rem;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+
+/* Entrada suave ao rolar */
+.rv{transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1) var(--d,0s),transform .9s cubic-bezier(.22,1,.36,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv,.rv.in{opacity:1;transform:none;transition:none}}
