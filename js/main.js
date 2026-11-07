@@ -29,6 +29,25 @@
     }, { rootMargin: '-40% 0px -55% 0px' });
     sec.forEach(function (s) { spy.observe(s); });
 
+    /* Entrada suave em todo o site: aplica .rv aos blocos e cartões das seções (exceto hero e faixa de marcas) */
+    (function () {
+      if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var secs = d.querySelectorAll('main section:not(.hero), footer');
+      [].forEach.call(secs, function (sec) {
+        [].forEach.call(sec.querySelectorAll(':scope > .wrap > *'), function (c) {
+          if (c.classList.contains('rv') || c.querySelector('.rv') || c.closest('dialog')) return;
+          var kids = [].filter.call(c.children, function (k) { return k.nodeType === 1; });
+          var disp = w.getComputedStyle(c).display;
+          var group = kids.length > 1 && (disp === 'grid' || disp === 'flex') && !c.classList.contains('qcar');
+          var list = group ? kids : [c];
+          list.forEach(function (el, i) {
+            el.classList.add('rv', 'rv-auto');
+            el.style.setProperty('--d', ((i % 4) * 90) + 'ms');
+          });
+        });
+      });
+    })();
+
     /* Revelar ao rolar */
     var rv = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rv.unobserve(en.target); } });
